@@ -1,0 +1,12 @@
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\bin\Debug\HmGoogleGeminiServer.dll
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\bin\Debug\HmGoogleGeminiServer.pdb
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.csproj.AssemblyReference.cache
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.csproj.CoreCompileInputs.cache
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiServer.dll
+C:\Users\master\source\repos\HmGoogleGeminiServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiServer.pdb
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\bin\Debug\HmGoogleGeminiHttpServer.dll
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\bin\Debug\HmGoogleGeminiHttpServer.pdb
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.csproj.AssemblyReference.cache
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.csproj.CoreCompileInputs.cache
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.dll
+G:\repogitory\gen_google_gemini_console\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Debug\HmGoogleGeminiHttpServer.pdb

@@ -1,0 +1,6 @@
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\obj\Debug\HmOpenAiGptHttpServer.csproj.AssemblyReference.cache
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\obj\Debug\HmOpenAiGptHttpServer.csproj.CoreCompileInputs.cache
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\bin\Debug\HmOpenAiGptHttpServer.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\bin\Debug\HmOpenAiGptHttpServer.pdb
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\obj\Debug\HmOpenAiGptHttpServer.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGptHttpServer\HmOpenAiGptHttpServer\obj\Debug\HmOpenAiGptHttpServer.pdb

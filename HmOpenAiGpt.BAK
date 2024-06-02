@@ -1,5 +1,5 @@
 /*
- * HmGoogleGemini v 1.0.0.1
+ * HmOpenAiGpt v 1.0.0.1
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -9,7 +9,7 @@
 <html lang="ja">
 
 <head>
-    <title>HmGoogleGemini</title>
+    <title>HmOpenAiGpt</title>
     <style>
         #user_question {
             width: 96%;
@@ -37,7 +37,7 @@
         }
         */
     </style>
-    <script src="./HmGoogleGemini.marked.js"></script>
+    <script src="./HmOpenAiGpt.marked.js"></script>
     <script>
         function getFirstThreeLines(text) {
 
@@ -59,7 +59,7 @@
 		    return firstThreeLines.join('\n');
         }
         function checkQuestionFile() {
-            fetch('HmGoogleGemini.question.txt')
+            fetch('HmOpenAiGpt.question.txt')
                 .then(response => response.text())
                 .then(text => {
                     try {
@@ -75,7 +75,7 @@
                 });
         }
         function checkAnswerFile() {
-            fetch('HmGoogleGemini.txt')
+            fetch('HmOpenAiGpt.txt')
                 .then(response => response.text())
                 .then(md_text => {
                     try {

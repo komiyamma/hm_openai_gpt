@@ -89,7 +89,7 @@ function doSendQuestionContent() {
 // テキストを選択せずに、このマクロを実行した時は、
 // 「ＡＩの応答を途中キャンセル」あるいは「ＡＩを完全にリセットしてプロセス自体を終了し、会話履歴も消去」することが出来る。
 function doSendCommand() {
-    let selectMenuID = menu("AI応答のキャンセル", "リセット");
+    let selectMenuID = menu("応答の停止 (&S)", "リセット (&R)", "回答を張り付け (&V)");
     if (selectMenuID == 1) {
         let sendcmd = "HmOpenAiGpt.Cancel(" + ticknum + ")\n";
         let text = "キャンセル";
@@ -104,6 +104,11 @@ function doSendCommand() {
         runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
         hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
     }
+    else if (selectMenuID == 3) {
+        let loadFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
+        let text = hidemaru.loadTextFile(loadFileName);
+        insert(text);
+    }
 }
 
 // このプロセスが終わるまでは維持のシグナルとしてvar。
@@ -115,6 +120,15 @@ function openHttpServer() {
     serverProcessCOM = createobject( currentmacrodir + "\\HmOpenAiGptHttpServer.dll", "HmOpenAiGptHttpServer.HmOpenAiGptHttpServer");
     let port = serverProcessCOM.Launch();
     return port;
+}
+
+// 選択範囲の最終座標に移動した方が便利だとわかっている
+function gotoSelectEndPosition() {
+    // 選択は自動解除した方が便利なようだ
+    let cur_selendx = selendx();
+    let cur_selendy = selendy();
+    escapeselect();
+    moveto(cur_selendx, cur_selendy);
 }
 
 // メイン処理
@@ -133,6 +147,8 @@ function doMain() {
         if (selecting()) {
             // それをＡＩへの質問内容として送信
             doSendQuestionContent();
+            // 選択を解除し、選択の最後の座標へと移動
+            gotoSelectEndPosition();
         } else {
             // それ以外なら、ＡＩにコマンドの送信
             doSendCommand();

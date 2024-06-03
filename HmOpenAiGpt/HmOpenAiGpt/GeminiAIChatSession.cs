@@ -4,13 +4,8 @@ using OpenAI.Managers;
 using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
 using OpenAI.ObjectModels.ResponseModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml;
+using System.Text.RegularExpressions;
 
 
 internal class ChatSession
@@ -92,10 +87,29 @@ internal class ChatSession
     }
 
 
-    public static bool forceCancel = false;
 
     // 質問してAIの応答の途中でキャンセルするためのトークン
     static CancellationTokenSource _cst;
+
+    private void CancelCheck()
+    {
+        string question_text = "";
+        using (StreamReader reader = new StreamReader(HmOpenAiGpt.saveFilePath, Encoding.UTF8))
+        {
+            question_text = reader.ReadToEnd();
+        }
+
+        // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている
+        // これによって値が進んでいることがわかる。
+        // 正規表現を使用して数値を抽出
+        Regex regex = new Regex(@"HmOpenAiGpt\.Cancel");
+        Match match = regex.Match(question_text);
+        if (match.Success)
+        {
+            this.Cancel();
+            conversationUpdateCancel = true;
+        }
+    }
 
     // 会話履歴全部クリア
     public void Clear()
@@ -184,11 +198,10 @@ internal class ChatSession
         messageList.Add(ChatMessage.FromAssistant(answer_sum));
     }
 
-    const string AssistanceAnswerCompleteMsg = NewLine + "-- 完了 --" + NewLine;
     const string ErrorMsgUnknown = "Unknown Error:" + NewLine;
     // チャットの反復
 
-    const string AssistanceAnswerCancelMsg = NewLine + "-- ChatGPTの回答を途中キャンセルしました --" + NewLine;
+    const string AssistanceAnswerCancelMsg = NewLine + "AIの応答をキャンセルしました。" + NewLine;
     public string GetAssistanceAnswerCancelMsg()
     {
         return AssistanceAnswerCancelMsg;
@@ -204,7 +217,6 @@ internal class ChatSession
             var task = conversationUpdateCheck();
             _cst = new CancellationTokenSource();
             var ct = _cst.Token;
-            ChatSession.forceCancel = false;
 
             string answer_sum = "";
             var completionResult = ReBuildPastChatContents(ct);
@@ -216,21 +228,18 @@ internal class ChatSession
             // ストリーム型で確立しているので、async的に扱っていく
             await foreach (var completion in completionResult)
             {
-                
                 // 途中で分詰まりを検知するための進捗カウンタ
                 conversationUpdateCount++;
+
+                // 毎回じゃ重いので、適当に間引く
+                if (conversationUpdateCount % 5 == 0)
+                {
+                    CancelCheck();
+                }
 
                 // キャンセルが要求された時、
                 if (ct.IsCancellationRequested)
                 {
-                    // 一応Dispose呼んでおく(CancellationToken渡しているので不要なきもするが...)
-                    await completionResult.GetAsyncEnumerator().DisposeAsync();
-                    throw new OperationCanceledException(AssistanceAnswerCancelMsg);
-                }
-
-                if (forceCancel)
-                {
-                    forceCancel = false;
                     // 一応Dispose呼んでおく(CancellationToken渡しているので不要なきもするが...)
                     await completionResult.GetAsyncEnumerator().DisposeAsync();
                     throw new OperationCanceledException(AssistanceAnswerCancelMsg);

@@ -11,7 +11,7 @@ internal partial class HmOpenAiGpt
 
     static bool isConversationing = false;
 
-    static string saveFilePath = "";
+    public static string saveFilePath = "";
 
     // 今回のこのプロセス起動で、はじめて質問ファイルをチェックするかどうか
     static Boolean isQuestionFileFirstCheck = true;
@@ -74,13 +74,6 @@ internal partial class HmOpenAiGpt
             if (match.Success)
             {
                 command = match.Groups[1].Value;
-                if (command == "Cancel")
-                {
-                    chatSession.Cancel();
-                    ChatSession.forceCancel = true;
-                    isConversationing = false;
-                    return;
-                }
                 // 質問がされた時刻に相当するTickCount
                 string strnumber = match.Groups[2].Value;
                 int number = int.Parse(strnumber);
@@ -111,7 +104,6 @@ internal partial class HmOpenAiGpt
             if (command == "Cancel")
             {
                 chatSession.Cancel();
-                ChatSession.forceCancel = true;
                 isConversationing = false;
                 return;
             }

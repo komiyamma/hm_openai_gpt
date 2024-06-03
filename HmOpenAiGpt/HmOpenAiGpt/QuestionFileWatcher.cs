@@ -126,7 +126,6 @@ internal partial class HmOpenAiGpt
             isConversationing = true;
 
             {
-                System.Diagnostics.Trace.WriteLine("場所1");
                 // 回答内容のファイルをクリアして、
                 ClearAnswerFile();
 

@@ -1,2 +1,0 @@
-invalid_api_key: Incorrect API key provided: 2. You can find your API key at https://platform.openai.com/account/api-keys.
-

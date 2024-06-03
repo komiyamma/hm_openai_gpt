@@ -1,2 +1,0 @@
-HmOpenAiGpt.Message(344621875)
-1+1は？

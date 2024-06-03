@@ -236,12 +236,15 @@ internal class ChatSession
                 else
                 {
                     answer_sum += completion.Error.Code + ": " + completion.Error.Message + NewLine;
-                    SaveAddTextToFile($"{completion.Error.Code}: {completion.Error.Message}" + "\n");
 
                     // 失敗なら何かエラーと原因を表示
                     if (completion.Error == null)
                     {
                         throw new Exception(ErrorMsgUnknown);
+                    }
+                    else
+                    {
+                        throw new Exception(completion.Error.Code + ": " + completion.Error.Message);
                     }
 
                 }

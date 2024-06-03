@@ -1,7 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\repogitory\\hm_google_gemini\\HmGoogleGeminiHttpServer\\",
-  "Documents": [],
+  "WorkspaceRootPath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HmSimpleHttpServer||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmsimplehttpserver\\hmsimplehttpserver\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|a54ad834-9219-4aa6-b589-607af21c3e26"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +16,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HmSimpleHttpServer",
+              "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "RelativeDocumentMoniker": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "RelativeToolTip": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-06-03T17:26:26.906Z",
+              "EditorCaption": ""
             }
           ]
         }

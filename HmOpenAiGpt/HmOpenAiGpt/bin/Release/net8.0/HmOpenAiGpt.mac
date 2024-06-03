@@ -18,7 +18,10 @@ let openai_key = getenv("OPENAI_API_KEY") || getenv("OPENAI_KEY");
 if (!openai_key) {
     openai_key = ""; // 直接ここでAPIのKEYの文字列を指定しても良いですが、あまり推奨はしません。直書きする場合、このマクロを迂闊に配布して他者にAPIのキーが漏れないよう注意。
 }
-
+if (!openai_key) {
+    message("OPENAIのキーが空です");
+    throw "OPENAIのキーが空です";
+}
 
 const model = "gpt-3.5-turbo"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
                                // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意

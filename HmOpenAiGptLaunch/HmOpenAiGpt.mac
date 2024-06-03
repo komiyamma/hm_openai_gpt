@@ -46,6 +46,10 @@ var currentmacrodir = currentmacrodirectory();
 if (typeof(avilablePort) == "undefined") {
     openHttpServer();
 }
+// 前回ポートが確保できないまま、またトライしている。(まぁ環境が制限されている等の問題なので、確保できないだろう)
+if (typeof(avilablePort) == "number" && avilablePort == 0) {
+    openHttpServer();
+}
 
 // 簡易Httpサーバーを立てる。ポート自体付きでサーバーを立てることが出来ない限定的なマシンだと失敗するだろう。
 function openHttpServer() {

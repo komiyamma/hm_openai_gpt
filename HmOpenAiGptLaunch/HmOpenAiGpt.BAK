@@ -9,11 +9,11 @@
             white-space: pre-wrap;
         }
 
-        #model_answer {
-            width: 96%;
+        #reset_button {
+            margin-left: auto;
         }
 
-        #btn_stop {
+        #stop_button {
             margin-left: auto;
         }
 
@@ -39,19 +39,7 @@
         */
     </style>
     <script src="./HmOpenAiGpt.marked.js"></script>
-</head>
-
-<body class="markdown-body">
-    <pre id="user_question"></pre>
-    <hr>
-    <div align="right"><button id="btn_stop">停止</button></div>
-    <div id="model_answer"></div>
-
     <script>
-
-    // ボタンを取得
-    const btn_stop = document.getElementById("btn_stop");
-
         function getFirstThreeLines(text) {
 
             // 改行文字でテキストを分割し、2行目以降を取得
@@ -72,17 +60,17 @@
 		    return firstThreeLines.join('\n');
         }
 
-        let prevQuestionText = "|- - HmOpenAiGpt - -|";
         function checkQuestionFile() {
-            fetch('HmOpenAiGpt.question.txt')
+            fetch('HmGoogleGemini.question.txt')
                 .then(response => response.text())
                 .then(text => {
                     try {
                         // １行目にはコマンドが入っているのでカット。
                         // ４行以上ある場合には、「....」で代用する。
                         let newText = getFirstThreeLines(text);
-                        if (prevQuestionText != newText) {
-                            prevQuestionText = newText;
+
+                        let contentText = document.getElementById('user_question').textContent;
+                        if (contentText != newText) {
                             document.getElementById('user_question').textContent = newText;
                         }
                     } catch (err) { }
@@ -91,16 +79,14 @@
                     // window.alert('ファイルの読み込み中にエラーが発生しました:', error);
                 });
         }
-
-        let prevAnswerText = "|- - HmOpenAiGpt - -|";
         function checkAnswerFile() {
-            fetch('HmOpenAiGpt.txt')
+            fetch('HmGoogleGemini.txt')
                 .then(response => response.text())
                 .then(md_text => {
                     try {
-                        if (prevAnswerText != md_text) {
-                            prevAnswerText = md_text
-                            let htmlText = marked.parse(md_text);
+                        let htmlText = marked.parse(md_text);
+                        let innerHTML = document.getElementById('model_answer').innerHTML;
+                        if (innerHTML != htmlText) {
                             document.getElementById('model_answer').innerHTML = htmlText;
                         }
                     } catch (err) { }
@@ -117,6 +103,14 @@
             setInterval(checkAnswerFile, 500); // 0.5秒ごとに監視
         });
     </script>
+</head>
+
+<body class="markdown-body">
+    <pre id="user_question"></pre>
+    <hr>
+    <div align="right"><button>あああ</button></div>
+    <div><button id="stop_button">停止</button></div>
+    <div id="model_answer"></div>
 </body>
 
 </html>

@@ -87,28 +87,40 @@ function doSendQuestionContent() {
     );
 }
 
+function stopAIAnswer() {
+    let sendcmd = "HmOpenAiGpt.Cancel(" + ticknum + ")\n";
+    let text = "キャンセル";
+    let commandline = `"${currentexepath}"`;
+    runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
+    hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+}
+
+function resetAI() {
+    let sendcmd = "HmOpenAiGpt.Clear(" + ticknum + ")\n";
+    let text = "リセット";
+    let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
+    runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
+    hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+}
+
+function pasteAIAnswer() {
+    let loadFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
+    let text = hidemaru.loadTextFile(loadFileName);
+    insert(text);
+}
+
 // テキストを選択せずに、このマクロを実行した時は、
 // 「ＡＩの応答を途中キャンセル」あるいは「ＡＩを完全にリセットしてプロセス自体を終了し、会話履歴も消去」することが出来る。
 function doSendCommand() {
     let selectMenuID = menu("応答の停止 (&S)", "リセット (&R)", "回答を張り付け (&V)");
     if (selectMenuID == 1) {
-        let sendcmd = "HmOpenAiGpt.Cancel(" + ticknum + ")\n";
-        let text = "キャンセル";
-        let commandline = `"${currentexepath}"`;
-        runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
-        hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+        stopAnswer();
     }
     else if (selectMenuID == 2) {
-        let sendcmd = "HmOpenAiGpt.Clear(" + ticknum + ")\n";
-        let text = "リセット";
-        let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
-        runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
-        hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+        resetAI();
     }
     else if (selectMenuID == 3) {
-        let loadFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
-        let text = hidemaru.loadTextFile(loadFileName);
-        insert(text);
+        pasteAIAnswer();
     }
 }
 

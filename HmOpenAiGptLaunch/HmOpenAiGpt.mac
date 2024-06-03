@@ -40,14 +40,14 @@ const one_ai_window = 1;       // AI関連のレンダリング枠は１つだ�
 
 var currentmacrodir = currentmacrodirectory();
 
-// declare var avilablePort;
-
+// 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
+var avilablePort;
 // 有効ポートの受け口。非同期にてここにopenHttpServer関数で代入される(可能性がある)
-if (typeof(avilablePort) == "undefined") {
+if (avilablePort === undefined) {
     openHttpServer();
 }
 // 前回ポートが確保できないまま、またトライしている。(まぁ環境が制限されている等の問題なので、確保できないだろう)
-if (typeof(avilablePort) == "number" && avilablePort == 0) {
+if (avilablePort == 0) {
     openHttpServer();
 }
 
@@ -55,7 +55,7 @@ if (typeof(avilablePort) == "number" && avilablePort == 0) {
 function openHttpServer() {
     function getExtractPort(text) {
         const match = text.match(/PORT:(\d+)/);
-        return match ? match[1] : null;
+        return match ? Number(match[1]) : null;
     }
 
     try {
@@ -261,7 +261,7 @@ function doMain() {
     }
 }
 
-if (typeof(avilablePort) != "undefined") {
+if (avilablePort > 0) {
     doMain();
 }
 

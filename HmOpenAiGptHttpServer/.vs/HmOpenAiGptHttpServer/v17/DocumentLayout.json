@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HmOpenAiGptHttpServer||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpthttpserver\\hmopenaigpthttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|solutionrelative:hmopenaigpthttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,7 +14,7 @@
       "RelativeMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|solutionrelative:hmopenaigpthttpserver\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HmOpenAiGptHttpServer||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpthttpserver\\hmopenaigpthttpserver\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,11 +24,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\Properties\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "HmOpenAiGptHttpServer\\Properties\\AssemblyInfo.cs",
@@ -34,7 +37,8 @@
               "ViewState": "AQIAABgAAAAAAAAAAAAAAAkAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T13:10:54.393Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -42,24 +46,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HmOpenAiGptHttpServer",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj",
               "RelativeDocumentMoniker": "HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj",
               "RelativeToolTip": "HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-06-02T13:12:01.675Z"
+              "WhenOpened": "2024-06-02T13:12:01.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\Program.cs",
               "RelativeDocumentMoniker": "HmOpenAiGptHttpServer\\Program.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\Program.cs",
               "RelativeToolTip": "HmOpenAiGptHttpServer\\Program.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAcwHIAAAAjAAAA",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAAAFwAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T13:10:32.982Z",
               "EditorCaption": ""

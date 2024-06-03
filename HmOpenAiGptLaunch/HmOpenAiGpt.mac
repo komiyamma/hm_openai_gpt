@@ -34,7 +34,7 @@ const renderpane_custom_param = {
     size: 400,                 // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
-const one_ai_window = 1;  // AI関連のウィンドウは１つだけにする。(複数起動しそうになると、前のものが閉じる）
+const one_ai_window = 1;       // AI関連のレンダリング枠は１つだけにする。(複数起動しそうになると、前のものが閉じる）
 
 // --------------------------------------------------
 
@@ -90,19 +90,20 @@ const renderPaneTargetName = "HmOpenAiGpt";
 // AIウィンドウを１つだけに絞る処理
 function oneAIWindowFrameCheck() {
     if (one_ai_window) {
-	    let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIWindowFrame", 2 );
-	    // 自分だよ、何もしない。
-	    if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
-	        return;
-	    }
+        let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIWindowFrame", 2 );
+        // 自分だよ、何もしない。
+        if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
+            return;
+        }
 
+        // 他のAIマクロがAIパネル枠を利用しているなら、閉じる
         if (lastAiRenderPaneTargetName) {
-		    const renderpane_json_param = {
-		        target: lastAiRenderPaneTargetName,
-		        show: 0,
-		    }
+            const renderpane_json_param = {
+                target: lastAiRenderPaneTargetName,
+                show: 0,
+            }
 
-		    renderpanecommand(renderpane_json_param);
+            renderpanecommand(renderpane_json_param);
         }
     }
 }
@@ -137,13 +138,13 @@ function openRenderPaneCommand(port) {
 
     // １つのウィンドウに絞るフラグがONなら、登録しておく
     if (one_ai_window) {
-	    setstaticvariable( "HmOneAIWindowFrame", renderPaneTargetName, 2 );
+        setstaticvariable( "HmOneAIWindowFrame", renderPaneTargetName, 2 );
     }
 }
 
 
 
-var currentexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
+var aiexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
 
 // エラー用途
 function outputAlert(msg) {
@@ -163,7 +164,7 @@ function getTickCount() {
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function doSendQuestionContent() {
     let text = hidemaru.getSelectedText();
-    let commandline = `"${currentexepath}" "${openai_key}" "${model}" "${max_tokens}"`;
+    let commandline = `"${aiexepath}" "${openai_key}" "${model}" "${max_tokens}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
 //      runex(commandline, 0); // デバッグ用
 
@@ -186,7 +187,7 @@ function onHtmlButtonClick(text) {
 function stopAIAnswer() {
     let sendcmd = "HmOpenAiGpt.Cancel(" + getTickCount() + ")\n";
     let text = "応答を停止";
-    let commandline = `"${currentexepath}" "HmOpenAiGpt.Cancel()"`;
+    let commandline = `"${aiexepath}" "HmOpenAiGpt.Cancel()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
@@ -194,7 +195,7 @@ function stopAIAnswer() {
 function resetAI() {
     let sendcmd = "HmOpenAiGpt.Clear(" + getTickCount() + ")\n";
     let text = "リセット";
-    let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
+    let commandline = `"${aiexepath}" "HmOpenAiGpt.Clear()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");

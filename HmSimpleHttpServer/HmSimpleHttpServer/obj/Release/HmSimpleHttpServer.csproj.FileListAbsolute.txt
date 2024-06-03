@@ -1,0 +1,4 @@
+G:\repogitory\hm_google_gemini\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Release\HmSimpleHttpServer.csproj.AssemblyReference.cache
+G:\repogitory\hm_google_gemini\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Release\HmSimpleHttpServer.csproj.CoreCompileInputs.cache
+G:\repogitory\hm_google_gemini\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\bin\Release\HmSimpleHttpServer.exe
+G:\repogitory\hm_google_gemini\HmGoogleGeminiHttpServer\HmGoogleGeminiHttpServer\obj\Release\HmSimpleHttpServer.exe

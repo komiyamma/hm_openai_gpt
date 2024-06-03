@@ -6,9 +6,11 @@
  */
 
 
+hidemaruversion "9.25.99";
 
 jsmode @"WebView2\HmOpenAiGpt";
 js {
+
 
 // ------------- 会話エンジンの設定項目 -------------
 
@@ -34,15 +36,61 @@ const renderpane_custom_param = {
 
 // --------------------------------------------------
 
+var currentmacrodir = currentmacrodirectory();
+
+// declare var avilablePort;
+
+// 有効ポートの受け口。非同期にてここにopenHttpServer関数で代入される(可能性がある)
+if (typeof(avilablePort) == "undefined") {
+    openHttpServer();
+}
+
+// 簡易Httpサーバーを立てる。ポート自体付きでサーバーを立てることが出来ない限定的なマシンだと失敗するだろう。
+function openHttpServer() {
+    function checkAndExtractPort(text) {
+        const match = text.match(/PORT:(\d+)/);
+        return match ? match[1] : null;
+    }
+
+    try {
+        // このウィンドウハンドルの値を私ながら簡易サーバーを立ち上げる。
+        let currentWindowHandle = hidemaru.getCurrentWindowHandle();
+
+        // このウィンドウハンドルがなくなったら、2秒後に「該当の簡易サーバー」は自動終了する
+        // 簡易サーバーがどんどん増えるといったことはなくなる。
+        let processInfo = hidemaru.runProcess('"' + currentmacrodir + "\\HmSimpleHttpServer.exe" + '"' + " " + currentWindowHandle, currentmacrodir, "stdioAlive", "sjis");
+
+        // 簡易サーバープログラムの出力を非同期で読み取る。
+        // 簡易サーバープログラムはサーバーを起動するとともに、確保したポート番号を標準出力に出す。
+        let stdOut = processInfo.stdOut;
+        stdOut.onReadLine(readLineAsync);
+
+        // この関数は非同期で呼ばれる
+        function readLineAsync(serverOutputText) {
+            let port = checkAndExtractPort(serverOutputText);
+            if (port == 0) {
+                throw "HTTPサーバーのためのポートが確保できませんでした";
+            }
+            if (port != null) {
+                avilablePort = port;
+                hidemaru.postExecMacroMemory("js { doMain() }");
+            }
+        }
+
+    } catch (err) {
+        outputAlert(err);
+    }
+}
+
 
 
 // レンダリングペインを指定属性＆ポートでオープン
 function openRenderPaneCommand(port) {
     const renderpane_json_param = {
         target: "HmOpenAiGpt",
-        uri: "http://localhost:"+port+"/HmOpenAiGpt.html",
+        uri: "http://localhost:" + port + "/HmOpenAiGpt.html",
         show: 1,
-        place: "rightside", 
+        place: "rightside",
         size: 400,
         initialize: "async",
     };
@@ -54,24 +102,23 @@ function openRenderPaneCommand(port) {
 }
 
 
-let currentmacrodir = currentmacrodirectory();
-let hidemaruexedir = hidemarudir();
 
-let currentexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
+var currentexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
 
 // エラー用途
 function outputAlert(msg) {
+    let hidemaruexedir = hidemarudir();
     let dll = loaddll(hidemaruexedir + "\\HmOutputPane.dll");
     dll.dllFuncW.Output(msg + "\r\n");
 }
 
 // ユーザーの「質問内容」が入るテキストファイル
-let saveFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
+var saveFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
 
 // 質問内容の1行目に「時刻」を入れることで、質問時刻がわかるようにしている。
 // これはシステムが「ファイルの更新」を非常に頻繁に誤爆して多重検知するために必要。
 // 多重検知した際に、「その内容はもう受付済み」という判断をするために「時刻」を質問内容に刻むようにしている。
-let ticknum = tickcount() & 0x7fffffff;
+var ticknum = tickcount() & 0x7fffffff;
 
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function doSendQuestionContent() {
@@ -89,7 +136,7 @@ function doSendQuestionContent() {
 
 function stopAIAnswer() {
     let sendcmd = "HmOpenAiGpt.Cancel(" + ticknum + ")\n";
-    let text = "キャンセル";
+    let text = "応答を停止";
     let commandline = `"${currentexepath}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
@@ -101,7 +148,6 @@ function resetAI() {
     let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
-    serverProcessCOM.OnReleaseObject(-1); // サーバーも強制終了しておく。
 }
 
 function pasteAIAnswer() {
@@ -115,7 +161,7 @@ function pasteAIAnswer() {
 function doSendCommand() {
     let selectMenuID = menu("応答の停止 (&S)", "リセット (&R)", "回答を張り付け (&V)");
     if (selectMenuID == 1) {
-        stopAnswer();
+        stopAIAnswer();
     }
     else if (selectMenuID == 2) {
         resetAI();
@@ -125,20 +171,8 @@ function doSendCommand() {
     }
 }
 
-// このプロセスが終わるまでは維持のシグナルとしてvar。
-// C#で作成しているため、(C++とは違い)ファイルを閉じてJS空間が破棄されても、このCOMオブジェクトにぶら下がるdllは生存する。
-var serverProcessCOM;
 
 // HTML/JS用のHttpサーバーを起動。(PHPだと他の環境要らずでたった２個ほどのファイルでシンプルサーバーが動作するので一緒に内包してある)
-function openHttpServer() {
-    serverProcessCOM = createobject( currentmacrodir + "\\HmOpenAiGptHttpServer.dll", "HmOpenAiGptHttpServer.HmOpenAiGptHttpServer");
-    if (!serverProcessCOM) throw "HmOpenAiGptHttpServer.dllを読み取れませんでした。"
-    let port = serverProcessCOM.Launch();
-    if (port == 0 ) {
-        throw "HTTPサーバーのためのポートが確保できませんでした";
-    }
-    return port;
-}
 
 // 選択範囲の最終座標に移動した方が便利だとわかっている
 function gotoSelectEndPosition() {
@@ -152,11 +186,9 @@ function gotoSelectEndPosition() {
 // メイン処理
 function doMain() {
     try {
-        // HTTPサーバーを起動。起動した際に確保したポートをゲット
-        let avilablePort = openHttpServer()
-
         // レインだリングペインをそのポートでlocalhostで開く
         openRenderPaneCommand(avilablePort);
+
         // 文字列を選択しているなら
         if (selecting()) {
             // それをＡＩへの質問内容として送信

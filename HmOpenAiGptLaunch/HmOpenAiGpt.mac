@@ -257,7 +257,9 @@ function doMain() {
     }
 }
 
-doMain();
+if (typeof(avilablePort) != "undefined") {
+    doMain();
+}
 
 } // js
 

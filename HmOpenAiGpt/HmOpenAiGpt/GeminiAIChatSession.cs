@@ -257,7 +257,7 @@ internal class ChatSession
 
                 }
             }
-            // Console.WriteLine(answer_sum);
+            Console.WriteLine(answer_sum);
             AddAnswer(answer_sum);
             SaveAllTextToFile(answer_sum);
             // 最後に念のために、全体のテキストとして1回上書き保存しておく。

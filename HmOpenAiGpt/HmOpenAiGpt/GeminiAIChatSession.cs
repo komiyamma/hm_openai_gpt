@@ -19,7 +19,7 @@ internal class ChatSession
 
     static int iMaxTokens = 4000;
 
-    static string OpenAIKeyOverWriteVariable = null; // 直接APIの値を上書き指定している場合(マクロなどからの直接の引き渡し)
+    static string strOpenAiKey = null; // 直接APIの値を上書き指定している場合(マクロなどからの直接の引き渡し)
 
     const string NewLine = "\r\n";
     const string ErrorMessageNoOpenAIKey = "OpenAI APIのキーが有効ではありません。:" + NewLine;
@@ -33,7 +33,7 @@ internal class ChatSession
     static int conversationUpdateCount = 1;
     public ChatSession(string openai_key, string _model, int maxtokens)
     {
-        OpenAIKeyOverWriteVariable = openai_key;
+        strOpenAiKey = openai_key;
         model = _model;
         iMaxTokens = maxtokens;
 
@@ -110,7 +110,7 @@ internal class ChatSession
 
     static string GetOpenAIKey()
     {
-        return OpenAIKeyOverWriteVariable;
+        return strOpenAiKey;
     }
 
     // OpenAIサービスのインスタンス。一応保持
@@ -165,6 +165,7 @@ internal class ChatSession
 
         // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。
         var completionResult = openAiService.ChatCompletion.CreateCompletionAsStream(options, null, false, ct);
+        // エラー内容をファイルに出力
         return completionResult;
     }
 
@@ -234,31 +235,33 @@ internal class ChatSession
                 }
                 else
                 {
+                    answer_sum += completion.Error.Code + ": " + completion.Error.Message + NewLine;
+                    SaveAddTextToFile($"{completion.Error.Code}: {completion.Error.Message}" + "\n");
+
                     // 失敗なら何かエラーと原因を表示
                     if (completion.Error == null)
                     {
                         throw new Exception(ErrorMsgUnknown);
                     }
 
-                    SaveAddTextToFile($"{completion.Error.Code}: {completion.Error.Message}" + "\n");
                 }
             }
             // Console.WriteLine(answer_sum);
             AddAnswer(answer_sum);
             // 最後に念のために、全体のテキストとして1回上書き保存しておく。
             // 細かく保存していた際に、ファイルIOで欠損がある可能性がわずかにあるため。
-            SaveAllTextToFile(answer_sum);
+            // SaveAllTextToFile(answer_sum);
 
             // 解答が完了したよ～というのを人にわかるように表示
             // output.WriteLine(AssistanceAnswerCompleteMsg);
         }
         catch (Exception e)
         {
-            SaveAddTextToFile("\n\n\n" + e.GetType().Name + "\r\n" + e.Message + "\n\n\n");
             conversationUpdateCancel = true;
             this.Cancel();
             // Console.WriteLine("問い合わせをキャンセルしました。" + e);
             // Console.WriteLine("アプリを終了します。");
+            SaveAddTextToFile("\n\n\n" + e.GetType().Name + "\r\n" + e.Message + "\n\n\n");
             Environment.Exit(0);
         }
         finally

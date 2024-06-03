@@ -51,7 +51,7 @@ internal partial class HmOpenAiGpt
     {
         try
         {
-            Console.WriteLine("ファイルが更新されました: " + filepath);
+            // Console.WriteLine("ファイルが更新されました: " + filepath);
 
             // ファイルが変更されたので、ファイルの内容を読み込む
             string question_text = "";

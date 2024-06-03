@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -47,6 +48,8 @@ internal partial class HmOpenAiGpt
     }
 
     static int lastTickCount = 0;
+
+
     static void CheckQuestionFile(string filepath)
     {
         try
@@ -70,9 +73,14 @@ internal partial class HmOpenAiGpt
             string command = "";
             if (match.Success)
             {
-                // コマンド
                 command = match.Groups[1].Value;
-
+                if (command == "Cancel")
+                {
+                    chatSession.Cancel();
+                    ChatSession.forceCancel = true;
+                    isConversationing = false;
+                    return;
+                }
                 // 質問がされた時刻に相当するTickCount
                 string strnumber = match.Groups[2].Value;
                 int number = int.Parse(strnumber);
@@ -103,6 +111,7 @@ internal partial class HmOpenAiGpt
             if (command == "Cancel")
             {
                 chatSession.Cancel();
+                ChatSession.forceCancel = true;
                 isConversationing = false;
                 return;
             }

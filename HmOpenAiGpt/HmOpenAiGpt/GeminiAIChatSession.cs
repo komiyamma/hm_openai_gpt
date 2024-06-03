@@ -91,6 +91,9 @@ internal class ChatSession
         }
     }
 
+
+    public static bool forceCancel = false;
+
     // 質問してAIの応答の途中でキャンセルするためのトークン
     static CancellationTokenSource _cst;
 
@@ -193,6 +196,7 @@ internal class ChatSession
 
     // 最低、何文字以上変化があったら一端出力するか
     const int flushOfStringLengthChange = 40;
+
     public async Task SendMessageAsync(string prompt)
     {
         try
@@ -200,6 +204,7 @@ internal class ChatSession
             var task = conversationUpdateCheck();
             _cst = new CancellationTokenSource();
             var ct = _cst.Token;
+            ChatSession.forceCancel = false;
 
             string answer_sum = "";
             var completionResult = ReBuildPastChatContents(ct);
@@ -211,12 +216,21 @@ internal class ChatSession
             // ストリーム型で確立しているので、async的に扱っていく
             await foreach (var completion in completionResult)
             {
+                
                 // 途中で分詰まりを検知するための進捗カウンタ
                 conversationUpdateCount++;
 
                 // キャンセルが要求された時、
                 if (ct.IsCancellationRequested)
                 {
+                    // 一応Dispose呼んでおく(CancellationToken渡しているので不要なきもするが...)
+                    await completionResult.GetAsyncEnumerator().DisposeAsync();
+                    throw new OperationCanceledException(AssistanceAnswerCancelMsg);
+                }
+
+                if (forceCancel)
+                {
+                    forceCancel = false;
                     // 一応Dispose呼んでおく(CancellationToken渡しているので不要なきもするが...)
                     await completionResult.GetAsyncEnumerator().DisposeAsync();
                     throw new OperationCanceledException(AssistanceAnswerCancelMsg);

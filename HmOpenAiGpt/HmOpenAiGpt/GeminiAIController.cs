@@ -21,7 +21,6 @@ class OpenAIServiceNotFoundException : Exception
 internal partial class HmOpenAiGpt
 {
     static ChatSession chatSession;
-
     static string model = Models.Gpt_3_5_Turbo;
 
     static int iMaxTokens = 4000;

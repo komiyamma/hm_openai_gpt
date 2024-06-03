@@ -86,9 +86,20 @@ function openHttpServer() {
 
 // レンダリングペインを指定属性＆ポートでオープン
 function openRenderPaneCommand(port) {
+
+    let baseUrl = new URL("http://localhost:" + port + "/HmOpenAiGpt.html");
+
+    // このJS内にあるコールバック用にも使う関数をレンダリング枠にクエリーparamとして伝達
+    let idHtmlButtonClick = hidemaru.getFunctionId(onHtmlButtonClick);
+    let params = new URLSearchParams();
+    params.set('idHtmlButtonClick', String(idHtmlButtonClick));
+
+    baseUrl.search = params.toString();
+    let targetUrl = baseUrl.href; // オブジェクトから実際のUrl文字列へ
+
     const renderpane_json_param = {
         target: "HmOpenAiGpt",
-        uri: "http://localhost:" + port + "/HmOpenAiGpt.html",
+        uri: targetUrl,
         show: 1,
         place: "rightside",
         size: 400,
@@ -113,7 +124,8 @@ function outputAlert(msg) {
 }
 
 // ユーザーの「質問内容」が入るテキストファイル
-var saveFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
+var questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
+var answerFileName = currentmacrodir + "\\HmGoogleGemini.txt";
 
 // 質問内容の1行目に「時刻」を入れることで、質問時刻がわかるようにしている。
 // これはシステムが「ファイルの更新」を非常に頻繁に誤爆して多重検知するために必要。
@@ -129,9 +141,18 @@ function doSendQuestionContent() {
 
     let sendcmd = "HmOpenAiGpt.Message(" + ticknum + ")\n";
     hidemaru.setTimeout(
-        () => { hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8"); },
+        () => { hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8"); },
         200
     );
+}
+
+function onHtmlButtonClick(text) {
+    if (text == "reset") {
+        hidemaru.postExecMacroMemory( "js { resetAI(); }");
+    }
+    else if (text == "stop") {
+        hidemaru.postExecMacroMemory( "js { stopAIAnswer(); }");
+    }
 }
 
 function stopAIAnswer() {
@@ -139,7 +160,7 @@ function stopAIAnswer() {
     let text = "応答を停止";
     let commandline = `"${currentexepath}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
-    hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+    hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
 
 function resetAI() {
@@ -147,19 +168,19 @@ function resetAI() {
     let text = "リセット";
     let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
-    hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+    hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
+    hidemaru.saveTextFile(answerFileName, "", "utf8");
 }
 
 function pasteAIAnswer() {
-    let loadFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
-    let text = hidemaru.loadTextFile(loadFileName);
+    let text = hidemaru.loadTextFile(answerFileName);
     insert(text);
 }
 
 // テキストを選択せずに、このマクロを実行した時は、
 // 「ＡＩの応答を途中キャンセル」あるいは「ＡＩを完全にリセットしてプロセス自体を終了し、会話履歴も消去」することが出来る。
 function doSendCommand() {
-    let selectMenuID = menu("応答の停止 (&S)", "リセット (&R)", "回答を張り付け (&V)");
+    let selectMenuID = menu("応答を停止 (&S)", "全リセット (&R)", "応答を張り付け (&V)");
     if (selectMenuID == 1) {
         stopAIAnswer();
     }

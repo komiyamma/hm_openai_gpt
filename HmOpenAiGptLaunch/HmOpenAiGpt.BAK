@@ -49,7 +49,7 @@
 <body class="markdown-body">
     <pre id="user_question"></pre>
     <hr>
-    <div align="right"><button id="btn_reset">全リセット</button> <button id="btn_stop">応答を停止</button></div>
+    <div align="right"><button id="btn_reset">全リセット</button> <button id="btn_stop">応答停止</button></div>
     <div id="model_answer"></div>
 
     <script>

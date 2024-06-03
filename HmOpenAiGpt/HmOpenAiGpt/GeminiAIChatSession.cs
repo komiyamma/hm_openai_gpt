@@ -191,7 +191,8 @@ internal class ChatSession
         return AssistanceAnswerCancelMsg;
     }
 
-
+    // 最低、何文字以上変化があったら一端出力するか
+    const int flushOfStringLengthChange = 40;
     public async Task SendMessageAsync(string prompt)
     {
         try
@@ -233,7 +234,7 @@ internal class ChatSession
                     {
                         answer_sum += str ?? "";
                         var currentLength = answer_sum.Length;
-                        if (currentLength > flushedLength + 30)
+                        if (currentLength > flushedLength + flushOfStringLengthChange)
                         {
                             flushedLength = currentLength;
                             SaveAllTextToFile(answer_sum);

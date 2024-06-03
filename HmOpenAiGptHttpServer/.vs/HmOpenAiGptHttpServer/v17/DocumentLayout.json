@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\hmopenaigpthttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpthttpserver\\hmopenaigpthttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|solutionrelative:hmopenaigpthttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpthttpserver\\hmopenaigpthttpserver\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\hmopenaigpthttpserver\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F620203-D4A5-43D9-9D83-D94983D014A2}|HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer.csproj|solutionrelative:hmopenaigpthttpserver\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,8 +34,7 @@
               "ViewState": "AQIAABgAAAAAAAAAAAAAAAkAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T13:10:54.393Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -60,7 +59,7 @@
               "RelativeDocumentMoniker": "HmOpenAiGptHttpServer\\Program.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGptHttpServer\\HmOpenAiGptHttpServer\\Program.cs",
               "RelativeToolTip": "HmOpenAiGptHttpServer\\Program.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAADwvx0AAAAAAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAcwHIAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-02T13:10:32.982Z",
               "EditorCaption": ""

@@ -101,6 +101,7 @@ function resetAI() {
     let commandline = `"${currentexepath}" "HmOpenAiGpt.Clear()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(saveFileName, sendcmd + text, "utf8");
+    serverProcessCOM.OnReleaseObject(-1); // サーバーも強制終了しておく。
 }
 
 function pasteAIAnswer() {

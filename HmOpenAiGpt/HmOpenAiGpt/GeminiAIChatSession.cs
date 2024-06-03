@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 
 
 internal class ChatSession
@@ -194,13 +195,14 @@ internal class ChatSession
     {
         try
         {
-
             var task = conversationUpdateCheck();
             _cst = new CancellationTokenSource();
             var ct = _cst.Token;
 
             string answer_sum = "";
             var completionResult = ReBuildPastChatContents(ct);
+
+            AddQuestion(prompt);
 
             // ストリーム型で確立しているので、async的に扱っていく
             await foreach (var completion in completionResult)
@@ -226,7 +228,7 @@ internal class ChatSession
                     string str = completion.Choices.FirstOrDefault()?.Message.Content;
                     if (str != null)
                     {
-                        // SaveAddTextToFile(str);
+                        SaveAddTextToFile(str);
                         answer_sum += str ?? "";
                     }
                 }
@@ -241,8 +243,11 @@ internal class ChatSession
                     SaveAddTextToFile($"{completion.Error.Code}: {completion.Error.Message}" + "\n");
                 }
             }
-            Console.WriteLine(answer_sum);
+            // Console.WriteLine(answer_sum);
             AddAnswer(answer_sum);
+            // 最後に念のために、全体のテキストとして1回上書き保存しておく。
+            // 細かく保存していた際に、ファイルIOで欠損がある可能性がわずかにあるため。
+            SaveAllTextToFile(answer_sum);
 
             // 解答が完了したよ～というのを人にわかるように表示
             // output.WriteLine(AssistanceAnswerCompleteMsg);
@@ -267,6 +272,11 @@ internal class ChatSession
     private void SaveAddTextToFile(string text)
     {
         HmOpenAiGpt.SaveAddTextToAnswerFile(text);
+    }
+
+    private void SaveAllTextToFile(string text)
+    {
+        HmOpenAiGpt.SaveAllTextToAnswerFile(text);
     }
 
 }

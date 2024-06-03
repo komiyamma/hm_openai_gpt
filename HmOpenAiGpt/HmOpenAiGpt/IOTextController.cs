@@ -69,4 +69,26 @@ partial class HmOpenAiGpt
             Console.WriteLine(err);
         }
     }
+
+    // 最後に全体を念のために保存する
+    static public void SaveAllTextToAnswerFile(string text)
+    {
+        try
+        {
+            string saveFilePath = Path.Combine(targetDir, "HmOpenAiGpt.txt");
+
+            // ファイルが存在しない場合は新規にファイルを作成し、ファイルが存在する場合は追記モードで開く
+            using (StreamWriter writer = new StreamWriter(saveFilePath, false, Encoding.UTF8))
+            {
+                // Console.WriteLine("追加書き込み");
+                writer.Write(text);
+            }
+        }
+        catch (Exception err)
+        {
+
+            Console.WriteLine(err);
+        }
+    }
+
 }

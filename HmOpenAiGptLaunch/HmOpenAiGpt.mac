@@ -34,6 +34,8 @@ const renderpane_custom_param = {
     size: 400,                 // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
+const one_ai_window = 1;  // AI関連のウィンドウは１つだけにする。(複数起動しそうになると、前のものが閉じる）
+
 // --------------------------------------------------
 
 var currentmacrodir = currentmacrodirectory();
@@ -83,6 +85,28 @@ function openHttpServer() {
 }
 
 
+const renderPaneTargetName = "HmOpenAiGpt";
+
+// AIウィンドウを１つだけに絞る処理
+function oneAIWindowFrameCheck() {
+    if (one_ai_window) {
+	    let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIWindowFrame", 2 );
+	    // 自分だよ、何もしない。
+	    if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
+	        return;
+	    }
+
+        if (lastAiRenderPaneTargetName) {
+		    const renderpane_json_param = {
+		        target: lastAiRenderPaneTargetName,
+		        show: 0,
+		    }
+
+		    renderpanecommand(renderpane_json_param);
+        }
+    }
+}
+
 
 // レンダリングペインを指定属性＆ポートでオープン
 function openRenderPaneCommand(port) {
@@ -98,7 +122,7 @@ function openRenderPaneCommand(port) {
     let targetUrl = baseUrl.href; // オブジェクトから実際のUrl文字列へ
 
     const renderpane_json_param = {
-        target: "HmOpenAiGpt",
+        target: renderPaneTargetName,
         uri: targetUrl,
         show: 1,
         place: "rightside",
@@ -109,7 +133,12 @@ function openRenderPaneCommand(port) {
     // ユーザー指定のもので上書き。
     const renderpane_mix_param = { ...renderpane_json_param, ...renderpane_custom_param };
 
-    renderpanecommand(renderpane_mix_param)
+    renderpanecommand(renderpane_mix_param);
+
+    // １つのウィンドウに絞るフラグがONなら、登録しておく
+    if (one_ai_window) {
+	    setstaticvariable( "HmOneAIWindowFrame", renderPaneTargetName, 2 );
+    }
 }
 
 
@@ -125,11 +154,8 @@ function outputAlert(msg) {
 
 // ユーザーの「質問内容」が入るテキストファイル
 var questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
-var answerFileName = currentmacrodir + "\\HmGoogleGemini.txt";
+var answerFileName = currentmacrodir + "\\OpenAiGpt.txt";
 
-// 質問内容の1行目に「時刻」を入れることで、質問時刻がわかるようにしている。
-// これはシステムが「ファイルの更新」を非常に頻繁に誤爆して多重検知するために必要。
-// 多重検知した際に、「その内容はもう受付済み」という判断をするために「時刻」を質問内容に刻むようにしている。
 function getTickCount() {
     return tickcount() & 0x7fffffff;
 }
@@ -209,6 +235,9 @@ function gotoSelectEndPosition() {
 // メイン処理
 function doMain() {
     try {
+        // AIウィンドウフレームに絞るかどうか
+        oneAIWindowFrameCheck();
+
         // レインだリングペインをそのポートでlocalhostで開く
         openRenderPaneCommand(avilablePort);
 

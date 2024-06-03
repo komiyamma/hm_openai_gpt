@@ -205,6 +205,8 @@ internal class ChatSession
 
             AddQuestion(prompt);
 
+            int flushedLength = 0;
+
             // ストリーム型で確立しているので、async的に扱っていく
             await foreach (var completion in completionResult)
             {
@@ -229,8 +231,13 @@ internal class ChatSession
                     string str = completion.Choices.FirstOrDefault()?.Message.Content;
                     if (str != null)
                     {
-                        SaveAddTextToFile(str);
                         answer_sum += str ?? "";
+                        var currentLength = answer_sum.Length;
+                        if (currentLength > flushedLength + 30)
+                        {
+                            flushedLength = currentLength;
+                            SaveAllTextToFile(answer_sum);
+                        }
                     }
                 }
                 else
@@ -251,6 +258,7 @@ internal class ChatSession
             }
             // Console.WriteLine(answer_sum);
             AddAnswer(answer_sum);
+            SaveAllTextToFile(answer_sum);
             // 最後に念のために、全体のテキストとして1回上書き保存しておく。
             // 細かく保存していた際に、ファイルIOで欠損がある可能性がわずかにあるため。
             // SaveAllTextToFile(answer_sum);

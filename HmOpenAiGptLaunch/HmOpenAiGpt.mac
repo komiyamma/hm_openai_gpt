@@ -160,7 +160,7 @@ function onHtmlButtonClick(text) {
 function stopAIAnswer() {
     let sendcmd = "HmOpenAiGpt.Cancel(" + getTickCount() + ")\n";
     let text = "応答を停止";
-    let commandline = `"${currentexepath}"`;
+    let commandline = `"${currentexepath}" "HmOpenAiGpt.Cancel()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }

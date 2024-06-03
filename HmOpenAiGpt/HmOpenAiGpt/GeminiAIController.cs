@@ -69,7 +69,8 @@ internal partial class HmOpenAiGpt
         }
 
         openai_key = GetOpenAIKey();
-        
+
+        System.Diagnostics.Trace.WriteLine("場所2");
         ClearAnswerFile();
 
         // コンテキストを追跡するためにチャットセッションを作成する

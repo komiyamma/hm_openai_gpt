@@ -232,7 +232,8 @@ internal class ChatSession
                 conversationUpdateCount++;
 
                 // 毎回じゃ重いので、適当に間引く
-                if (conversationUpdateCount % 5 == 0)
+                // 最後に出力した文字列と現在の文字列に20文字の乖離がある場合
+                if (answer_sum.Length > flushedLength + flushOfStringLengthChange/2)
                 {
                     CancelCheck();
                 }

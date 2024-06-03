@@ -33,7 +33,12 @@ internal partial class HmOpenAiGpt
         // HmOpenAiGpt.Clear という文字列を渡してある
         if (args.Length >= 1)
         {
-            if (args[0].Contains("HmOpenAiGpt.Clear()"))
+            var command = args[0];
+            if (command.Contains("HmOpenAiGpt.Clear()"))
+            {
+                return;
+            }
+            if (command.Contains("HmOpenAiGpt.Cancel()"))
             {
                 return;
             }

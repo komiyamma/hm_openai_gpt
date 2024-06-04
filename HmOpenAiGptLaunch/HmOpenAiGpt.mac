@@ -117,8 +117,13 @@ let questionTextCache = getQuestionText();
 
 // 質問内容があるかどうか
 function hasQuestionText() {
-    // getSelectedTextは "" や undefined になりえるので、このような判定
-    return Boolean( questionTextCache );
+    // ユーザー定義関数があるなら、その内容(のキャッシュ)が有効であるのかどうか。
+    if (typeof(onRequestQuestionText) == "function") {
+        // getSelectedTextは "" や undefined になりえるので、このような判定
+        return Boolean( questionTextCache );
+    } else {
+        return selecting();
+    }
 }
 
 // 質問内容のテキスト
@@ -237,9 +242,14 @@ function onHtmlEventHandler(text) {
         _completeAnswerText = "";
         if (typeof(onCompleteAnswerText) == "function" ) {
             // AIの回答の原文を取得
-            _completeAnswerText = hidemaru.loadTextFile(answerFileName) || "";
+            let answer_text = hidemaru.loadTextFile(answerFileName) || "";
+
+            // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
+            const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
+
+            _completeAnswerText = normalizeNewLineText.;
             // ユーザーが非同期だと理解が大変なので同期にしておく
-            hidemaru.postExecMacroMemory( jsmode { "syncOnCompleteAnswerText()" } );
+            hidemaru.postExecMacroMemory( "js { syncOnCompleteAnswerText(); }" );
         }
     }
 }

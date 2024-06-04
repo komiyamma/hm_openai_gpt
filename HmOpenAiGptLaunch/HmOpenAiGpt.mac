@@ -39,7 +39,7 @@ const is_one_ai_renderpane = 1;       // AI関連のレンダリング枠は(他
 
 // --------------------------------------------------
 
-var currentmacrodir = currentmacrodirectory();
+const currentmacrodir = currentmacrodirectory();
 
 // 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
 var avilablePort;
@@ -116,7 +116,8 @@ function oneAIWindowFrameCheck() {
 
 // 質問内容があるかどうか
 function hasQuestionText() {
-    return selecting();
+    // getSelectedTextは "" や undefined になりえるので、このような判定
+    return Boolean( hidemaru.getSelectedText() );
 }
 
 // 質問内容のテキスト
@@ -181,7 +182,7 @@ function openRenderPaneCommand(port) {
 
 
 
-var aiexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
+const aiexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
 
 // エラー用途
 function outputAlert(msg) {
@@ -191,8 +192,8 @@ function outputAlert(msg) {
 }
 
 // ユーザーの「質問内容」が入るテキストファイル
-var questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
-var answerFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
+const questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
+const answerFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
 
 function getTickCount() {
     return tickcount() & 0x7fffffff;

@@ -164,9 +164,9 @@ function openRenderPaneCommand(port) {
     let baseUrl = new URL("http://localhost:" + port + "/HmOpenAiGpt.html");
 
     // このJS内にあるコールバック用にも使う関数をレンダリング枠にクエリーparamとして伝達
-    let idHtmlButtonClick = hidemaru.getFunctionId(onHtmlEventHandler);
+    let idHtmlEventHandler = hidemaru.getFunctionId(onHtmlEventHandler);
     let params = new URLSearchParams();
-    params.set('idHtmlButtonClick', String(idHtmlButtonClick));
+    params.set('idHtmlEventHandler', String(idHtmlEventHandler));
 
     baseUrl.search = params.toString();
     let targetUrl = baseUrl.href; // オブジェクトから実際のUrl文字列へ
@@ -231,14 +231,14 @@ function syncOnCompleteAnswerText() {
     onCompleteAnswerText(_completeAnswerText);
 }
 
-function onHtmlEventHandler(text) {
-    if (text == "reset") {
+function onHtmlEventHandler(command_name) {
+    if (command_name == "reset") {
         hidemaru.postExecMacroMemory( "js { resetAI(); }");
     }
-    else if (text == "stop") {
+    else if (command_name == "stop") {
         hidemaru.postExecMacroMemory( "js { stopAIAnswer(); }");
     }
-    else if (text == "answer_complete") {
+    else if (command_name == "answer_complete") {
         _completeAnswerText = "";
         if (typeof(onCompleteAnswerText) == "function" ) {
             // AIの回答の原文を取得

@@ -219,6 +219,13 @@ function doSendQuestionContent() {
     );
 }
 
+// ＡＩからの原文をユーザーがマクロから直接要求する場合用。
+// ユーザーからは同期に見えるようにするためのクッション
+var _completeAnswerText = "";
+function syncOnCompleteAnswerText() {
+    onCompleteAnswerText(_completeAnswerText);
+}
+
 function onHtmlEventHandler(text) {
     if (text == "reset") {
         hidemaru.postExecMacroMemory( "js { resetAI(); }");
@@ -227,6 +234,13 @@ function onHtmlEventHandler(text) {
         hidemaru.postExecMacroMemory( "js { stopAIAnswer(); }");
     }
     else if (text == "answer_complete") {
+        _completeAnswerText = "";
+        if (typeof(onCompleteAnswerText) == "function" ) {
+            // AIの回答の原文を取得
+            _completeAnswerText = hidemaru.loadTextFile(answerFileName) || "";
+            // ユーザーが非同期だと理解が大変なので同期にしておく
+            hidemaru.postExecMacroMemory( jsmode { "syncOnCompleteAnswerText()" } );
+        }
     }
 }
 

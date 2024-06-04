@@ -4,6 +4,13 @@
 <head>
     <title>HmOpenAiGpt</title>
     <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #223;
+                color: #ddd;
+            }
+        }
+
         #user_question {
             width: 96%;
             white-space: pre-wrap;

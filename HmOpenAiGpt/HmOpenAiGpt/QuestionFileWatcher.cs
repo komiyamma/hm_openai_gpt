@@ -47,7 +47,7 @@ internal partial class HmOpenAiGpt
         CheckQuestionFile(e.FullPath);
     }
 
-    static int lastTickCount = 0;
+    static int lastQuestionNumber = 0;
 
 
     static void CheckQuestionFile(string filepath)
@@ -70,16 +70,17 @@ internal partial class HmOpenAiGpt
             Match match = regex.Match(question_text);
 
             // コマンドの種類の格納場所(Message, Clear, Cancel)
-            string command = "";
+            string commandName = "";
+            int questionNumber = 0;
             if (match.Success)
             {
-                command = match.Groups[1].Value;
+                commandName = match.Groups[1].Value;
                 // 質問がされた時刻に相当するTickCount
                 string strnumber = match.Groups[2].Value;
-                int number = int.Parse(strnumber);
+                questionNumber = int.Parse(strnumber);
 
                 // 前回の投稿と番号が同じとかなら同一のものを指している。複数回 QuestionFileWatcher_Changed が反応してしまっているが、これを処理する必要はない。
-                if (lastTickCount == number)
+                if (lastQuestionNumber == questionNumber)
                 {
                     // Console.WriteLine("★前回と同じファイルだ");
                     return;
@@ -92,7 +93,7 @@ internal partial class HmOpenAiGpt
                     question_text = string.Join("\n", lines, 1, lines.Length - 1);
 
                     // 最後に確認したtickCountとして更新
-                    lastTickCount = number;
+                    lastQuestionNumber = questionNumber;
                 }
             }
             else
@@ -101,7 +102,7 @@ internal partial class HmOpenAiGpt
             }
 
             // キャンセルコマンドなら、AIの応答を途中キャンセルする
-            if (command == "Cancel")
+            if (commandName == "Cancel")
             {
                 chatSession.Cancel();
                 isConversationing = false;
@@ -109,7 +110,7 @@ internal partial class HmOpenAiGpt
             }
 
             // クリアなら、キャンセルや会話履歴をクリアしつつ、質問内容をクリアして、このプロセスは終了
-            else if (command == "Clear")
+            else if (commandName == "Clear")
             {
                 chatSession.Cancel();
                 chatSession.Clear();
@@ -133,7 +134,7 @@ internal partial class HmOpenAiGpt
                 string prompt = question_text;
                 // Console.WriteLine($"\nUser: {prompt}");
                 // 回答がStreamで返ってくるので全部終わるのを待つ(全部終わるまでは次の質問を受け付けない)
-                var task = chatSession.SendMessageAsync(prompt);
+                var task = chatSession.SendMessageAsync(prompt, questionNumber);
                 task.Wait();
             }
 

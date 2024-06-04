@@ -6,6 +6,7 @@ using OpenAI.ObjectModels.RequestModels;
 using OpenAI.ObjectModels.ResponseModels;
 using System.Text;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 
 internal class ChatSession
@@ -210,7 +211,7 @@ internal class ChatSession
     // 最低、何文字以上変化があったら一端出力するか
     const int flushOfStringLengthChange = 40;
 
-    public async Task SendMessageAsync(string prompt)
+    public async Task SendMessageAsync(string prompt, int questionNumber)
     {
         try
         {
@@ -283,11 +284,10 @@ internal class ChatSession
             }
             // Console.WriteLine(answer_sum);
             AddAnswer(answer_sum);
-            SaveAllTextToFile(answer_sum);
             // 最後に念のために、全体のテキストとして1回上書き保存しておく。
             // 細かく保存していた際に、ファイルIOで欠損がある可能性がわずかにあるため。
-            // SaveAllTextToFile(answer_sum);
-
+            SaveAllTextToFile(answer_sum);
+            SaveCompleteFile(questionNumber);
             // 解答が完了したよ～というのを人にわかるように表示
             // output.WriteLine(AssistanceAnswerCompleteMsg);
         }
@@ -320,7 +320,7 @@ internal class ChatSession
 
     private void SaveCompleteFile(int number)
     {
-        HmOpenAiGpt.SaveAllTextToAnswerFile(number);
+        HmOpenAiGpt.SaveCompleteFile(number);
     }
 
 }

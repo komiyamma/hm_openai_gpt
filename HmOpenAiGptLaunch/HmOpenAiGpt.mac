@@ -39,6 +39,15 @@ const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の
 
 // --------------------------------------------------
 
+// JSONテキストの引数付きでこのマクロが呼ばれている場合にそれをオブジェクト化しておく
+function getArgParamJsonObj() {
+    let arg_text = getarg(0);
+    if (!arg_text) { return null; }
+    let arg_param = JSON.stringify(arg_text);
+}
+
+const argParamJsonObj = getArgParamJsonObj();
+
 const currentMacroDirectory = currentmacrodirectory();
 
 // 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
@@ -117,20 +126,21 @@ function oneAIWindowFrameCheck() {
 
 // 質問内容のテキスト
 function getQuestionText() {
-    // ユーザーによって、このような関数が定義されていれば、これを利用する。
-    if (typeof(onRequestQuestionText) == "function") {
-        return onRequestQuestionText();
+    // ユーザーによって、このような関数が引数として引き渡されていれば、これを利用する。
+    if (argParamJsonObj?.onRequestQuestionText) {
+        return argParamJsonObj.onRequestQuestionText();
     }
 
     return hidemaru.getSelectedText();
 }
 
+// getQuestionText()関数は１回だけ呼び出すべきなのでキャッシュとして結果を保存しておく
 let questionTextCache = getQuestionText();
 
 // 質問内容があるかどうか
 function hasQuestionText() {
-    // ユーザー定義関数があるなら、その内容(のキャッシュ)が有効であるのかどうか。
-    if (typeof(onRequestQuestionText) == "function") {
+    // ユーザーによって、このような関数が引数として引き渡されていれば、その内容(のキャッシュ)が有効であるのかどうか。
+    if (argParamJsonObj?.onRequestQuestionText) {
         // getSelectedTextは "" や undefined になりえるので、このような判定
         return Boolean( questionTextCache );
     } else {
@@ -231,7 +241,7 @@ function doSendQuestionContent() {
 // ユーザーからは同期に見えるようにするためのクッション
 var _completeAnswerText = "";
 function syncOnCompleteAnswerText() {
-    onCompleteAnswerText(_completeAnswerText);
+    argParamJsonObj?.onCompleteAnswerText(_completeAnswerText);
 }
 
 function onHtmlEventHandler(command_name) {
@@ -244,7 +254,7 @@ function onHtmlEventHandler(command_name) {
             break;
         case "answer_complete":
             _completeAnswerText = "";
-            if (typeof onCompleteAnswerText === "function") {
+            if (argParamJsonObj?.onCompleteAnswerText) {
                 // AIの回答の原文を取得
                 let answer_text = hidemaru.loadTextFile(answerFileName) || "";
                 if (!answer_text) { return; }

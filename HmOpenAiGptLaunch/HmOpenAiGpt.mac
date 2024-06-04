@@ -301,7 +301,7 @@ function getSelectedMenuCommand() {
     let selectMenuID = menuarray(menuTextList); // 選択しなければ0: 選択は最初の項目が1
 
     // キャンセルした
-    if (selectMenuID == 0) {  
+    if (selectMenuID == 0) {
         return "";
     }
 

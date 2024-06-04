@@ -95,10 +95,10 @@ partial class HmOpenAiGpt
     {
         try
         {
-            string saveFilePath = Path.Combine(targetDir, "HmOpenAiGpt.complete.txt");
+            string completeFilePath = Path.Combine(targetDir, "HmOpenAiGpt.complete.txt");
 
             // ファイルが存在しない場合は新規にファイルを作成し、ファイルが存在する場合は追記モードで開く
-            using (StreamWriter writer = new StreamWriter(saveFilePath, false, Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(completeFilePath, false, Encoding.UTF8))
             {
                 // Console.WriteLine("追加書き込み");
                 writer.Write($"HmOpenAiGpt.MessageComplete({number})");

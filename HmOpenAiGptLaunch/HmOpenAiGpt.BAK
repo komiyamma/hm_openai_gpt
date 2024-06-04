@@ -58,6 +58,7 @@
     <hr>
     <div align="right"><button id="btn_reset">全リセット</button> <button id="btn_stop">応答を停止</button></div>
     <div id="model_answer"></div>
+    <div align="right" id="model_answer_complete"></div>
 
     <script>
         // 現在のURLを取得
@@ -82,7 +83,7 @@
         // 質問番号の確保
         let lastQuestionNumber = 0;
 
-        function getCommandNumber(text) {
+        function getCommandNumber(firstLine) {
 
 			let numberPattern = /\((\d+)\)/; // カッコで囲まれた数字を抽出するための正規表現パターン
 
@@ -118,7 +119,6 @@
 
             return firstThreeLines.join('\n');
         }
-
 
         let prevQuestionText = "|- - HmOpenAiGpt - -|";
         function checkQuestionFile() {
@@ -158,11 +158,36 @@
                 });
         }
 
+        let prevCompleteText = "|- - HmGoogleGemini - -|";
+        function checkCompleteFile() {
+            fetch('HmOpenAiGpt.complete.txt')
+                .then(response => response.text())
+                .then(text => {
+                    try {
+                       if (prevCompleteText != text) {
+                           prevCompleteText = text;
+                          let completeNumber = getCommandNumber(text);
+                          if (lastQuestionNumber == completeNumber) {
+                            if (completeNumber == lastQuestionNumber) {
+                                document.getElementById('model_answer_complete').innerHTML = "<hr>完了";
+                            } else {
+                                document.getElementById('model_answer_complete').innerHTML = "";
+                            }
+                          }
+                       }
+                    } catch (err) { }
+                })
+                .catch(error => {
+                    // window.alert('ファイルの読み込み中にエラーが発生しました:', error);
+                });
+        }
+
         // ページ読み込み完了に初回チェック
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(checkQuestionFile, 250); // 最初の１回だけ早めにちょっと問い合わせ
             setInterval(checkQuestionFile, 500); // 0.5秒ごとに監視
             setInterval(checkAnswerFile, 500); // 0.5秒ごとに監視
+            setInterval(checkCompleteFile, 500); // 0.5秒ごとに監視
         });
     </script>
 </body>

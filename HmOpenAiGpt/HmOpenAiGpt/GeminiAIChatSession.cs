@@ -206,11 +206,7 @@ internal class ChatSession
     const string ErrorMsgUnknown = "Unknown Error:" + NewLine;
     // チャットの反復
 
-    const string AssistanceAnswerCancelMsg = NewLine + "AIの応答をキャンセルしました。" + NewLine;
-    public string GetAssistanceAnswerCancelMsg()
-    {
-        return AssistanceAnswerCancelMsg;
-    }
+    const string AssistanceAnswerCancelMsg = "AIの応答をキャンセルしました。";
 
     // 最低、何文字以上変化があったら一端出力するか
     const int flushOfStringLengthChange = 40;
@@ -305,7 +301,7 @@ internal class ChatSession
             this.Cancel();
             // Console.WriteLine("問い合わせをキャンセルしました。" + e);
             // Console.WriteLine("アプリを終了します。");
-            SaveAddTextToFile("\n\n\n" + e.GetType().Name + "\r\n" + e.Message + "\n\n\n");
+            SaveAddTextToFile("\r\n\r\n" + e.GetType().Name + "\r\n\r\n" + e.Message + "\r\n");
             Environment.Exit(0);
         }
         finally

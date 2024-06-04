@@ -1,0 +1,2 @@
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\publish\win-x64\HmSimpleHttpServer.exe
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\publish\win-x64\HmSimpleHttpServer.pdb

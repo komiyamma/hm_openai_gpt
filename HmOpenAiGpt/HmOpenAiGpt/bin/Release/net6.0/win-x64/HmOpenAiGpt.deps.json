@@ -10,8 +10,6 @@
       "HmOpenAiGpt/1.0.0": {
         "dependencies": {
           "Betalgo.OpenAI": "8.2.2",
-          "Microsoft.NET.ILLink.Analyzers": "7.0.100-1.23401.1",
-          "Microsoft.NET.ILLink.Tasks": "7.0.100-1.23401.1",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "6.0.30"
         },
         "runtime": {
@@ -984,8 +982,6 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Analyzers/7.0.100-1.23401.1": {},
-      "Microsoft.NET.ILLink.Tasks/7.0.100-1.23401.1": {},
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -1081,20 +1077,6 @@
       "sha512": "sha512-9+PnzmQFfEFNR9J2aDTfJGGupShHjOuGw4VUv+JB044biSHrnmCIMD+mJHmb2H7YryrfBEXDurxQ47gJZdCKNQ==",
       "path": "microsoft.extensions.primitives/6.0.0",
       "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
-    },
-    "Microsoft.NET.ILLink.Analyzers/7.0.100-1.23401.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-XirkjOLc5Vc3HsXRc2Z6ZbQv6l0RvWgJa/31w7XqZ914MoSi3H3OCNRMWFw7H2EYfsnKbokFfhCcysAmUcEOgw==",
-      "path": "microsoft.net.illink.analyzers/7.0.100-1.23401.1",
-      "hashPath": "microsoft.net.illink.analyzers.7.0.100-1.23401.1.nupkg.sha512"
-    },
-    "Microsoft.NET.ILLink.Tasks/7.0.100-1.23401.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mI6vCdPEhluLtMn/GV0texEWg5oAPQWCCE4LWspM+Bmy75Nd4EQsziQXrdOFqNeSBQMrxDX9C/O5Xi3kpKSMIw==",
-      "path": "microsoft.net.illink.tasks/7.0.100-1.23401.1",
-      "hashPath": "microsoft.net.illink.tasks.7.0.100-1.23401.1.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "type": "package",

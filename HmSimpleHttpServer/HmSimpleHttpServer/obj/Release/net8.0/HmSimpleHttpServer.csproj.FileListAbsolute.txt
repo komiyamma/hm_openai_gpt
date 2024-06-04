@@ -1,0 +1,14 @@
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\HmSimpleHttpServer.exe
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\HmSimpleHttpServer.deps.json
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\HmSimpleHttpServer.runtimeconfig.json
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\HmSimpleHttpServer.dll
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\HmSimpleHttpServer.pdb
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.AssemblyInfoInputs.cache
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.AssemblyInfo.cs
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.csproj.CoreCompileInputs.cache
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.dll
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\refint\HmSimpleHttpServer.dll
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.pdb
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\HmSimpleHttpServer.genruntimeconfig.cache
+C:\Users\master\source\repos\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\ref\HmSimpleHttpServer.dll

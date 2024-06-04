@@ -7,7 +7,7 @@ using System.Text;
 
 partial class HmOpenAiGpt
 {
-    static string targetDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    static string targetDir = System.AppContext.BaseDirectory;
 
     // 質問内容をファイルに保存してあるが、ファイル内容をクリアする
     static public void ClearQuestionFile()

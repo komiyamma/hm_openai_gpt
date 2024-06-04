@@ -106,7 +106,7 @@ internal class HmSimpleHttpServer
     {
         try
         {
-            string phpServerDocumentFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string phpServerDocumentFolder = System.AppContext.BaseDirectory;
             string phpExePath = Path.Combine(phpServerDocumentFolder, "php.exe");
             int port = AvailablePort();
             string phpHostName = "localhost";

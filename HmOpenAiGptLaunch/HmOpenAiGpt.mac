@@ -93,22 +93,24 @@ const renderPaneTargetName = "HmOpenAiGpt";
 
 // AIウィンドウを１つだけに絞る処理
 function oneAIWindowFrameCheck() {
-    if (isOneAIRenderPane) {
-        let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIRenderPane", 2 );
-        // 自分だよ、何もしない。
-        if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
-            return;
+    if (!isOneAIRenderPane) {
+        return;
+    }
+
+    let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIRenderPane", 2 );
+    // 自分だよ、何もしない。
+    if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
+        return;
+    }
+
+    // 他のAIマクロがAIパネル枠を利用しているなら、閉じる
+    if (lastAiRenderPaneTargetName) {
+        const renderpane_json_param = {
+            target: lastAiRenderPaneTargetName,
+            show: 0,
         }
 
-        // 他のAIマクロがAIパネル枠を利用しているなら、閉じる
-        if (lastAiRenderPaneTargetName) {
-            const renderpane_json_param = {
-                target: lastAiRenderPaneTargetName,
-                show: 0,
-            }
-
-            renderpanecommand(renderpane_json_param);
-        }
+        renderpanecommand(renderpane_json_param);
     }
 }
 
@@ -232,26 +234,28 @@ function syncOnCompleteAnswerText() {
 }
 
 function onHtmlEventHandler(command_name) {
-    if (command_name == "reset") {
-        hidemaru.postExecMacroMemory( "js { resetAI(); }");
-    }
-    else if (command_name == "stop") {
-        hidemaru.postExecMacroMemory( "js { stopAIAnswer(); }");
-    }
-    else if (command_name == "answer_complete") {
-        _completeAnswerText = "";
-        if (typeof(onCompleteAnswerText) == "function" ) {
-            // AIの回答の原文を取得
-            let answer_text = hidemaru.loadTextFile(answerFileName) || "";
-            if (!answer_text) { return; }
+    switch (command_name) {
+        case "reset":
+            hidemaru.postExecMacroMemory("js { resetAI(); }");
+            break;
+        case "stop":
+            hidemaru.postExecMacroMemory("js { stopAIAnswer(); }");
+            break;
+        case "answer_complete":
+            _completeAnswerText = "";
+            if (typeof onCompleteAnswerText === "function") {
+                // AIの回答の原文を取得
+                let answer_text = hidemaru.loadTextFile(answerFileName) || "";
+                if (!answer_text) { return; }
 
-            // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
-            const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
+                // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
+                const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
 
-            _completeAnswerText = normalizeNewLineText;
-            // ユーザーが非同期だと理解が大変なので同期にしておく
-            hidemaru.postExecMacroMemory( "js { syncOnCompleteAnswerText(); }" );
-        }
+                _completeAnswerText = normalizeNewLineText;
+                // ユーザーが非同期だと理解が大変なので同期にしておく
+                hidemaru.postExecMacroMemory("js { syncOnCompleteAnswerText(); }");
+            }
+            break;
     }
 }
 
@@ -301,7 +305,7 @@ function getSelectedMenuCommand() {
     let selectMenuID = menuarray(menuTextList); // 選択しなければ0: 選択は最初の項目が1
 
     // キャンセルした
-    if (selectMenuID == 0) {
+    if (selectMenuID == 0) {  
         return "";
     }
 
@@ -314,18 +318,20 @@ function getSelectedMenuCommand() {
 // テキストを選択せずに、このマクロを実行した時は、コマンド選択
 function doSendCommand() {
     let selectedCommand = getSelectedMenuCommand();
-    if (!selectedCommand) {
-        return;
-    }
-
-    if (selectedCommand == "stop") {
-        stopAIAnswer();
-    }
-    else if (selectedCommand == "reset") {
-        resetAI();
-    }
-    else if (selectedCommand == "paste") {
-        pasteAIAnswer();
+    
+    switch (selectedCommand) {
+        case "stop":
+            stopAIAnswer();
+            break;
+        case "reset":
+            resetAI();
+            break;
+        case "paste":
+            pasteAIAnswer();
+            break;
+        default:
+            // キャンセル、もしくは、未知のコマンドの場合の処理
+            break;
     }
 }
 

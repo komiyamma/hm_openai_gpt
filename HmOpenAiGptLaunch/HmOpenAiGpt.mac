@@ -115,6 +115,16 @@ function oneAIWindowFrameCheck() {
 }
 
 
+// 質問内容のテキスト
+function getQuestionText() {
+    // ユーザーによって、このような関数が定義されていれば、これを利用する。
+    if (typeof(onRequestQuestionText) == "function") {
+        return onRequestQuestionText();
+    }
+
+    return hidemaru.getSelectedText();
+}
+
 let questionTextCache = getQuestionText();
 
 // 質問内容があるかどうか
@@ -128,15 +138,6 @@ function hasQuestionText() {
     }
 }
 
-// 質問内容のテキスト
-function getQuestionText() {
-    // ユーザーによって、このような関数が定義されていれば、これを利用する。
-    if (typeof(onRequestQuestionText) == "function") {
-        return onRequestQuestionText();
-    }
-
-    return hidemaru.getSelectedText();
-}
 
 // レンダリングペインを再オープンする必要があるかどうか
 function noNeedRenderPaneReOpen() {

@@ -243,6 +243,7 @@ function onHtmlEventHandler(command_name) {
         if (typeof(onCompleteAnswerText) == "function" ) {
             // AIの回答の原文を取得
             let answer_text = hidemaru.loadTextFile(answerFileName) || "";
+            if (!answer_text) { return; }
 
             // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
             const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
@@ -272,21 +273,58 @@ function resetAI() {
 }
 
 function pasteAIAnswer() {
-    let text = hidemaru.loadTextFile(answerFileName);
-    insert(text);
+    let answer_text = hidemaru.loadTextFile(answerFileName);
+    if (!answer_text) {
+        return;
+    }
+    insert(answer_text);
 }
 
-// テキストを選択せずに、このマクロを実行した時は、
-// 「ＡＩの応答を途中キャンセル」あるいは「ＡＩを完全にリセットしてプロセス自体を終了し、会話履歴も消去」することが出来る。
+function getSelectedMenuCommand() {
+    let menuLabelList = [
+        {
+            cmd:"stop",
+            txt:"応答を停止 (&S)",
+        },
+        {
+            cmd:"reset",
+            txt:"全リセット (&R)",
+        },
+        {
+            cmd:"paste",
+            txt:"応答を張り付け (&V)"
+        },
+    ];
+    let menuCommandList = menuLabelList.map(item=>item.cmd);
+    let menuTextList = menuLabelList.map(item=>item.txt);
+
+    let selectMenuID = menuarray(menuTextList); // 選択しなければ0: 選択は最初の項目が1
+
+    // キャンセルした
+    if (selectMenuID == 0) {  
+        return "";
+    }
+
+    let selectMenuIx = selectMenuID-1; // 配列用に使うので、0オリジンに変更。
+    let selectCommand = menuCommandList[selectMenuIx];
+
+    return selectCommand;
+}
+
+// テキストを選択せずに、このマクロを実行した時は、コマンド選択
 function doSendCommand() {
-    let selectMenuID = menu("応答を停止 (&S)", "全リセット (&R)", "応答を張り付け (&V)");
-    if (selectMenuID == 1) {
+    let selectedCommand = getSelectedMenuCommand();
+    if (!selectedCommand) {
+        return;
+    }
+
+    if (selectedCommand == "stop") {
         stopAIAnswer();
     }
-    else if (selectMenuID == 2) {
+    else if (selectedCommand == "reset") {
         resetAI();
     }
-    else if (selectMenuID == 3) {
+    else if (selectedCommand == "paste") {
         pasteAIAnswer();
     }
 }

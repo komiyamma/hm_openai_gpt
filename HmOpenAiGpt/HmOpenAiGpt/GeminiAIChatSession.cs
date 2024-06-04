@@ -318,4 +318,9 @@ internal class ChatSession
         HmOpenAiGpt.SaveAllTextToAnswerFile(text);
     }
 
+    private void SaveCompleteFile(int number)
+    {
+        HmOpenAiGpt.SaveAllTextToAnswerFile(number);
+    }
+
 }

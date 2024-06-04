@@ -25,17 +25,17 @@ if (!openAiKey) {
 }
 
 const modelName = "gpt-3.5-turbo"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
-                               // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意
+                                   // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意
 
-const maxTokens = 4000;       // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。
-                               // 「gpt-3.5-turbo なら 2000」「gpt-4o なら 4000」が目安
+const maxTokens = 4000;            // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。
+                                   // 「gpt-3.5-turbo なら 2000」「gpt-4o なら 4000」が目安
 
 const renderPaneCustomParam = {
-    place: "rightside",        // leftside | rightside | upside | downside
-    size: 400,                 // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
+    place: "rightside",            // leftside | rightside | upside | downside
+    size: 400,                     // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
-const isOneAIRenderPane = 1;       // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
+const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
 
 // --------------------------------------------------
 
@@ -93,11 +93,11 @@ const renderPaneTargetName = "HmOpenAiGpt";
 
 // AIウィンドウを１つだけに絞る処理
 function oneAIWindowFrameCheck() {
-    if (!isOneAIRenderPane) {
+    if (!isOneAtTimeAIRenderPane) {
         return;
     }
 
-    let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIRenderPane", 2 );
+    let lastAiRenderPaneTargetName = getstaticvariable( "OneAtTimeAIRenderPane", 2 );
     // 自分だよ、何もしない。
     if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
         return;
@@ -189,8 +189,8 @@ function openRenderPaneCommand(port) {
     renderpanecommand(renderpane_mix_param);
 
     // １つのウィンドウに絞るフラグがONなら、登録しておく
-    if (isOneAIRenderPane) {
-        setstaticvariable( "HmOneAIRenderPane", renderPaneTargetName, 2 );
+    if (isOneAtTimeAIRenderPane) {
+        setstaticvariable( "OneAtTimeAIRenderPane", renderPaneTargetName, 2 );
     }
 }
 

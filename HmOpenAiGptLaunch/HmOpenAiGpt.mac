@@ -113,14 +113,21 @@ function oneAIWindowFrameCheck() {
 }
 
 
+let questionTextCache = getQuestionText();
+
 // 質問内容があるかどうか
 function hasQuestionText() {
     // getSelectedTextは "" や undefined になりえるので、このような判定
-    return Boolean( hidemaru.getSelectedText() );
+    return Boolean( questionTextCache );
 }
 
 // 質問内容のテキスト
 function getQuestionText() {
+    // ユーザーによって、このような関数が定義されていれば、これを利用する。
+    if (typeof(onRequestQuestionText) == "function") {
+        return onRequestQuestionText();
+    }
+
     return hidemaru.getSelectedText();
 }
 

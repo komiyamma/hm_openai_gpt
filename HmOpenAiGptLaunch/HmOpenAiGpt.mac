@@ -14,32 +14,32 @@ js {
 
 // ------------- 会話エンジンの設定項目 -------------
 
-let openai_key = getenv("OPENAI_API_KEY") || getenv("OPENAI_KEY");
+let openAiKey = getenv("OPENAI_API_KEY") || getenv("OPENAI_KEY");
 
 // 直接ここでAPIのKEYの文字列を指定しても良いですが、あまり推奨はしません。直書きする場合、このマクロを迂闊に配布して他者にAPIのキーが漏れないよう注意。
-// openai_key = "";
+// openAiKey = "";
 
-if (!openai_key) {
+if (!openAiKey) {
     message("OPENAIのキーが空です");
     throw "OPENAIのキーが空です";
 }
 
-const model = "gpt-3.5-turbo"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
+const modelName = "gpt-3.5-turbo"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
                                // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意
 
-const max_tokens = 4000;       // この数値は概ね 使用対象のmodelの最大トークンの半分程度を使用するのが望ましい。
+const maxTokens = 4000;       // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。
                                // 「gpt-3.5-turbo なら 2000」「gpt-4o なら 4000」が目安
 
-const renderpane_custom_param = {
+const renderPaneCustomParam = {
     place: "rightside",        // leftside | rightside | upside | downside
     size: 400,                 // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
-const is_one_ai_renderpane = 1;       // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
+const isOneAIRenderPane = 1;       // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
 
 // --------------------------------------------------
 
-const currentmacrodir = currentmacrodirectory();
+const currentMacroDirectory = currentmacrodirectory();
 
 // 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
 var avilablePort;
@@ -64,7 +64,7 @@ function openHttpServer() {
 
         // このウィンドウハンドルがなくなったら、2秒後に「該当の簡易サーバー」は自動終了する
         // 簡易サーバーがどんどん増えるといったことはなくなる。
-        let processInfo = hidemaru.runProcess('"' + currentmacrodir + "\\HmSimpleHttpServer.exe" + '"' + " " + currentWindowHandle, currentmacrodir, "stdioAlive", "sjis");
+        let processInfo = hidemaru.runProcess('"' + currentMacroDirectory + "\\HmSimpleHttpServer.exe" + '"' + " " + currentWindowHandle, currentMacroDirectory, "stdioAlive", "sjis");
 
         // 簡易サーバープログラムの出力を非同期で読み取る。
         // 簡易サーバープログラムはサーバーを起動するとともに、確保したポート番号を標準出力に出す。
@@ -93,7 +93,7 @@ const renderPaneTargetName = "HmOpenAiGpt";
 
 // AIウィンドウを１つだけに絞る処理
 function oneAIWindowFrameCheck() {
-    if (is_one_ai_renderpane) {
+    if (isOneAIRenderPane) {
         let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIRenderPane", 2 );
         // 自分だよ、何もしない。
         if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
@@ -181,19 +181,19 @@ function openRenderPaneCommand(port) {
     };
 
     // ユーザー指定のもので上書き。
-    const renderpane_mix_param = { ...renderpane_json_param, ...renderpane_custom_param };
+    const renderpane_mix_param = { ...renderpane_json_param, ...renderPaneCustomParam };
 
     renderpanecommand(renderpane_mix_param);
 
     // １つのウィンドウに絞るフラグがONなら、登録しておく
-    if (is_one_ai_renderpane) {
+    if (isOneAIRenderPane) {
         setstaticvariable( "HmOneAIRenderPane", renderPaneTargetName, 2 );
     }
 }
 
 
 
-const aiexepath = currentmacrodir + "\\HmOpenAiGpt.exe";
+const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
 
 // エラー用途
 function outputAlert(msg) {
@@ -203,8 +203,8 @@ function outputAlert(msg) {
 }
 
 // ユーザーの「質問内容」が入るテキストファイル
-const questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
-const answerFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
+const questionFileName = currentMacroDirectory + "\\HmOpenAiGpt.question.txt";
+const answerFileName = currentMacroDirectory + "\\HmOpenAiGpt.txt";
 
 function getTickCount() {
     return tickcount() & 0x7fffffff;
@@ -213,7 +213,7 @@ function getTickCount() {
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function doSendQuestionContent() {
     let text = getQuestionText();
-    let commandline = `"${aiexepath}" "${openai_key}" "${model}" "${max_tokens}"`;
+    let commandline = `"${aiExePath}" "${openAiKey}" "${modelName}" "${maxTokens}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
 //      runex(commandline, 0); // デバッグ用
 
@@ -247,7 +247,7 @@ function onHtmlEventHandler(text) {
             // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
             const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
 
-            _completeAnswerText = normalizeNewLineText.;
+            _completeAnswerText = normalizeNewLineText;
             // ユーザーが非同期だと理解が大変なので同期にしておく
             hidemaru.postExecMacroMemory( "js { syncOnCompleteAnswerText(); }" );
         }
@@ -257,7 +257,7 @@ function onHtmlEventHandler(text) {
 function stopAIAnswer() {
     let sendcmd = "HmOpenAiGpt.Cancel(" + getTickCount() + ")\n";
     let text = "応答を停止";
-    let commandline = `"${aiexepath}" "HmOpenAiGpt.Cancel()"`;
+    let commandline = `"${aiExePath}" "HmOpenAiGpt.Cancel()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
@@ -265,7 +265,7 @@ function stopAIAnswer() {
 function resetAI() {
     let sendcmd = "HmOpenAiGpt.Clear(" + getTickCount() + ")\n";
     let text = "リセット";
-    let commandline = `"${aiexepath}" "HmOpenAiGpt.Clear()"`;
+    let commandline = `"${aiExePath}" "HmOpenAiGpt.Clear()"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");

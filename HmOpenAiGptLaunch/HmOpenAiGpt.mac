@@ -160,7 +160,7 @@ function outputAlert(msg) {
 
 // ユーザーの「質問内容」が入るテキストファイル
 var questionFileName = currentmacrodir + "\\HmOpenAiGpt.question.txt";
-var answerFileName = currentmacrodir + "\\OpenAiGpt.txt";
+var answerFileName = currentmacrodir + "\\HmOpenAiGpt.txt";
 
 function getTickCount() {
     return tickcount() & 0x7fffffff;
@@ -186,6 +186,8 @@ function onHtmlButtonClick(text) {
     }
     else if (text == "stop") {
         hidemaru.postExecMacroMemory( "js { stopAIAnswer(); }");
+    }
+    else if (text == "answer_complete") {
     }
 }
 

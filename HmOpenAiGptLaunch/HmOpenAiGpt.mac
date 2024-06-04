@@ -43,12 +43,11 @@ const currentmacrodir = currentmacrodirectory();
 
 // 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
 var avilablePort;
-// 有効ポートの受け口。非同期にてここにopenHttpServer関数で代入される(可能性がある)
-if (avilablePort === undefined) {
-    openHttpServer();
-}
-// 前回ポートが確保できないまま、またトライしている。(まぁ環境が制限されている等の問題なので、確保できないだろう)
-if (avilablePort == 0) {
+
+// 有効ポートの受け口。非同期にてここにopenHttpServer関数で代入される。
+// 有効なポートが見つからない時や、時間切れになることもありえる
+// 一度ポートを探して、0という「見つからない」という値が入っていることもある。この際も一応改めて探す
+if (! Boolean(avilablePort) ) {
     openHttpServer();
 }
 

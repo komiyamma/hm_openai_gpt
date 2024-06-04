@@ -65,18 +65,18 @@
         // パラメータを取得
         let params = new URLSearchParams(url.search);
 
-        let idHtmlEventHandler = Number(params.get('idHtmlEventHandler'));
+        let idHtmlButtonClick = Number(params.get('idHtmlButtonClick'));
 
         // ボタンを取得
         const btn_stop = document.getElementById("btn_stop");
         // ボタンがクリックされた時の処理。行数をjsonテキストにして、秀丸マクロのjsmode内関数を呼び出す(引数にjson_text)を渡す
         btn_stop.addEventListener("click", function () {
-            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "stop" });
+            window.chrome.webview.postMessage({ funcid: idHtmlButtonClick, message: "stop" });
         });
         // ボタンを取得
         const btn_reset = document.getElementById("btn_reset");
         btn_reset.addEventListener("click", function () {
-            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "reset" });
+            window.chrome.webview.postMessage({ funcid: idHtmlButtonClick, message: "reset" });
         });
 
         // 質問番号の確保
@@ -169,7 +169,7 @@
                           if (lastQuestionNumber == completeNumber) {
                             if (completeNumber == lastQuestionNumber) {
                                 document.getElementById('model_answer_complete').innerHTML = "<hr>完了";
-                                window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
+                                window.chrome.webview.postMessage({ funcid: idHtmlButtonClick, message: "answer_complete" });
                             } else {
                                 document.getElementById('model_answer_complete').innerHTML = "";
                             }

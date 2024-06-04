@@ -92,12 +92,16 @@ internal class ChatSession
     // 質問してAIの応答の途中でキャンセルするためのトークン
     static CancellationTokenSource _cst;
 
+    static Object cancelLock = new Object();
     private void CancelCheck()
     {
         string question_text = "";
-        using (StreamReader reader = new StreamReader(HmOpenAiGpt.saveFilePath, Encoding.UTF8))
-        {
-            question_text = reader.ReadToEnd();
+
+        lock (cancelLock) { 
+            using (StreamReader reader = new StreamReader(HmOpenAiGpt.questionFilePath, Encoding.UTF8))
+            {
+                question_text = reader.ReadToEnd();
+            }
         }
 
         // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている
@@ -226,6 +230,8 @@ internal class ChatSession
 
             int flushedLength = 0;
 
+            bool isMustCancelCheck = false;
+
             // ストリーム型で確立しているので、async的に扱っていく
             await foreach (var completion in completionResult)
             {
@@ -233,10 +239,11 @@ internal class ChatSession
                 conversationUpdateCount++;
 
                 // 毎回じゃ重いので、適当に間引く
-                // 最後に出力した文字列と現在の文字列に20文字の乖離がある場合
-                if (answer_sum.Length > flushedLength + flushOfStringLengthChange/2)
+                if (isMustCancelCheck)
                 {
                     CancelCheck();
+                    isMustCancelCheck = false;
+                    // System.Diagnostics.Trace.WriteLine("CancelCheck");
                 }
 
                 // キャンセルが要求された時、
@@ -263,6 +270,7 @@ internal class ChatSession
                         {
                             flushedLength = currentLength;
                             SaveAllTextToFile(answer_sum);
+                            isMustCancelCheck = true;
                         }
                     }
                 }

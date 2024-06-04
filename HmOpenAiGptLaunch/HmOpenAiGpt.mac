@@ -148,7 +148,7 @@ function noNeedRenderPaneReOpen() {
             target: renderPaneTargetName,
             get: "show",
         };
-    
+
         // 文字列の"0" or "1"なので注意が必要
         let isShowNow = renderpanecommand( renderpane_json_param );
         if (isShowNow == "1" ) {
@@ -306,7 +306,7 @@ function getSelectedMenuCommand() {
     let selectMenuID = menuarray(menuTextList); // 選択しなければ0: 選択は最初の項目が1
 
     // キャンセルした
-    if (selectMenuID == 0) {  
+    if (selectMenuID == 0) {
         return "";
     }
 
@@ -319,8 +319,12 @@ function getSelectedMenuCommand() {
 // テキストを選択せずに、このマクロを実行した時は、コマンド選択
 function doSendCommand() {
     let selectedCommand = getSelectedMenuCommand();
-    
     switch (selectedCommand) {
+        // メニューをキャンセルなら""
+        case "":
+            // 間違ったかなにかだろう。元へと戻すという意味でレンダリングペインも一緒に閉じておく
+            closeRenderPaneCommand();
+            break;
         case "stop":
             stopAIAnswer();
             break;
@@ -331,7 +335,7 @@ function doSendCommand() {
             pasteAIAnswer();
             break;
         default:
-            // キャンセル、もしくは、未知のコマンドの場合の処理
+            // 未知のコマンドの場合の処理
             break;
     }
 }

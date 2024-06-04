@@ -145,6 +145,10 @@ function getQuestionText() {
 
 // getQuestionText()関数は１回だけ呼び出すべきなのでキャッシュとして結果を保存しておく
 let questionTextCache = getQuestionText();
+debuginfo(2);
+console.log("キャッシュ");
+console.log(typeof(questionTextCache));
+console.log(questionTextCache);
 
 // 質問内容があるかどうか
 function hasQuestionText() {
@@ -330,7 +334,7 @@ function getSelectedMenuCommand() {
 
     // キャンセルした
     if (selectMenuID == 0) {
-        return "";
+        return false;
     }
 
     let selectMenuIx = selectMenuID-1; // 配列用に使うので、0オリジンに変更。
@@ -344,7 +348,7 @@ function doSendCommand() {
     let selectedCommand = getSelectedMenuCommand();
     switch (selectedCommand) {
         // メニューをキャンセルなら""
-        case "":
+        case false:
             // 間違ったかなにかだろう。元へと戻すという意味でレンダリングペインも一緒に閉じておく
             closeRenderPaneCommand();
             break;
@@ -384,13 +388,19 @@ function doMain() {
         // レインだリングペインをそのポートでlocalhostで開く
         openRenderPaneCommand(avilablePort);
 
+        let hasQuestion = hasQuestionText();
+debuginfo(2);
+console.log(typeof(hasQuestion));
+console.log(hasQuestion);
         // 質問があるなら
-        if (hasQuestionText()) {
+        if (hasQuestion) {
             // それをＡＩへの質問内容として送信
             doSendQuestionContent();
             // 選択を解除し、選択の最後の座標へと移動
             gotoSelectEndPosition();
-        } else {
+
+        // 完全にキャンセルしている場合以外は
+        } else if (hasQuestion === 0 ) {
             // それ以外なら、ＡＩにコマンドの送信
             doSendCommand();
         }

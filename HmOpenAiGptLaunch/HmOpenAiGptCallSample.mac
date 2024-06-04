@@ -7,9 +7,9 @@ debuginfo(2);
     console.log("あいう" + currentmacrofilename());
     let selectedtext = getselectedtext();
 
-    // 選択してなかったら、元のまま
+    // テキストを選択してなかったら、呼び出し先のメニューに委譲(true)
     if (!selectedtext) {
-        return "";
+        return true;
     }
 
     let menu_label_list = 
@@ -25,9 +25,10 @@ debuginfo(2);
     ];
 
     let selectedMenuID = menuarray(menu_label_list);
-    // キャンセルした
+
+    // キャンセルしたら、呼び出し先のメニューもキャンセル(false);
     if (selectedMenuID <= 0) {
-        return "";
+        return false;
     }
 
     let selectedMenuIX = selectedMenuID - 1; // menu 関数は選択した項目が1オリジンで返ってくるので、0オリジンに直す。
@@ -41,7 +42,6 @@ debuginfo(2);
 function onCompleteAnswerText(answer_text) {
 debuginfo(2);
 // メモリ内実行なので、currentmacrofilename() は存在すらしないので注意
-What is this?
 
     console.log("あいう" + currentmacrofilename());
 /*
@@ -56,17 +56,19 @@ What is this?
     insert("\n" + answer_text + "\n");
 }
 
-function myCustomEntry() {
+// 無名関数
+(()=>{
 
 
 
 
-    let argobj = {onRequestQuestionText:1, onCompleteAnswerText:1};
+    let argobj = {onRequestQuestionText:0, onCompleteAnswerText:1};
     hidemaru.postExecMacroFile( currentmacrodirectory() + "\\HmOpenAiGpt.mac", argobj );
    
-}
 
-myCustomEntry();
+
+})(); // 無名関数
+
 
 
 

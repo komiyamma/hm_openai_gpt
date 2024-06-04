@@ -114,8 +114,36 @@ function oneAIWindowFrameCheck() {
 }
 
 
+// 質問内容があるかどうか
+function hasQuestionText() {
+    return selecting();
+}
+
+// レンダリングペインを再オープンする必要があるかどうか
+function noNeedRenderPaneReOpen() {
+
+
+    // 選択していない時は、ただのコマンドなので、すでに表示済みならリオープンしない
+    if (!hasQuestionText()) {
+        const renderpane_json_param = {
+            target: renderPaneTargetName,
+            get: "show",
+        };
+    
+        // 文字列の"0" or "1"なので注意が必要
+        let isShowNow = renderpanecommand( renderpane_json_param );
+        if (isShowNow == "1" ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 // レンダリングペインを指定属性＆ポートでオープン
 function openRenderPaneCommand(port) {
+
+    if (noNeedRenderPaneReOpen()) { return; }
 
     let baseUrl = new URL("http://localhost:" + port + "/HmOpenAiGpt.html");
 
@@ -249,8 +277,8 @@ function doMain() {
         // レインだリングペインをそのポートでlocalhostで開く
         openRenderPaneCommand(avilablePort);
 
-        // 文字列を選択しているなら
-        if (selecting()) {
+        // 質問があるなら
+        if (hasQuestionText()) {
             // それをＡＩへの質問内容として送信
             doSendQuestionContent();
             // 選択を解除し、選択の最後の座標へと移動

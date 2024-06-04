@@ -82,6 +82,19 @@
         // 質問番号の確保
         let lastQuestionNumber = 0;
 
+        function getCommandNumber(text) {
+
+			let numberPattern = /\((\d+)\)/; // カッコで囲まれた数字を抽出するための正規表現パターン
+
+			let extractedNumber = firstLine.match(numberPattern);
+
+			if (extractedNumber) {
+			    return extractedNumber[1]; // カッコ内の数字だけを取得
+			} else {
+			    return 0;
+			}
+        }
+
         function getFirstThreeLines(text) {
 
             // 改行文字でテキストを分割し、2行目以降を取得
@@ -90,15 +103,7 @@
             // 最初の行を取得しつつ、2行目以降を確保
             let firstLine = lines.shift();
 
-			let numberPattern = /\((\d+)\)/; // カッコで囲まれた数字を抽出するための正規表現パターン
-
-			let extractedNumber = firstLine.match(numberPattern);
-
-			if (extractedNumber) {
-			    lastQuestionNumber = extractedNumber[1]; // カッコ内の数字だけを取得
-			} else {
-			    lastQuestionNumber = 0;
-			}
+            lastQuestionNumber = getCommandNumber(firstLine);
 
             // 空行、または改行しかない行を削除する
             lines = lines.filter(line => line.trim() !== '');

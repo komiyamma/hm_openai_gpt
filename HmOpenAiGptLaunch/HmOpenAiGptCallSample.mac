@@ -1,0 +1,74 @@
+﻿jsmode @"WebView2\HmOpenAiGpt";
+js {
+
+function onRequestQuestionText() {
+debuginfo(2);
+// メモリ内実行なので、currentmacrofilename() はこことは異なるので注意
+    console.log("あいう" + currentmacrofilename());
+    let selectedtext = getselectedtext();
+
+    // 選択してなかったら、元のまま
+    if (!selectedtext) {
+        return "";
+    }
+
+    let menu_label_list = 
+    [
+        "英翻訳",
+        "日本訳"
+    ];
+
+    let menu_command_list =
+    [
+       "以下の文章を英語に翻訳してください。\n\n" + selectedtext,
+       "以下の文章を日本語に翻訳してください。\n\n" + selectedtext,
+    ];
+
+    let selectedMenuID = menuarray(menu_label_list);
+    // キャンセルした
+    if (selectedMenuID <= 0) {
+        return "";
+    }
+
+    let selectedMenuIX = selectedMenuID - 1; // menu 関数は選択した項目が1オリジンで返ってくるので、0オリジンに直す。
+
+    // 選択した項目に対応するコマンド内容
+    let command_text = menu_command_list[selectedMenuIX];
+
+    return command_text;
+}
+
+function onCompleteAnswerText(answer_text) {
+debuginfo(2);
+// メモリ内実行なので、currentmacrofilename() は存在すらしないので注意
+What is this?
+
+    console.log("あいう" + currentmacrofilename());
+/*
+    if (currentmacrofilename() == filename()) {
+        message("このファイルはマクロファイルです");
+        return;
+    }
+*/
+    // 行末に移動
+    golineend();
+    // 前後を改行で挟み、挿入
+    insert("\n" + answer_text + "\n");
+}
+
+function myCustomEntry() {
+
+
+
+
+    let argobj = {onRequestQuestionText:1, onCompleteAnswerText:1};
+    hidemaru.postExecMacroFile( currentmacrodirectory() + "\\HmOpenAiGpt.mac", argobj );
+   
+}
+
+myCustomEntry();
+
+
+
+}
+

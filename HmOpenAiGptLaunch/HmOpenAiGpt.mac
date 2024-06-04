@@ -43,7 +43,12 @@ const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の
 function getArgParamJsonObj() {
     let arg_text = getarg(0);
     if (!arg_text) { return null; }
-    let arg_param = JSON.stringify(arg_text);
+    try {
+	    let arg_param = JSON.parse(arg_text);
+	    return arg_param
+    } catch(err) {
+        outputAlert(err);
+    }
 }
 
 const argParamJsonObj = getArgParamJsonObj();
@@ -127,8 +132,12 @@ function oneAIWindowFrameCheck() {
 // 質問内容のテキスト
 function getQuestionText() {
     // ユーザーによって、このような関数が引数として引き渡されていれば、これを利用する。
-    if (argParamJsonObj?.onRequestQuestionText) {
-        return argParamJsonObj.onRequestQuestionText();
+    if (argParamJsonObj?.onRequestQuestionText && typeof(onRequestQuestionText) == "function") {
+        try {
+            return onRequestQuestionText();
+        } catch(err) {
+            outputAlert(err);
+        }
     }
 
     return hidemaru.getSelectedText();
@@ -140,9 +149,13 @@ let questionTextCache = getQuestionText();
 // 質問内容があるかどうか
 function hasQuestionText() {
     // ユーザーによって、このような関数が引数として引き渡されていれば、その内容(のキャッシュ)が有効であるのかどうか。
-    if (argParamJsonObj?.onRequestQuestionText) {
-        // getSelectedTextは "" や undefined になりえるので、このような判定
-        return Boolean( questionTextCache );
+    if (argParamJsonObj?.onRequestQuestionText && typeof(onRequestQuestionText) == "function") {
+        try {
+            // getSelectedTextは "" や undefined になりえるので、このような判定
+            return Boolean( questionTextCache );
+        } catch(err) {
+            outputAlert(err);
+        }
     } else {
         return selecting();
     }
@@ -225,7 +238,7 @@ function getTickCount() {
 
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function doSendQuestionContent() {
-    let text = getQuestionText();
+    let text = questionTextCache;
     let commandline = `"${aiExePath}" "${openAiKey}" "${modelName}" "${maxTokens}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
 //      runex(commandline, 0); // デバッグ用
@@ -241,7 +254,7 @@ function doSendQuestionContent() {
 // ユーザーからは同期に見えるようにするためのクッション
 var _completeAnswerText = "";
 function syncOnCompleteAnswerText() {
-    argParamJsonObj?.onCompleteAnswerText(_completeAnswerText);
+    onCompleteAnswerText(_completeAnswerText);
 }
 
 function onHtmlEventHandler(command_name) {
@@ -254,7 +267,7 @@ function onHtmlEventHandler(command_name) {
             break;
         case "answer_complete":
             _completeAnswerText = "";
-            if (argParamJsonObj?.onCompleteAnswerText) {
+            if (argParamJsonObj?.onCompleteAnswerText && typeof(onCompleteAnswerText) == "function") {
                 // AIの回答の原文を取得
                 let answer_text = hidemaru.loadTextFile(answerFileName) || "";
                 if (!answer_text) { return; }

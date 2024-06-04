@@ -35,7 +35,7 @@ const renderpane_custom_param = {
     size: 400,                 // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
-const one_ai_window = 1;       // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
+const is_one_ai_renderpane = 1;       // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）
 
 // --------------------------------------------------
 
@@ -94,8 +94,8 @@ const renderPaneTargetName = "HmOpenAiGpt";
 
 // AIウィンドウを１つだけに絞る処理
 function oneAIWindowFrameCheck() {
-    if (one_ai_window) {
-        let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIWindowFrame", 2 );
+    if (is_one_ai_renderpane) {
+        let lastAiRenderPaneTargetName = getstaticvariable( "HmOneAIRenderPane", 2 );
         // 自分だよ、何もしない。
         if (lastAiRenderPaneTargetName == renderPaneTargetName ) {
             return;
@@ -142,8 +142,8 @@ function openRenderPaneCommand(port) {
     renderpanecommand(renderpane_mix_param);
 
     // １つのウィンドウに絞るフラグがONなら、登録しておく
-    if (one_ai_window) {
-        setstaticvariable( "HmOneAIWindowFrame", renderPaneTargetName, 2 );
+    if (is_one_ai_renderpane) {
+        setstaticvariable( "HmOneAIRenderPane", renderPaneTargetName, 2 );
     }
 }
 

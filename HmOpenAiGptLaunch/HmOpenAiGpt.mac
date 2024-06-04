@@ -119,9 +119,13 @@ function hasQuestionText() {
     return selecting();
 }
 
+// 質問内容のテキスト
+function getQuestionText() {
+    return hidemaru.getSelectedText();
+}
+
 // レンダリングペインを再オープンする必要があるかどうか
 function noNeedRenderPaneReOpen() {
-
 
     // 選択していない時は、ただのコマンドなので、すでに表示済みならリオープンしない
     if (!hasQuestionText()) {
@@ -196,7 +200,7 @@ function getTickCount() {
 
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function doSendQuestionContent() {
-    let text = hidemaru.getSelectedText();
+    let text = getQuestionText();
     let commandline = `"${aiexepath}" "${openai_key}" "${model}" "${max_tokens}"`;
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
 //      runex(commandline, 0); // デバッグ用

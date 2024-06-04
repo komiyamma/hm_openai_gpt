@@ -120,7 +120,7 @@ function openRenderPaneCommand(port) {
     let baseUrl = new URL("http://localhost:" + port + "/HmOpenAiGpt.html");
 
     // このJS内にあるコールバック用にも使う関数をレンダリング枠にクエリーparamとして伝達
-    let idHtmlButtonClick = hidemaru.getFunctionId(onHtmlButtonClick);
+    let idHtmlButtonClick = hidemaru.getFunctionId(onHtmlEventHandler);
     let params = new URLSearchParams();
     params.set('idHtmlButtonClick', String(idHtmlButtonClick));
 
@@ -180,7 +180,7 @@ function doSendQuestionContent() {
     );
 }
 
-function onHtmlButtonClick(text) {
+function onHtmlEventHandler(text) {
     if (text == "reset") {
         hidemaru.postExecMacroMemory( "js { resetAI(); }");
     }

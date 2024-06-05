@@ -56,13 +56,12 @@ function onCompleteAnswerText(answer_text) {
     insert("\n" + answer_text + "\n");
 }
 
-// 無名関数
-(()=>{
-
+function myEntryPoint() {
     let argobj = {onRequestQuestionText:1, onCompleteAnswerText:1};
     hidemaru.postExecMacroFile( currentmacrodirectory() + "\\HmOpenAiGpt.mac", argobj );
+}
 
-})(); // 無名関数
+myEntryPoint();
 
 
 

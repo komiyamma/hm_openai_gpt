@@ -2,10 +2,10 @@
 js {
 
 function onRequestQuestionText() {
-debuginfo(2);
-console.log("onRequestQuestionText")
-// メモリ内実行なので、currentmacrofilename() はこことは異なるので注意
-//    console.log("あいう" + currentmacrofilename());
+    debuginfo(2);
+    console.log("onRequestQuestionText")
+    // メモリ内実行なので、currentmacrofilename() はこのマクロ名とは異なるので注意
+    // console.log("currentmacrofilename:" + currentmacrofilename());
     let selectedtext = getselectedtext();
 
     // テキストを選択してなかったら、呼び出し先のメニューにそのままselecting情報を委譲(true)
@@ -21,10 +21,10 @@ console.log("onRequestQuestionText")
 
     let menu_command_list =
     [
-       "以下の文章を英語に翻訳してください。\n\n" + selectedtext,
-       "以下の文章を日本語に翻訳してください。\n\n" + selectedtext,
+       "以下の文章を英語に翻訳してください。\n\n###\n" + selectedtext,
+       "以下の文章を日本語に翻訳してください。\n\n###\n" + selectedtext,
     ];
-console.log("メニューを出すよ");
+
     let selectedMenuID = menuarray(menu_label_list);
 
     // キャンセルしたら、呼び出し先のメニューもキャンセル(false);
@@ -41,16 +41,12 @@ console.log("メニューを出すよ");
 }
 
 function onCompleteAnswerText(answer_text) {
-debuginfo(2);
-// メモリ内実行なので、currentmacrofilename() は存在すらしないので注意
+    debuginfo(2);
+    console.log("onCompleteAnswerText")
+    // メモリ内実行なので、currentmacrofilename() はマクロ名すらないので注意
+    // console.log("currentmacrofilename:" + currentmacrofilename());
+    // メモリ内実行なので、currentmacrofilename() は存在すらしないので注意
 
-    console.log("あいう" + currentmacrofilename());
-/*
-    if (currentmacrofilename() == filename()) {
-        message("このファイルはマクロファイルです");
-        return;
-    }
-*/
     // 行末に移動
     golineend();
     // 前後を改行で挟み、挿入
@@ -60,13 +56,8 @@ debuginfo(2);
 // 無名関数
 (()=>{
 
-
-
-
     let argobj = {onRequestQuestionText:1, onCompleteAnswerText:1};
     hidemaru.postExecMacroFile( currentmacrodirectory() + "\\HmOpenAiGpt.mac", argobj );
-   
-
 
 })(); // 無名関数
 

@@ -10,4 +10,4 @@
 
 「秀丸エディタ」で「gpt-3.5-turbo」や「gpt-4o」を扱うためのコンポーネント
 
-https://秀丸マクロ.net/?page=nobu_tool_hm_openai_gpt
+https://秀丸マクロ.net/?page=nobu_tool_hm_openaigpt

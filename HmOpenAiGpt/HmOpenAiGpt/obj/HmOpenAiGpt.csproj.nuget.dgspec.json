@@ -5,7 +5,7 @@
   },
   "projects": {
     "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj": {
-      "version": "1.1.0.1",
+      "version": "1.1.0.2",
       "restore": {
         "projectUniqueName": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
         "projectName": "HmOpenAiGpt",
@@ -23,7 +23,6 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0",
           "net8.0"
         ],
         "sources": {
@@ -31,10 +30,6 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
-          },
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {}
@@ -52,32 +47,6 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "Betalgo.OpenAI": {
-              "target": "Package",
-              "version": "[8.2.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
-        },
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {

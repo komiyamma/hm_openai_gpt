@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.0.2
+ * HmOpenAiGpt v 1.1.0.3
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -10,6 +10,10 @@ hidemaruversion "9.25.99";
 
 jsmode @"WebView2\HmOpenAiGpt";
 js {
+
+/// <reference path="../types/hm_jsmode.d.ts" />
+/// declare function onRequestQuestionText(): any;
+/// declare function onCompleteAnswerText(answer_text:string ): any;
 
 
 // ------------- 会話エンジンの設定項目 -------------
@@ -44,8 +48,8 @@ function getArgParamJsonObj() {
     let arg_text = getarg(0);
     if (!arg_text) { return null; }
     try {
-	    let arg_param = JSON.parse(arg_text);
-	    return arg_param
+        let arg_param = JSON.parse(arg_text);
+        return arg_param
     } catch(err) {
         outputAlert(err);
     }
@@ -247,6 +251,15 @@ function openRenderPaneCommand(port) {
     }
 }
 
+// レンダリングペインを閉じる（非表示）
+function closeRenderPaneCommand() {
+
+    const renderpane_json_param = {
+        target: renderPaneTargetName,
+        show: 0,
+    };
+    renderpanecommand(renderpane_json_param);
+}
 
 
 const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";

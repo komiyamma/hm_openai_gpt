@@ -1,4 +1,7 @@
-﻿jsmode @"WebView2\HmOpenAiGpt";
+﻿// このファイルはサンプルですので、CCOとなります。
+// https://creativecommons.jp/sciencecommons/aboutcc0/
+
+jsmode @"WebView2\HmOpenAiGpt";
 js {
 
 function onRequestQuestionText() {

@@ -64,7 +64,7 @@ internal partial class HmOpenAiGpt
                 iMaxTokens = int.Parse(commandLineArgs[3]);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
         }
 

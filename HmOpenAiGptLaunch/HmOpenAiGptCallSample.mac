@@ -3,11 +3,12 @@ js {
 
 function onRequestQuestionText() {
 debuginfo(2);
+console.log("onRequestQuestionText")
 // メモリ内実行なので、currentmacrofilename() はこことは異なるので注意
-    console.log("あいう" + currentmacrofilename());
+//    console.log("あいう" + currentmacrofilename());
     let selectedtext = getselectedtext();
 
-    // テキストを選択してなかったら、呼び出し先のメニューに委譲(true)
+    // テキストを選択してなかったら、呼び出し先のメニューにそのままselecting情報を委譲(true)
     if (!selectedtext) {
         return true;
     }
@@ -23,7 +24,7 @@ debuginfo(2);
        "以下の文章を英語に翻訳してください。\n\n" + selectedtext,
        "以下の文章を日本語に翻訳してください。\n\n" + selectedtext,
     ];
-
+console.log("メニューを出すよ");
     let selectedMenuID = menuarray(menu_label_list);
 
     // キャンセルしたら、呼び出し先のメニューもキャンセル(false);
@@ -62,7 +63,7 @@ debuginfo(2);
 
 
 
-    let argobj = {onRequestQuestionText:0, onCompleteAnswerText:1};
+    let argobj = {onRequestQuestionText:1, onCompleteAnswerText:1};
     hidemaru.postExecMacroFile( currentmacrodirectory() + "\\HmOpenAiGpt.mac", argobj );
    
 

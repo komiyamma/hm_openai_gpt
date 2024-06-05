@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.0.4
+ * HmOpenAiGpt v 1.1.0.5
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -91,13 +91,17 @@ function openHttpServer() {
 
         // この関数は非同期で呼ばれる
         function readLineAsync(serverOutputText) {
-            let port = getExtractPort(serverOutputText);
-            if (port == 0) {
-                throw "HTTPサーバーのためのポートが確保できませんでした";
-            }
-            if (port != null) {
-                avilablePort = port;
-                hidemaru.postExecMacroMemory("js { doMain() }");
+            try {
+                let port = getExtractPort(serverOutputText);
+                if (port == 0) {
+                    throw "HTTPサーバーのためのポートが確保できませんでした";
+                }
+                if (port != null) {
+                    avilablePort = port;
+                    hidemaru.postExecMacroMemory("js { doMain() }");
+                }
+            } catch(err) {
+                outputAlert(err);
             }
         }
 
@@ -265,9 +269,9 @@ function closeRenderPaneCommand() {
 const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
 
 // エラー用途
+const hidemaruExeDir = hidemarudir();
 function outputAlert(msg) {
-    let hidemaruexedir = hidemarudir();
-    let dll = loaddll(hidemaruexedir + "\\HmOutputPane.dll");
+    let dll = loaddll(hidemaruExeDir + "\\HmOutputPane.dll");
     dll.dllfunc.Output(hidemaru.getCurrentWindowHandle(), msg + "\r\n");
 }
 

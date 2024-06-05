@@ -45,6 +45,7 @@ internal partial class HmOpenAiGpt
 
     static async Task Main(String[] args)
     {
+        // 古いプロセスが他のディレクトリにある場合はKillする
         ifOldProcessIsOtherDirectoryKillIt();
 
         // 自分が2個目なら終了(2重起動しｊない)

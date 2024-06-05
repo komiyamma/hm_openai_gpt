@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.0.3
+ * HmOpenAiGpt v 1.1.0.4
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -268,7 +268,7 @@ const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
 function outputAlert(msg) {
     let hidemaruexedir = hidemarudir();
     let dll = loaddll(hidemaruexedir + "\\HmOutputPane.dll");
-    dll.dllFuncW.Output(msg + "\r\n");
+    dll.dllfunc.Output(hidemaru.getCurrentWindowHandle(), msg + "\r\n");
 }
 
 // ユーザーの「質問内容」が入るテキストファイル

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8443cb4700cfd3c30432affe9d7752db74b0870d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+068bea3885d40f7dc021c9307142289ff53dfb00")]
 [assembly: System.Reflection.AssemblyProductAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

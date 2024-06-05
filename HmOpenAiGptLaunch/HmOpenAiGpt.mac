@@ -134,34 +134,60 @@ function getQuestionText() {
     // ユーザーによって、このような関数が引数として引き渡されていれば、これを利用する。
     if (argParamJsonObj?.onRequestQuestionText && typeof(onRequestQuestionText) == "function") {
         try {
-            return onRequestQuestionText();
+            let ret = onRequestQuestionText();
+            // この判定自体には意味はないが、返り値が文字列ではなく、true や false があるんだということを意識するために記述しておく。
+            if (ret === true || ret === false) {
+                return ret;
+            }
+            return ret;
         } catch(err) {
             outputAlert(err);
         }
     }
 
-    return hidemaru.getSelectedText();
+    return hidemaru.getSelectedText() || true;
 }
 
 // getQuestionText()関数は１回だけ呼び出すべきなのでキャッシュとして結果を保存しておく
 let questionTextCache = getQuestionText();
-debuginfo(2);
-console.log("キャッシュ");
-console.log(typeof(questionTextCache));
-console.log(questionTextCache);
 
 // 質問内容があるかどうか
 function hasQuestionText() {
     // ユーザーによって、このような関数が引数として引き渡されていれば、その内容(のキャッシュ)が有効であるのかどうか。
     if (argParamJsonObj?.onRequestQuestionText && typeof(onRequestQuestionText) == "function") {
         try {
-            // getSelectedTextは "" や undefined になりえるので、このような判定
-            return Boolean( questionTextCache );
+            // テキストの場合にQuestionがあるとみなす。
+            return typeof(questionTextCache) == "string";
         } catch(err) {
             outputAlert(err);
         }
     } else {
+        // 選択対象があるなら、メニュー表示は不要、そうでなければ、メニュー表示が必要
         return selecting();
+    }
+}
+
+// メニューを表示するべきかどうか
+function mustShowMenu() {
+    // ユーザーによって、このような関数が引数として引き渡されていれば、その内容(のキャッシュ)が有効であるのかどうか。
+    if (argParamJsonObj?.onRequestQuestionText && typeof(onRequestQuestionText) == "function") {
+        try {
+            // getSelectedTextは "" や undefined になりえるので、このような判定
+            if (questionTextCache ===true) {
+                return true;
+            }
+            if (questionTextCache ===false) {
+                return false;
+            }
+            if (typeof(questionTextCache) ==="string") {
+                return false;
+            }
+        } catch(err) {
+            outputAlert(err);
+        }
+    } else {
+        // 選択対象があるなら、メニュー表示は不要、そうでなければ、メニュー表示が必要
+        return selecting() ? false : true;
     }
 }
 
@@ -388,19 +414,14 @@ function doMain() {
         // レインだリングペインをそのポートでlocalhostで開く
         openRenderPaneCommand(avilablePort);
 
-        let hasQuestion = hasQuestionText();
-debuginfo(2);
-console.log(typeof(hasQuestion));
-console.log(hasQuestion);
         // 質問があるなら
-        if (hasQuestion) {
+        if (hasQuestionText()) {
             // それをＡＩへの質問内容として送信
             doSendQuestionContent();
             // 選択を解除し、選択の最後の座標へと移動
             gotoSelectEndPosition();
 
-        // 完全にキャンセルしている場合以外は
-        } else if (hasQuestion === 0 ) {
+        } else if (mustShowMenu()) {
             // それ以外なら、ＡＩにコマンドの送信
             doSendCommand();
         }

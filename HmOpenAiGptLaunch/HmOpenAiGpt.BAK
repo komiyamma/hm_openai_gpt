@@ -84,15 +84,15 @@
 
         function getCommandNumber(firstLine) {
 
-            let numberPattern = /\((\d+)\)/; // カッコで囲まれた数字を抽出するための正規表現パターン
+			let numberPattern = /\((\d+)\)/; // カッコで囲まれた数字を抽出するための正規表現パターン
 
-            let extractedNumber = firstLine.match(numberPattern);
+			let extractedNumber = firstLine.match(numberPattern);
 
-            if (extractedNumber) {
-                return extractedNumber[1]; // カッコ内の数字だけを取得
-            } else {
-                return 0;
-            }
+			if (extractedNumber) {
+			    return extractedNumber[1]; // カッコ内の数字だけを取得
+			} else {
+			    return 0;
+			}
         }
 
         function getFirstThreeLines(text) {
@@ -163,24 +163,18 @@
                 .then(response => response.text())
                 .then(text => {
                     try {
-                        if (prevCompleteText == text) {
-                            return;
-                        }
-                        prevCompleteText = text;
-
-                        if (text.includes("MessageCompleteClear")) {
-                            document.getElementById('model_answer_complete').innerHTML = "";
-                            return;
-                        }
-                        let completeNumber = getCommandNumber(text);
-                        if (lastQuestionNumber == completeNumber) {
+                       if (prevCompleteText != text) {
+                           prevCompleteText = text;
+                          let completeNumber = getCommandNumber(text);
+                          if (lastQuestionNumber == completeNumber) {
                             if (completeNumber == lastQuestionNumber) {
                                 document.getElementById('model_answer_complete').innerHTML = "<hr>完了";
                                 window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
                             } else {
                                 document.getElementById('model_answer_complete').innerHTML = "";
                             }
-                        }
+                          }
+                       }
                     } catch (err) { }
                 })
                 .catch(error => {

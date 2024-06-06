@@ -346,7 +346,7 @@ function resetAI() {
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");
-    hidemaru.saveTextFile(completeFileName, "", "utf8");
+    hidemaru.saveTextFile(completeFileName, "HmOpenAiGpt.MessageCompleteClear(0)\n", "utf8");
 }
 
 function pasteAIAnswer() {

@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.0.5
+ * HmOpenAiGpt v 1.1.0.6
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -278,6 +278,7 @@ function outputAlert(msg) {
 // ユーザーの「質問内容」が入るテキストファイル
 const questionFileName = currentMacroDirectory + "\\HmOpenAiGpt.question.txt";
 const answerFileName = currentMacroDirectory + "\\HmOpenAiGpt.txt";
+const completeFileName = currentMacroDirectory + "\\HmOpenAiGpt.complete.txt";
 
 function getTickCount() {
     return tickcount() & 0x7fffffff;
@@ -345,6 +346,7 @@ function resetAI() {
     runex(commandline, 0, 0, "", 0, "", 0, "", 0, "", 2, 1, 0, 0);
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");
+    hidemaru.saveTextFile(completeFileName, "", "utf8");
 }
 
 function pasteAIAnswer() {

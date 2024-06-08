@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Betalgo.OpenAI/8.2.2": {
+      "Betalgo.OpenAI/8.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -295,7 +295,7 @@
       }
     },
     "net8.0/win-x64": {
-      "Betalgo.OpenAI/8.2.2": {
+      "Betalgo.OpenAI/8.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -589,16 +589,16 @@
     }
   },
   "libraries": {
-    "Betalgo.OpenAI/8.2.2": {
-      "sha512": "7qyM/H8UO0DTFWDX779JRr+sVGn8jyb5/QQEbSPys7uNr5lWvtWic7d4G3JoruKQ1/QTqZBhDDeDZ93nWSYxpQ==",
+    "Betalgo.OpenAI/8.3.0": {
+      "sha512": "Y5hZNG74/YbDQP7BnUP7z0Sdfvd2fnTzzGQU0nGaaQAeGeGvftHzAxMH+5oShrMgX10FE6YnXWkCZwrgitNFag==",
       "type": "package",
-      "path": "betalgo.openai/8.2.2",
+      "path": "betalgo.openai/8.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "OpenAI-Betalgo.png",
         "Readme.md",
-        "betalgo.openai.8.2.2.nupkg.sha512",
+        "betalgo.openai.8.3.0.nupkg.sha512",
         "betalgo.openai.nuspec",
         "lib/net6.0/OpenAI.dll",
         "lib/net6.0/OpenAI.xml",
@@ -1107,7 +1107,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Betalgo.OpenAI >= 8.2.2"
+      "Betalgo.OpenAI >= 8.3.0"
     ]
   },
   "packageFolders": {
@@ -1162,7 +1162,7 @@
         "dependencies": {
           "Betalgo.OpenAI": {
             "target": "Package",
-            "version": "[8.2.2, )"
+            "version": "[8.3.0, )"
           }
         },
         "imports": [

@@ -63,9 +63,10 @@
               "RelativeDocumentMoniker": "HmOpenAiGpt\\packages.config",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\packages.config",
               "RelativeToolTip": "HmOpenAiGpt\\packages.config",
-              "ViewState": "AQIAAAsAAAAAAAAAAABMwA8AAAAYAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAABVwA8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-06-03T16:05:55.565Z"
+              "WhenOpened": "2024-06-03T16:05:55.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -77,7 +78,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\QuestionFileWatcher.cs",
               "ViewState": "AQIAAEcAAAAAAAAAAAAQwA0AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T14:18:22.475Z"
+              "WhenOpened": "2024-06-03T14:18:22.475Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -89,7 +91,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\WindowsShutDownNotifier.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAowAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T12:38:33.181Z"
+              "WhenOpened": "2024-06-03T12:38:33.181Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -101,7 +104,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-03T05:38:39.119Z"
+              "WhenOpened": "2024-06-03T05:38:39.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -109,9 +113,10 @@
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AQIAABoBAAAAAAAAAAAAAAkBAAAAAAAA",
+              "ViewState": "AQIAABgBAAAAAAAAAAA8wAkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-06-03T05:31:24.077Z"
+              "WhenOpened": "2024-06-03T05:31:24.077Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -122,7 +127,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-03T03:10:41.727Z"
+              "WhenOpened": "2024-06-03T03:10:41.727Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -145,7 +151,7 @@
               "RelativeDocumentMoniker": "HmOpenAiGpt\\Main.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\Main.cs",
               "RelativeToolTip": "HmOpenAiGpt\\Main.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABwAAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAABFwBwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:52:25.196Z",
               "EditorCaption": ""
@@ -160,7 +166,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\GeminiAIChatSession.cs",
               "ViewState": "AQIAAHMAAAAAAAAAAAAUwC8BAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T02:43:34.614Z"
+              "WhenOpened": "2024-06-03T02:43:34.614Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

@@ -117,8 +117,8 @@ function pushPostExecMacroMemory(command) {
     // 情報は取得したので検索マーカー全て消す。
     let peRetry = hidemaru.setInterval(()=>{
         if (hidemaru.isScheduled?.()) return;
-        let success = hidemaru.postExecMacroMemory(command);
-        if (success === 0) return; // 再挑戦
+        let isScheduled = hidemaru.postExecMacroMemory(command);
+        if (isScheduled === 0) return; // 再挑戦
         hidemaru.clearInterval(peRetry);
     }, 100);
 }

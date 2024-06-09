@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.0.9
+ * HmOpenAiGpt v 1.1.1.1
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -114,7 +114,6 @@ function openHttpServer() {
 
 // hidemaru.postExecMacroMemoryの実行を確かなものとする関数
 function pushPostExecMacroMemory(command) {
-    // 情報は取得したので検索マーカー全て消す。
     let peRetry = hidemaru.setInterval(()=>{
         if (hidemaru.isScheduled?.()) return;
         let isScheduled = hidemaru.postExecMacroMemory(command);
@@ -167,7 +166,7 @@ function getQuestionText() {
 }
 
 // getQuestionText()関数は１回だけ呼び出すべきなのでキャッシュとして結果を保存しておく
-let questionTextCache = getQuestionText();
+let questionTextCache = "";
 
 // 質問内容があるかどうか
 function hasQuestionText() {
@@ -436,6 +435,9 @@ function gotoSelectEndPosition() {
 // メイン処理
 function doMain() {
     try {
+        // getQuestionText()関数は１回だけ呼び出すべきなのでキャッシュとして結果を保存しておく
+        questionTextCache = getQuestionText();
+
         // AIウィンドウフレームに絞るかどうか
         oneAIWindowFrameCheck();
 

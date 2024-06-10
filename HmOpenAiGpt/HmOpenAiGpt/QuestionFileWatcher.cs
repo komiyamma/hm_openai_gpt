@@ -66,10 +66,10 @@ internal partial class HmOpenAiGpt
             // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている
             // これによって値が進んでいることがわかる。
             // 正規表現を使用して数値を抽出
-            Regex regex = new Regex(@"HmOpenAiGpt\.(Message|Clear|Cancel)\((\d+)\)");
+            Regex regex = new Regex(@"HmOpenAiGpt\.(Message|Clear|Cancel|Pop)\((\d+)\)");
             Match match = regex.Match(question_text);
 
-            // コマンドの種類の格納場所(Message, Clear, Cancel)
+            // コマンドの種類の格納場所(Message, Clear, Cancel, Pop)
             string commandName = "";
             int questionNumber = 0;
             if (match.Success)
@@ -122,6 +122,13 @@ internal partial class HmOpenAiGpt
 
             // 現在まだＡＩの応答中なら、新たな質問は受け付けない
             if (isConversationing) { return; }
+
+            // 最後の「質問と応答」の履歴を削除
+            if (commandName == "Pop")
+            {
+                chatSession.PopCotent();
+                return;
+            }
 
             // ブロックフラグ
             isConversationing = true;

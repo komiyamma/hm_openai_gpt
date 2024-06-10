@@ -25,6 +25,8 @@ internal class ChatSession
     // OpenAIにわたす会話ログ。基本的にOpenAIは会話の文脈を覚えているので、メッセージログ的なものを渡す必要がある。
     static List<ChatMessage> messageList = new();
 
+    static object lockContents = new object();
+
 
     static int conversationUpdateCount = 1;
     public ChatSession(string openai_key, string _model, int maxtokens)
@@ -46,7 +48,10 @@ internal class ChatSession
         {
             ChatMessage.FromSystem(ChatGPTStartSystemMessage)
         };
-        messageList = list;
+        lock (lockContents)
+        {
+            messageList = list;
+        }
     }
 
 
@@ -178,12 +183,17 @@ internal class ChatSession
 
         // オプション。1000～2000トークンぐらいでセーフティかけておくのがいいだろう。
         // 元々ChatGPTの方でも4000トークンぐらいでセーフティがかかってる模様
-        var options = new ChatCompletionCreateRequest
+        ChatCompletionCreateRequest options = null;
+
+        lock (lockContents)
         {
-            Messages = messageList,
-            Model = model,
-            MaxTokens = iMaxTokens
-        };
+            options = new ChatCompletionCreateRequest
+            {
+                Messages = messageList,
+                Model = model,
+                MaxTokens = iMaxTokens
+            };
+        }
 
         // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。
         var completionResult = openAiService.ChatCompletion.CreateCompletionAsStream(options, null, false, ct);
@@ -194,14 +204,35 @@ internal class ChatSession
 
     public void AddQuestion(string question)
     {
-        messageList.Add(ChatMessage.FromUser(question));
+        lock (lockContents)
+        {
+            messageList.Add(ChatMessage.FromUser(question));
+        }
     }
 
     private static void AddAnswer(string answer_sum)
     {
-        // 今回の返答ををChatGPTの返答として記録しておく
-        messageList.Add(ChatMessage.FromAssistant(answer_sum));
+        lock (lockContents)
+        {
+            // 今回の返答ををChatGPTの返答として記録しておく
+            messageList.Add(ChatMessage.FromAssistant(answer_sum));
+        }
     }
+
+    // 最後の「質問と応答」の履歴を削除
+    public void PopCotent()
+    {
+        lock (lockContents)
+        {
+            var len = messageList.Count;
+            // 1番目はシステム。最後の２つを除去する。
+            if (len >= 3)
+            {
+                messageList.RemoveRange(len-2, 2);
+            }
+        }
+    }
+
 
     const string ErrorMsgUnknown = "Unknown Error:" + NewLine;
     // チャットの反復

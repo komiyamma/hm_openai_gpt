@@ -115,7 +115,6 @@ function openHttpServer() {
 // hidemaru.postExecMacroMemoryの実行を確かなものとする関数
 function pushPostExecMacroMemory(command) {
     let peRetry = hidemaru.setInterval(()=>{
-        if (hidemaru.isScheduled?.()) return;
         let isScheduled = hidemaru.postExecMacroMemory(command);
         if (isScheduled === 0) return; // 再挑戦
         hidemaru.clearInterval(peRetry);
@@ -321,6 +320,9 @@ function onHtmlEventHandler(command_name) {
         case "stop":
             stopAIAnswer();
             break;
+        case "pop":
+            popAIAnswer();
+            break;
         case "answer_complete":
             _completeAnswerText = "";
             if (argParamJsonObj?.onCompleteAnswerText && typeof(onCompleteAnswerText) == "function") {
@@ -346,6 +348,15 @@ function stopAIAnswer() {
     hidemaru.runProcess(commandline, currentMacroDirectory, "stdioAlive", "sjis");
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
+
+function popAIAnswer() {
+    let sendcmd = "HmOpenAiGpt.Pop(" + getTickCount() + ")\n";
+    let text = "履歴から除外";
+    let commandline = `"${aiExePath}" "HmOpenAiGpt.Pop()"`;
+    hidemaru.runProcess(commandline, currentMacroDirectory, "stdioAlive", "sjis");
+    hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
+}
+
 
 function resetAI() {
     let sendcmd = "HmOpenAiGpt.Clear(" + getTickCount() + ")\n";

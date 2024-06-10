@@ -65,6 +65,10 @@ internal partial class HmOpenAiGpt
             {
                 return;
             }
+            if (command.Contains("HmOpenAiGpt.Pop()"))
+            {
+                return;
+            }
         }
 
         // Windowsがシャットダウンするときに呼び出される処理を登録等

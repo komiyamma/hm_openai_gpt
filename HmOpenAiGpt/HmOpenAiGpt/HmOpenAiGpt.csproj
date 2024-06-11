@@ -5,9 +5,9 @@
 		<TargetFrameworks>net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<AssemblyVersion>1.1.1.1</AssemblyVersion>
-		<FileVersion>1.1.1.1</FileVersion>
-		<Version>1.1.1.1</Version>
+		<AssemblyVersion>1.1.1.2</AssemblyVersion>
+		<FileVersion>1.1.1.2</FileVersion>
+		<Version>1.1.1.2</Version>
 		<Authors>Akitsugu Komiyama</Authors>
 		<Copyright>2024 @ $(Authors)</Copyright>
 	</PropertyGroup>

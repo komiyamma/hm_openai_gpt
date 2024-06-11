@@ -4,6 +4,7 @@ using OpenAI.Managers;
 using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
 using OpenAI.ObjectModels.ResponseModels;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
@@ -97,16 +98,26 @@ internal class ChatSession
     // 質問してAIの応答の途中でキャンセルするためのトークン
     static CancellationTokenSource _cst;
 
-    static Object cancelLock = new Object();
+    static DateTime lastCheckTime = DateTime.MinValue; // 1分前の時間からのスタート
     private void CancelCheck()
     {
+        // 質問ファイルの日時調べる
+        FileInfo fileInfo = new FileInfo(HmOpenAiGpt.questionFilePath);
+        // ファイルが更新されていたら、チェック継続
+        if (fileInfo.LastWriteTime > lastCheckTime)
+        {
+            lastCheckTime = fileInfo.LastWriteTime;
+        }
+        else
+        {
+            return;
+        }
+
         string question_text = "";
 
-        lock (cancelLock) { 
-            using (StreamReader reader = new StreamReader(HmOpenAiGpt.questionFilePath, Encoding.UTF8))
-            {
-                question_text = reader.ReadToEnd();
-            }
+        using (StreamReader reader = new StreamReader(HmOpenAiGpt.questionFilePath, Encoding.UTF8))
+        {
+            question_text = reader.ReadToEnd();
         }
 
         // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている

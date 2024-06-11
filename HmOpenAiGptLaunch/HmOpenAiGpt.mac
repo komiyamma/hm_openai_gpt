@@ -280,12 +280,12 @@ function focusEditor() {
 }
 
 
-const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
-
 function outputAlert(msg) {
     let dll = loaddll(hidemaruExeDir + "\\HmOutputPane.dll");
     dll.dllfunc.Output(hidemaru.getCurrentWindowHandle(), msg + "\r\n");
 }
+
+const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
 
 // ユーザーの「質問内容」が入るテキストファイル
 const questionFileName = currentMacroDirectory + "\\HmOpenAiGpt.question.txt";

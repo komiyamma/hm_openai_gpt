@@ -174,7 +174,7 @@
                         }
                         let completeNumber = getCommandNumber(text);
                         if (completeNumber == lastQuestionNumber) {
-                            document.getElementById('model_answer_complete').innerHTML = "<hr><button  style='width:70px' onclick='copyAnswer()'>コピー</button> <button style='width:70px' onclick='pasteAnswer()'>貼り付け</button>";
+                            document.getElementById('model_answer_complete').innerHTML = "<hr><button onclick='copyAnswer()'>コピー</button>";
                             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
                         } else {
                             document.getElementById('model_answer_complete').innerHTML = "";

@@ -328,6 +328,9 @@ function onHtmlEventHandler(command_name) {
             pasteAIAnswer();
             focusEditor();
             break;
+        case "editor_focus":
+            focusEditor();
+            break;
         case "pop":
             popAIAnswer();
             break;

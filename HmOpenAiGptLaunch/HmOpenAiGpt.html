@@ -198,7 +198,7 @@
 		            window.alert('テキストのコピーに失敗しました: ', err);
                 }
              );
-            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "copy" });
+            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "editor_focus" });
         }
 
         // ページ読み込み完了に初回チェック

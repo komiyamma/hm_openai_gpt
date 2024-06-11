@@ -173,13 +173,11 @@
                             return;
                         }
                         let completeNumber = getCommandNumber(text);
-                        if (lastQuestionNumber == completeNumber) {
-                            if (completeNumber == lastQuestionNumber) {
-                                document.getElementById('model_answer_complete').innerHTML = "<hr><button  style='width:70px' onclick='copyAnswer()'>コピー</button> <button style='width:70px' onclick='pasteAnswer()'>貼り付け</button>";
-                                window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
-                            } else {
-                                document.getElementById('model_answer_complete').innerHTML = "";
-                            }
+                        if (completeNumber == lastQuestionNumber) {
+                            document.getElementById('model_answer_complete').innerHTML = "<hr><button  style='width:70px' onclick='copyAnswer()'>コピー</button> <button style='width:70px' onclick='pasteAnswer()'>貼り付け</button>";
+                            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
+                        } else {
+                            document.getElementById('model_answer_complete').innerHTML = "";
                         }
                     } catch (err) { }
                 })

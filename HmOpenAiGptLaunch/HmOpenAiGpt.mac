@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.1.2
+ * HmOpenAiGpt v 1.1.1.4
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -43,6 +43,14 @@ const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の
 
 // --------------------------------------------------
 
+const renderPaneTargetName = "HmOpenAiGpt";
+
+const hidemaruExeDir = hidemarudir();
+
+const currentMacroDirectory = currentmacrodirectory();
+
+const argParamJsonObj = getArgParamJsonObj();
+
 // JSONテキストの引数付きでこのマクロが呼ばれている場合にそれをオブジェクト化しておく
 function getArgParamJsonObj() {
     let arg_text = getarg(0);
@@ -55,11 +63,6 @@ function getArgParamJsonObj() {
     }
 }
 
-const renderPaneTargetName = "HmOpenAiGpt";
-
-const argParamJsonObj = getArgParamJsonObj();
-
-const currentMacroDirectory = currentmacrodirectory();
 
 // 宣言のみ。この空間マクロで時間を超えて共有するので初期化してはならない。
 var avilablePort;
@@ -272,11 +275,13 @@ function closeRenderPaneCommand() {
     renderpanecommand(renderpane_json_param);
 }
 
+function focusEditor() {
+    pushPostExecMacroMemory("js {setfocus(1);}");
+}
+
 
 const aiExePath = currentMacroDirectory + "\\HmOpenAiGpt.exe";
 
-// エラー用途
-const hidemaruExeDir = hidemarudir();
 function outputAlert(msg) {
     let dll = loaddll(hidemaruExeDir + "\\HmOutputPane.dll");
     dll.dllfunc.Output(hidemaru.getCurrentWindowHandle(), msg + "\r\n");
@@ -318,6 +323,10 @@ function onHtmlEventHandler(command_name) {
             break;
         case "stop":
             stopAIAnswer();
+            break;
+        case "paste":
+            pasteAIAnswer();
+            focusEditor();
             break;
         case "pop":
             popAIAnswer();

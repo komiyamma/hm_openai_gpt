@@ -190,10 +190,6 @@
                 });
         }
 
-        function pasteAnswer() {
-             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "paste" });
-        }
-
         // ページ読み込み完了に初回チェック
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(checkQuestionFile, 250); // 最初の１回だけ早めにちょっと問い合わせ

@@ -384,6 +384,14 @@ function pasteAIAnswer() {
     insert(answer_text);
 }
 
+function copyAIAnswer() {
+    let answer_text = hidemaru.loadTextFile(answerFileName);
+    if (!answer_text) {
+        return;
+    }
+    setclipboard(answer_text);
+}
+
 function getSelectedMenuCommand() {
     let menuLabelList = [
         {
@@ -432,6 +440,9 @@ function doSendCommand() {
             break;
         case "paste":
             pasteAIAnswer();
+            break;
+        case "copy":
+            pushPostExecMacroMemory("js {copyAIAnswer();}");
             break;
         default:
             // 未知のコマンドの場合の処理

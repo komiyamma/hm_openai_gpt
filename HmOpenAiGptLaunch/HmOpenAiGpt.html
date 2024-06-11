@@ -173,15 +173,11 @@
                             return;
                         }
                         let completeNumber = getCommandNumber(text);
-                        if (lastQuestionNumber == completeNumber) {
-                        if (lastQuestionNumber == completeNumber) {
-                            if (completeNumber == lastQuestionNumber) {
-                                document.getElementById('model_answer_complete').innerHTML = "<hr><button onclick='pasteAnswer()'>応答を貼り付け</button>";
-                                window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
-                            } else {
-                                document.getElementById('model_answer_complete').innerHTML = "";
-                            }
-                        }
+                        if (completeNumber == lastQuestionNumber) {
+                            document.getElementById('model_answer_complete').innerHTML = "<hr><button  style='width:70px' onclick='copyAnswer()'>コピー</button> <button style='width:70px' onclick='pasteAnswer()'>貼り付け</button>";
+                            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "answer_complete" });
+                        } else {
+                            document.getElementById('model_answer_complete').innerHTML = "";
                         }
                     } catch (err) { }
                 })
@@ -191,7 +187,18 @@
         }
 
         function pasteAnswer() {
-             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "paste" });
+            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "paste" });
+        }
+
+        function copyAnswer() {
+		    navigator.clipboard.writeText(prevAnswerText).then(
+                function() {
+                    ;
+                }, function(err) {
+		            window.alert('テキストのコピーに失敗しました: ', err);
+                }
+             );
+            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: "copy" });
         }
 
         // ページ読み込み完了に初回チェック

@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
 
-internal class ChatSession
+internal partial class ChatSession
 {
     static string model = Models.Gpt_3_5_Turbo;
 
@@ -53,6 +53,8 @@ internal class ChatSession
         {
             messageList = list;
         }
+
+        InitMessageListRemoverTask();
     }
 
 

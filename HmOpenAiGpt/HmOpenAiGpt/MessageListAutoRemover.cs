@@ -41,6 +41,8 @@ internal partial class ChatSession
                 return;
             }
 
+            // 質問追加⇒lastAnswerTime更新⇒listが3以上(userとmodelという意味で１セット以上)の判定⇒AIからのAnswerで追加。AIからのAnswerが1マイクロ秒で終わったりはしないので、この判定で十分正しい
+            // このconditionに合格してから、listに追加、などといったことはAIAnswerに必要な時間的に(1マイクロ秒で答えが返ってきたりはしないので)ありえない。
             var lastCondition = (DateTime.Now - lastAnswerTime).TotalMinutes >= 10; // 10分
             var tickConsition = (DateTime.Now - lastDeleteTime).TotalMinutes >= 1;  // 1分
 

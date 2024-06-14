@@ -1,2 +1,0 @@
-HmOpenAiGpt.Cancel(109168375)
-応答を停止

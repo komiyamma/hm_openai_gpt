@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.1.4
+ * HmOpenAiGpt v 1.1.1.5
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -9,6 +9,7 @@
 hidemaruversion "9.25.99";
 
 jsmode @"WebView2\HmOpenAiGpt";
+execjs currentmacrodirectory + "\\HmOpenAiGpt.mdformat.js";
 js {
 
 /// <reference path="../types/hm_jsmode.d.ts" />
@@ -384,6 +385,7 @@ function pasteAIAnswer() {
     if (!answer_text) {
         return;
     }
+    answer_text = formatMarkdownTable(answer_text + "\n"); // 最後に改行を足した状態で分析。テーブルの解析も安定する。
     insert(answer_text);
 }
 

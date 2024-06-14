@@ -50,6 +50,7 @@
         */
     </style>
     <script src="./HmOpenAiGpt.marked.js"></script>
+    <script src="./HmOpenAiGpt.mdformat.js"></script>
 </head>
 
 <body class="markdown-body">
@@ -191,7 +192,8 @@
         }
 
         function copyAnswer() {
-		    navigator.clipboard.writeText(prevAnswerText).then(
+            let formattedText = formatMarkdownTable(prevAnswerText + "\n"); // 最後に改行を足した状態で分析。テーブルの解析も安定する。
+		    navigator.clipboard.writeText(formattedText).then(
                 function() {
                     ;
                 }, function(err) {

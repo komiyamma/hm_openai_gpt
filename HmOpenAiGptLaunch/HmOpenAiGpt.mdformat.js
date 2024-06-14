@@ -20,10 +20,8 @@ function formatMarkdownTable(text) {
                 let cells = line.split("|");
                 // 最低でも||と先頭と末尾を意味する数が必要なので、３つに分割されるはず。
                 if (cells.length >= 3) {
-                    // 先頭と末尾はカット
-                    cells = cells.slice(1, -1);
-                    // 各セルで文字列の前後の空白はカット
-                    cells = cells.map(cell => cell.trim());
+                    // 先頭と末尾は要素をカット。要素内はtrim
+                    cells = cells.slice(1, -1).map(cell => cell.trim());
                 }
                 return cells;
             });
@@ -31,7 +29,7 @@ function formatMarkdownTable(text) {
             // それぞれのセルの長さ情報を確保する
             const cells_len_in_line = cells_in_line.map(
                                         cells => cells.map(cell => getCellLength(cell))
-                                    );
+                                      );
 
             // それぞれの列の最大の文字数
             let cells_maxlen = [];

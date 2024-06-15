@@ -103,34 +103,39 @@ internal partial class ChatSession
     static DateTime lastCheckTime = DateTime.MinValue; // 1分前の時間からのスタート
     private void CancelCheck()
     {
-        // 質問ファイルの日時調べる
-        FileInfo fileInfo = new FileInfo(HmOpenAiGpt.questionFilePath);
-        // ファイルが更新されていたら、チェック継続
-        if (fileInfo.LastWriteTime > lastCheckTime)
+        try
         {
-            lastCheckTime = fileInfo.LastWriteTime;
-        }
-        else
-        {
-            return;
-        }
+            // 質問ファイルの日時調べる
+            FileInfo fileInfo = new FileInfo(HmOpenAiGpt.questionFilePath);
+            // ファイルが更新されていたら、チェック継続
+            if (fileInfo.LastWriteTime > lastCheckTime)
+            {
+                lastCheckTime = fileInfo.LastWriteTime;
+            }
+            else
+            {
+                return;
+            }
 
-        string question_text = "";
+            string question_text = "";
 
-        using (StreamReader reader = new StreamReader(HmOpenAiGpt.questionFilePath, Encoding.UTF8))
-        {
-            question_text = reader.ReadToEnd();
-        }
+            using (StreamReader reader = new StreamReader(HmOpenAiGpt.questionFilePath, Encoding.UTF8))
+            {
+                question_text = reader.ReadToEnd();
+            }
 
-        // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている
-        // これによって値が進んでいることがわかる。
-        // 正規表現を使用して数値を抽出
-        Regex regex = new Regex(@"HmOpenAiGpt\.Cancel");
-        Match match = regex.Match(question_text);
-        if (match.Success)
+            // 1行目にコマンドと質問がされた時刻に相当するTickCount相当の値が入っている
+            // これによって値が進んでいることがわかる。
+            // 正規表現を使用して数値を抽出
+            Regex regex = new Regex(@"HmOpenAiGpt\.Cancel");
+            Match match = regex.Match(question_text);
+            if (match.Success)
+            {
+                this.Cancel();
+                conversationUpdateCancel = true;
+            }
+        } catch (Exception e)
         {
-            this.Cancel();
-            conversationUpdateCancel = true;
         }
     }
 

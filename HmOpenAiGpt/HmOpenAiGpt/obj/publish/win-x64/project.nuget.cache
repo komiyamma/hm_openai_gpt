@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+6EHPy4mMSU=",
+  "dgSpecHash": "uXftDoCqLOY=",
   "success": true,
   "projectFilePath": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\master\\.nuget\\packages\\betalgo.openai\\8.5.0\\betalgo.openai.8.5.0.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\betalgo.openai\\8.3.0\\betalgo.openai.8.3.0.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",

@@ -75,9 +75,8 @@ if (! Boolean(avilablePort) ) {
     openHttpServer();
 }
 
-const httpServerCommandFileName = currentMacroDirectory + "\\HmSimpleHttpServer.txt";
-
-deletefile(httpServerCommandFileName);
+// const httpServerCommandFileName = currentMacroDirectory + "\\HmSimpleHttpServer.txt";
+// deletefile(httpServerCommandFileName);
 
 // 簡易Httpサーバーを立てる。ポート自体付きでサーバーを立てることが出来ない限定的なマシンだと失敗するだろう。
 function openHttpServer() {
@@ -382,8 +381,7 @@ function resetAI() {
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");
     hidemaru.saveTextFile(completeFileName, "HmOpenAiGpt.MessageCompleteClear(0)\n", "utf8");
-
-    hidemaru.saveTextFile(httpServerCommandFileName, String( hidemaru.getCurrentWindowHandle() ));
+//  hidemaru.saveTextFile(httpServerCommandFileName, String( hidemaru.getCurrentWindowHandle() ));
 }
 
 function pasteAIAnswer() {

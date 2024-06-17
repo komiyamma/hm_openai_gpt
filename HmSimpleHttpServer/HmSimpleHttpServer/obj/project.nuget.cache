@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gqDFIhw4b7U=",
+  "dgSpecHash": "ipeKvssQeyM=",
   "success": true,
-  "projectFilePath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+  "projectFilePath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\master\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.5\\microsoft.dotnet.ilcompiler.8.0.5.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.5\\microsoft.net.illink.tasks.8.0.5.nupkg.sha512",

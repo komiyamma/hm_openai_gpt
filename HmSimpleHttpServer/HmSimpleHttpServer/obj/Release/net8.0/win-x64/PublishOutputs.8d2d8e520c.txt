@@ -1,0 +1,2 @@
+G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\publish\win-x64\HmSimpleHttpServer.exe
+G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\publish\win-x64\HmSimpleHttpServer.pdb

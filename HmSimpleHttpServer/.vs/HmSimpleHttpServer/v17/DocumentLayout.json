@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\",
+  "WorkspaceRootPath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmsimplehttpserver\\hmsimplehttpserver\\hmsimplehttpserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|solutionrelative:hmsimplehttpserver\\hmsimplehttpserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmsimplehttpserver\\hmsimplehttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_google_gemini\\hmsimplehttpserver\\hmsimplehttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|solutionrelative:hmsimplehttpserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_openai_gpt\\hmsimplehttpserver\\hmsimplehttpserver\\hmsimplehttpserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_google_gemini\\hmsimplehttpserver\\hmsimplehttpserver\\hmsimplehttpserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|solutionrelative:hmsimplehttpserver\\hmsimplehttpserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|g:\\repogitory\\hm_google_gemini\\hmsimplehttpserver\\hmsimplehttpserver\\hmsimplehttpserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{9C969C4B-36EF-4257-9F8D-84FD49C2D73D}|HmSimpleHttpServer\\HmSimpleHttpServer.csproj|solutionrelative:hmsimplehttpserver\\hmsimplehttpserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +30,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HmSimpleHttpServer.csproj",
-              "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "DocumentMoniker": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
               "RelativeDocumentMoniker": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
-              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "ToolTip": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
               "RelativeToolTip": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-06-04T03:52:10.97Z",
               "EditorCaption": ""
@@ -45,23 +45,22 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "HmSimpleHttpServer",
-              "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "DocumentMoniker": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
               "RelativeDocumentMoniker": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
-              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+              "ToolTip": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
               "RelativeToolTip": "HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-04T03:51:38.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T03:51:38.758Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\Program.cs",
+              "DocumentMoniker": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\Program.cs",
               "RelativeDocumentMoniker": "HmSimpleHttpServer\\Program.cs",
-              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\Program.cs",
+              "ToolTip": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\Program.cs",
               "RelativeToolTip": "HmSimpleHttpServer\\Program.cs",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAcwGwAAABMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-04T03:51:21.715Z",
               "EditorCaption": ""

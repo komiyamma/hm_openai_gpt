@@ -110,13 +110,13 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0.1",
+    "version": "1.1.0.1",
     "restore": {
-      "projectUniqueName": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+      "projectUniqueName": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
       "projectName": "HmSimpleHttpServer",
-      "projectPath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+      "projectPath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
       "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
-      "outputPath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\obj\\",
+      "outputPath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -131,6 +131,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

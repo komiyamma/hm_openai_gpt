@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\master\\source\\repos\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj": {}
+    "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\master\\source\\repos\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj": {
-      "version": "1.0.0.1",
+    "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj": {
+      "version": "1.1.0.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\master\\source\\repos\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+        "projectUniqueName": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
         "projectName": "HmSimpleHttpServer",
-        "projectPath": "C:\\Users\\master\\source\\repos\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+        "projectPath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
         "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\master\\source\\repos\\HmSimpleHttpServer\\HmSimpleHttpServer\\obj\\publish\\win-x64\\",
+        "outputPath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

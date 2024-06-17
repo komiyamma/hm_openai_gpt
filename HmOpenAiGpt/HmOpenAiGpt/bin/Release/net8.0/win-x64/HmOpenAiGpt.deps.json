@@ -9,7 +9,7 @@
     ".NETCoreApp,Version=v8.0/win-x64": {
       "HmOpenAiGpt/1.1.1.7": {
         "dependencies": {
-          "Betalgo.OpenAI": "8.3.0",
+          "Betalgo.OpenAI": "8.5.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "8.0.5"
         },
         "runtime": {
@@ -736,15 +736,15 @@
           }
         }
       },
-      "Betalgo.OpenAI/8.3.0": {
+      "Betalgo.OpenAI/8.5.0": {
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0"
         },
         "runtime": {
           "lib/net8.0/OpenAI.dll": {
-            "assemblyVersion": "8.3.0.0",
-            "fileVersion": "8.3.0.0"
+            "assemblyVersion": "8.5.0.0",
+            "fileVersion": "8.5.0.0"
           }
         }
       },
@@ -916,12 +916,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Betalgo.OpenAI/8.3.0": {
+    "Betalgo.OpenAI/8.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Y5hZNG74/YbDQP7BnUP7z0Sdfvd2fnTzzGQU0nGaaQAeGeGvftHzAxMH+5oShrMgX10FE6YnXWkCZwrgitNFag==",
-      "path": "betalgo.openai/8.3.0",
-      "hashPath": "betalgo.openai.8.3.0.nupkg.sha512"
+      "sha512": "sha512-Uy0dsk1E5empz2MUxLsD7O13JAhKj0vYACW5e66MVdgAoe6ggFqIRtOuQrNMVetQpd0OGMeFrvgVxd1yFrzMDw==",
+      "path": "betalgo.openai/8.5.0",
+      "hashPath": "betalgo.openai.8.5.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/8.0.0": {
       "type": "package",

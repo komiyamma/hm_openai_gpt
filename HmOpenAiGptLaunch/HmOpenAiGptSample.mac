@@ -51,7 +51,7 @@ function onCompleteAnswerText(answer_text) {
     // メモリ内実行なので、currentmacrofilename() は存在すらしないので注意
 
     // 行末に移動
-    golineend();
+    golineend2();
     // 前後を改行で挟み、挿入
     insert("\n" + answer_text + "\n");
 }

@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.1.9
+ * HmOpenAiGpt v 1.1.2.1
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -344,6 +344,8 @@ function onHtmlEventHandler(command_name) {
                 // AIの回答の原文を取得
                 let answer_text = hidemaru.loadTextFile(answerFileName) || "";
                 if (!answer_text) { return; }
+                // テーブルを整形
+                answer_text = formatMarkdownTable(answer_text + "\n")
 
                 // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
                 const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");

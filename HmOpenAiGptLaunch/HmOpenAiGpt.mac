@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.2.1
+ * HmOpenAiGpt v 1.1.2.4
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -75,8 +75,8 @@ if (! Boolean(avilablePort) ) {
     openHttpServer();
 }
 
-// const httpServerCommandFileName = currentMacroDirectory + "\\HmSimpleHttpServer.txt";
-// deletefile(httpServerCommandFileName);
+const httpServerCommandFileName = currentMacroDirectory + "\\HmSimpleHttpServer.txt";
+deletefile(httpServerCommandFileName);
 
 // 簡易Httpサーバーを立てる。ポート自体付きでサーバーを立てることが出来ない限定的なマシンだと失敗するだろう。
 function openHttpServer() {
@@ -121,8 +121,20 @@ function openHttpServer() {
 
 // hidemaru.postExecMacroMemoryの実行を確かなものとする関数
 function pushPostExecMacroMemory(command) {
+    let isScheduled = 0;
+    // まずは0ディレイで実行を試みる。setTimeoutに乗せる。
+    hidemaru.setTimeout(()=>{
+        if (!isScheduled) {
+            isScheduled = hidemaru.postExecMacroMemory(command) ?? 1;
+        }
+    }, 0);
+
+    // この下の処理が必要な理由は秀丸エディタv9.22～v9.34のバグのため。setTimeoutが同じフレーム(1秒60フレーム)内に
+    // ２回実行されると、一方が実行されないバグのため。このため、上の処理が本当に成功したのか？ の確認が必要になる。
     let peRetry = hidemaru.setInterval(()=>{
-        let isScheduled = hidemaru.postExecMacroMemory(command) ?? 1;
+        if (!isScheduled) {
+            isScheduled = hidemaru.postExecMacroMemory(command) ?? 1;
+        }
         if (isScheduled) { hidemaru.clearInterval(peRetry); }
     }, 100);
 }
@@ -383,7 +395,8 @@ function resetAI() {
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
     hidemaru.saveTextFile(answerFileName, "", "utf8");
     hidemaru.saveTextFile(completeFileName, "HmOpenAiGpt.MessageCompleteClear(0)\n", "utf8");
-//  hidemaru.saveTextFile(httpServerCommandFileName, String( hidemaru.getCurrentWindowHandle() ));
+    hidemaru.saveTextFile(httpServerCommandFileName, String( hidemaru.getCurrentWindowHandle() ));
+    avilablePort = undefined;
 }
 
 function pasteAIAnswer() {

@@ -378,7 +378,6 @@ G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\hostfxr.dll
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\hostpolicy.dll
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\mscordaccore.dll
-G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.524.21615.dll
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\mscordbi.dll
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\mscorrc.dll
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\msquic.dll
@@ -393,3 +392,4 @@ G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\win-x64\HmSimpleHttpServer.pdb
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\win-x64\HmSimpleHttpServer.genruntimeconfig.cache
 G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\obj\Release\net8.0\win-x64\ref\HmSimpleHttpServer.dll
+G:\repogitory\hm_google_gemini\HmSimpleHttpServer\HmSimpleHttpServer\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.624.26715.dll

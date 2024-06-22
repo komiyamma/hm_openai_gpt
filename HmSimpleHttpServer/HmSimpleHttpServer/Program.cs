@@ -32,7 +32,7 @@ internal class HmSimpleHttpServer
 
         watcher.Filter = targetFileName;
 
-        watcher.NotifyFilter = NotifyFilters.LastWrite;
+        watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.CreationTime;
 
         watcher.Changed += new FileSystemEventHandler(OnCreateCommandFileChanged);
 
@@ -41,28 +41,55 @@ internal class HmSimpleHttpServer
 
     private static void OnCreateCommandFileChanged(object sender, FileSystemEventArgs e)
     {
-
-        FileInfo fileInfo = new FileInfo(targetFileName);
-
         if (File.Exists(targetFileName) == false)
         {
             return;
         }
 
-        // ファイルサイズが0なら終了
-        if (fileInfo.Length > 0)
+        bool mustClose = false;
+        using (StreamReader sr = new StreamReader(targetFileName))
         {
-            server?.Destroy();
+            try
+            {
+                string strWindowHandle = sr.ReadToEnd();
+                nint hTargetWindowHandle = (nint)long.Parse(strWindowHandle);
+                if (hmWndHandle == hTargetWindowHandle)
+                {
+                    mustClose = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        if (mustClose)
+        {
+            try
+            {
+                ClearCommandFile();
+            }
+            catch (Exception) { }
+            try
+            {
+                server?.Destroy();
+            }
+            catch (Exception) { }
             Environment.Exit(0);
         }
     }
 
     static async void ClearCommandFile()
     {
-        for (int i = 0; i <10; i++)
+        for (int i = 0; i < 10; i++)
         {
             try
             {
+                if (!File.Exists(targetFileName))
+                {
+                    break;
+                }
+
                 File.Delete(targetFileName);
                 break;
             }
@@ -183,7 +210,7 @@ internal class HmSimpleHttpServer
             psi.RedirectStandardOutput = false;
             psi.RedirectStandardError = false;
             psi.WindowStyle = ProcessWindowStyle.Hidden;
-
+            phpProcess.Exited += phpProcess_Exited;
             phpProcess.Start();
             return port;
         }
@@ -192,6 +219,11 @@ internal class HmSimpleHttpServer
             Console.WriteLine(ex.ToString() + "\r\n");
         }
         return 0;
+    }
+
+    private void phpProcess_Exited(object sender, EventArgs e)
+    {
+        ;
     }
 
     private int Destroy()

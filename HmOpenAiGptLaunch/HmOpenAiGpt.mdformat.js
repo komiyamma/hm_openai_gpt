@@ -14,7 +14,6 @@ function formatMarkdownTable(text) {
                              .filter(line => !/^\s*$/.test(line));
 
             // 各行を「|」で分割し、セル内の文字列を確保する
-            // 各行を「|」で分割し、セル内の文字列を確保する
             let cells_in_line = lines.map(line => {
                 // 行を「|」で分割
                 let cells = line.split("|");

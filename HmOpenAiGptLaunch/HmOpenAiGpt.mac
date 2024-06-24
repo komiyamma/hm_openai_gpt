@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.2.4
+ * HmOpenAiGpt v 1.1.2.5
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -319,10 +319,7 @@ function doSendQuestionContent() {
     hidemaru.runProcess(commandline, currentMacroDirectory, "stdioAlive", "sjis");
 
     let sendcmd = "HmOpenAiGpt.Message(" + getTickCount() + ")\n";
-    hidemaru.setTimeout(
-        () => { hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8"); },
-        200
-    );
+    hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
 
 // ＡＩからの原文をユーザーがマクロから直接要求する場合用。
@@ -397,6 +394,7 @@ function resetAI() {
     hidemaru.saveTextFile(completeFileName, "HmOpenAiGpt.MessageCompleteClear(0)\n", "utf8");
     hidemaru.saveTextFile(httpServerCommandFileName, String( hidemaru.getCurrentWindowHandle() ));
     avilablePort = undefined;
+    closeRenderPaneCommand();
 }
 
 function pasteAIAnswer() {

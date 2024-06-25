@@ -86,7 +86,7 @@ function openHttpServer() {
     }
 
     try {
-        // このウィンドウハンドルの値を私ながら簡易サーバーを立ち上げる。
+        // このウィンドウハンドルの値を渡しながら簡易サーバーを立ち上げる。
         let currentWindowHandle = hidemaru.getCurrentWindowHandle();
 
         // このウィンドウハンドルがなくなったら、2秒後に「該当の簡易サーバー」は自動終了する

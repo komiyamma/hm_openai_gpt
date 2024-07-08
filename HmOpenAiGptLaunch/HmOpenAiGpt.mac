@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.2.5
+ * HmOpenAiGpt v 1.1.2.6
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -313,7 +313,7 @@ function getTickCount() {
 }
 
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
-function doSendQuestionContent() {
+function sendQuestionContent() {
     let text = questionTextCache;
     let commandline = `"${aiExePath}" "${openAiKey}" "${modelName}" "${maxTokens}"`;
     hidemaru.runProcess(commandline, currentMacroDirectory, "stdioAlive", "sjis");
@@ -446,7 +446,7 @@ function getSelectedMenuCommand() {
 }
 
 // テキストを選択せずに、このマクロを実行した時は、コマンド選択
-function doSendCommand() {
+function sendCommand() {
     let selectedCommand = getSelectedMenuCommand();
     switch (selectedCommand) {
         // メニューをキャンセルなら""
@@ -499,13 +499,13 @@ function doMain() {
         // 質問があるなら
         if (hasQuestionText()) {
             // それをＡＩへの質問内容として送信
-            doSendQuestionContent();
+            sendQuestionContent();
             // 選択を解除し、選択の最後の座標へと移動
             gotoSelectEndPosition();
 
         } else if (mustShowMenu()) {
             // それ以外なら、ＡＩにコマンドの送信
-            doSendCommand();
+            sendCommand();
         }
     } catch (err) {
         outputAlert(err);

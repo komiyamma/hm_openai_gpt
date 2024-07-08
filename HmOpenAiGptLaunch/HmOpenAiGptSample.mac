@@ -24,8 +24,8 @@ function onRequestQuestionText() {
 
     let menu_command_list =
     [
-       "以下の文章を英語に翻訳してください。\n\n###\n" + selectedtext,
-       "以下の文章を日本語に翻訳してください。\n\n###\n" + selectedtext,
+       "以下の文章を英語に翻訳してください。\n\n---\n" + selectedtext,
+       "以下の文章を日本語に翻訳してください。\n\n---\n" + selectedtext,
     ];
 
     let selectedMenuID = menuarray(menu_label_list);

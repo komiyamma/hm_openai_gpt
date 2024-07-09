@@ -355,6 +355,7 @@ function onHtmlEventHandler(command_name) {
                 if (!answer_text) { return; }
                 // テーブルを整形
                 answer_text = formatMarkdownTable(answer_text + "\n")
+                answer_text = answer_text.replace(/\n+$/, '');
 
                 // このファイルはC#が出力しているので、\nのまま。hidemaru.loadTextFile でも\r\n にはならない。
                 const normalizeNewLineText = answer_text.replaceAll("\r\n", "\n").replaceAll("\n", "\r\n");
@@ -403,6 +404,7 @@ function pasteAIAnswer() {
         return;
     }
     answer_text = formatMarkdownTable(answer_text + "\n"); // 最後に改行を足した状態で分析。テーブルの解析も安定する。
+    answer_text = answer_text.replace(/\n+$/, '');
     insert(answer_text);
 }
 

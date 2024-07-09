@@ -193,6 +193,7 @@
 
         function copyAnswer() {
             let formattedText = formatMarkdownTable(prevAnswerText + "\n"); // 最後に改行を足した状態で分析。テーブルの解析も安定する。
+            formattedText = formattedText.replace(/\n+$/, '\n');
 		    navigator.clipboard.writeText(formattedText).then(
                 function() {
                     ;

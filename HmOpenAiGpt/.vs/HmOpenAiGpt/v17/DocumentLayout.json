@@ -69,7 +69,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\MessageListAutoRemover.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAABqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T01:17:00.043Z"
+              "WhenOpened": "2024-06-12T01:17:00.043Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -79,9 +80,10 @@
               "RelativeDocumentMoniker": "HmOpenAiGpt\\packages.config",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\packages.config",
               "RelativeToolTip": "HmOpenAiGpt\\packages.config",
-              "ViewState": "AQIAAAUAAAAAAAAAAIBhwA8AAAAYAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAABlwA8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-06-03T16:05:55.565Z"
+              "WhenOpened": "2024-06-03T16:05:55.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -93,7 +95,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\QuestionFileWatcher.cs",
               "ViewState": "AQIAAFwAAAAAAAAAAAAAwIAAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T14:18:22.475Z"
+              "WhenOpened": "2024-06-03T14:18:22.475Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -105,7 +108,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\WindowsShutDownNotifier.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAowAYAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T12:38:33.181Z"
+              "WhenOpened": "2024-06-03T12:38:33.181Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -117,7 +121,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-03T05:38:39.119Z"
+              "WhenOpened": "2024-06-03T05:38:39.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -125,7 +130,6 @@
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AQIAABQBAAAAAAAAAABVwAkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2024-06-03T05:31:24.077Z"
             },
@@ -138,7 +142,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-03T03:10:41.727Z"
+              "WhenOpened": "2024-06-03T03:10:41.727Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -150,7 +155,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\IOTextController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAGcAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T02:58:50.021Z"
+              "WhenOpened": "2024-06-03T02:58:50.021Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -175,7 +181,8 @@
               "RelativeToolTip": "HmOpenAiGpt\\GeminiAIChatSession.cs",
               "ViewState": "AQIAAPkAAAAAAAAAAAAhwAoBAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T02:43:34.614Z"
+              "WhenOpened": "2024-06-03T02:43:34.614Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -185,9 +192,10 @@
               "RelativeDocumentMoniker": "HmOpenAiGpt\\GeminiAIController.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\GeminiAIController.cs",
               "RelativeToolTip": "HmOpenAiGpt\\GeminiAIController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAEBYwAoAAAABAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAqwAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T02:43:14.634Z"
+              "WhenOpened": "2024-06-03T02:43:14.634Z",
+              "EditorCaption": ""
             }
           ]
         }

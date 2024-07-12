@@ -194,7 +194,6 @@ G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\c
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\hostfxr.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\hostpolicy.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordaccore.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.524.21615.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordbi.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscorrc.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\msquic.dll
@@ -208,3 +207,4 @@ G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\H
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\refint\HmOpenAiGpt.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\HmOpenAiGpt.genruntimeconfig.cache
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\ref\HmOpenAiGpt.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.724.31311.dll

@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.2.7
+ * HmOpenAiGpt v 1.1.2.8
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -29,7 +29,7 @@ if (!openAiKey) {
     throw "OPENAIのキーが空です";
 }
 
-const modelName = "gpt-3.5-turbo"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
+const modelName = "gpt-4o-mini"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
                                    // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意
 
 const maxTokens = 4000;            // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。

@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.1.2.6
+ * HmOpenAiGpt v 1.1.2.7
  *
  * Copyright (c) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -50,7 +50,7 @@ const hidemaruExeDir = hidemarudir();
 
 const currentMacroDirectory = currentmacrodirectory();
 
-const argParamJsonObj = getArgParamJsonObj();
+let argParamJsonObj = getArgParamJsonObj();
 
 // JSONテキストの引数付きでこのマクロが呼ばれている場合にそれをオブジェクト化しておく
 function getArgParamJsonObj() {
@@ -350,6 +350,7 @@ function onHtmlEventHandler(command_name) {
         case "answer_complete":
             _completeAnswerText = "";
             if (argParamJsonObj?.onCompleteAnswerText && typeof(onCompleteAnswerText) == "function") {
+                argParamJsonObj.onCompleteAnswerText = undefined;
                 // AIの回答の原文を取得
                 let answer_text = hidemaru.loadTextFile(answerFileName) || "";
                 if (!answer_text) { return; }
@@ -511,6 +512,10 @@ function doMain() {
         }
     } catch (err) {
         outputAlert(err);
+    } finally {
+        if (argParamJsonObj?.onRequestQuestionText) {
+            argParamJsonObj.onRequestQuestionText = undefined;
+        }
     }
 }
 

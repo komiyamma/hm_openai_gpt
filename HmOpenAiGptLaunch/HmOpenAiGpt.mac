@@ -312,13 +312,31 @@ function getTickCount() {
     return tickcount() & 0x7fffffff;
 }
 
+// 質問番号(回答番号が来た時にこのプロセスが受け入れるべきだという判別に利用する)
+if (typeof(questionKeyArray) == "undefined") {
+    var questionKeyArray = [];
+}
+
+function pushQuestionKey(key) {
+    questionKeyArray.push(key);
+    if (questionKeyArray.length > 5) {
+        questionKeyArray.shift();
+    }
+}
+
+function isContainsQuestionKey(key) {
+    return questionKeyArray.includes(key);
+}
+
 // 選択テキストを質問内容としてファイルに保存し、ＡＩを指定のパラメータやモデルで起動
 function sendQuestionContent() {
     let text = questionTextCache;
     let commandline = `"${aiExePath}" "${openAiKey}" "${modelName}" "${maxTokens}"`;
     hidemaru.runProcess(commandline, currentMacroDirectory, "stdioAlive", "sjis");
 
-    let sendcmd = "HmOpenAiGpt.Message(" + getTickCount() + ")\n";
+    let questionKey = getTickCount();
+    pushQuestionKey(String(questionKey));
+    let sendcmd = "HmOpenAiGpt.Message(" + questionKey + ")\n";
     hidemaru.saveTextFile(questionFileName, sendcmd + text, "utf8");
 }
 
@@ -352,6 +370,11 @@ function onHtmlEventHandler(command_obj) {
             popAIAnswer();
             break;
         case "answer_complete":
+            if (command_obj.key && isContainsQuestionKey(command_obj.key)) {
+                ; // このプロセスが引き受ける。合格
+            } else {
+                return;
+            }
             _completeAnswerText = "";
             if (argParamJsonObj?.onCompleteAnswerText && typeof(onCompleteAnswerText) == "function") {
                 argParamJsonObj.onCompleteAnswerText = undefined;

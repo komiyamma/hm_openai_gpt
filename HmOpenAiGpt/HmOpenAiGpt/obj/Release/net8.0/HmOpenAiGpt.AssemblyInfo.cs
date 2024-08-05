@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2024 @ Akitsugu Komiyama")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.7")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1.7+1511fa87b5fb72eb8490a9561a36a5af80823b1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1.7+3b726e94e14c724551e853898f3966a27321a20e")]
 [assembly: System.Reflection.AssemblyProductAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.7")]

@@ -186,6 +186,7 @@
                             document.getElementById('model_answer_complete').innerHTML = "<hr><button onclick='copyAnswer()'>コピー</button>";
 					        let message_obj = {
 					            command: "answer_complete",
+                                key: 
 					        };
 					        let json_text = JSON.stringify(message_obj);
                             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
@@ -217,7 +218,11 @@
 		            window.alert('テキストのコピーに失敗しました: ', err);
                 }
              );
-            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: {command:"editor_focus"} });
+	        let message_obj = {
+	            command: "editor_focus",
+	        };
+	        let json_text = JSON.stringify(message_obj);
+            window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
         }
 
         // ページ読み込み完了に初回チェック

@@ -1,6 +1,6 @@
 # HmOpenAiGpt
 
-![HmOpenAiGpt v1.1.1](https://img.shields.io/badge/HmOpenAiGpt-v1.1.1-6479ff.svg)
+![HmOpenAiGpt v1.1.2](https://img.shields.io/badge/HmOpenAiGpt-v1.1.2-6479ff.svg)
 ![gpt 3.5 turbo](https://img.shields.io/badge/gpt-3.5_turbo-6479ff.svg)
 ![gpt 4o](https://img.shields.io/badge/gpt-4o-6479ff.svg)
 ![gpt 4o mini](https://img.shields.io/badge/gpt-4o_mini-6479ff.svg)

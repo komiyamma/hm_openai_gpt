@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Betalgo.OpenAI/8.6.1": {
+      "Betalgo.OpenAI/8.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -295,7 +295,7 @@
       }
     },
     "net8.0/win-x64": {
-      "Betalgo.OpenAI/8.6.1": {
+      "Betalgo.OpenAI/8.6.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -589,16 +589,16 @@
     }
   },
   "libraries": {
-    "Betalgo.OpenAI/8.6.1": {
-      "sha512": "L8on6sR2TksmP9LgIgCjabtOSAlGt+rcggCe5wPa/o7+2G/deFe8iaHdnnC88POYDj5WniRvlinD+xh1os6UNQ==",
+    "Betalgo.OpenAI/8.6.2": {
+      "sha512": "11YYHFERnJOLJ0b5tBBq1DZx+4Y9u9UitCE7MvrnAfoe+szneGPi68xIY8YdZaXDXbjygc+FCRqOTEnltrnAtQ==",
       "type": "package",
-      "path": "betalgo.openai/8.6.1",
+      "path": "betalgo.openai/8.6.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Betalgo-Ranul-OpenAI-icon.png",
         "Readme.md",
-        "betalgo.openai.8.6.1.nupkg.sha512",
+        "betalgo.openai.8.6.2.nupkg.sha512",
         "betalgo.openai.nuspec",
         "lib/net6.0/OpenAI.dll",
         "lib/net6.0/OpenAI.xml",
@@ -1107,7 +1107,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Betalgo.OpenAI >= 8.6.1"
+      "Betalgo.OpenAI >= 8.6.2"
     ]
   },
   "packageFolders": {
@@ -1115,7 +1115,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.1.1.7",
+    "version": "1.1.1.8",
     "restore": {
       "projectUniqueName": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
       "projectName": "HmOpenAiGpt",
@@ -1163,7 +1163,7 @@
         "dependencies": {
           "Betalgo.OpenAI": {
             "target": "Package",
-            "version": "[8.6.1, )"
+            "version": "[8.6.2, )"
           }
         },
         "imports": [
@@ -1180,15 +1180,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[8.0.7, 8.0.7]"
+            "version": "[8.0.8, 8.0.8]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[8.0.7, 8.0.7]"
+            "version": "[8.0.8, 8.0.8]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[8.0.7, 8.0.7]"
+            "version": "[8.0.8, 8.0.8]"
           }
         ],
         "frameworkReferences": {
@@ -1196,7 +1196,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

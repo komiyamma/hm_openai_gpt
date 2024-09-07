@@ -134,7 +134,7 @@ internal partial class ChatSession
                 this.Cancel();
                 conversationUpdateCancel = true;
             }
-        } catch (Exception e)
+        } catch (Exception)
         {
         }
     }

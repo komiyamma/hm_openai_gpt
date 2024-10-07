@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Betalgo.OpenAI" Version="8.6.2" />
+		<PackageReference Include="Betalgo.OpenAI" Version="8.7.1" />
 	</ItemGroup>
 
 </Project>

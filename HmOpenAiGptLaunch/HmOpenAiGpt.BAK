@@ -186,7 +186,7 @@
                             document.getElementById('model_answer_complete').innerHTML = "<hr><button onclick='copyAnswer()'>コピー</button>";
 					        let message_obj = {
 					            command: "answer_complete",
-                                key: 
+                                key: completeNumber
 					        };
 					        let json_text = JSON.stringify(message_obj);
                             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
@@ -226,12 +226,19 @@
         }
 
         // ページ読み込み完了に初回チェック
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
             setTimeout(checkQuestionFile, 250); // 最初の１回だけ早めにちょっと問い合わせ
             setInterval(checkQuestionFile, 500); // 0.5秒ごとに監視
             setInterval(checkAnswerFile, 500); // 0.5秒ごとに監視
             setInterval(checkCompleteFile, 500); // 0.5秒ごとに監視
         });
+
+		document.addEventListener('copy', (event) => {
+            const selection = window.getSelection();
+            if (selection.toString().length === 0) {
+                copyAnswer();
+            }
+		});
     </script>
 </body>
 

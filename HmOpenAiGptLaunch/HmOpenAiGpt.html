@@ -3,6 +3,7 @@
 
 <head>
     <title>HmOpenAiGpt</title>
+    <meta charset="utf-8">
     <style>
         @media (prefers-color-scheme: dark) {
             body {
@@ -72,19 +73,19 @@
         const btn_stop = document.getElementById("btn_stop");
         // ボタンがクリックされた時の処理。行数をjsonテキストにして、秀丸マクロのjsmode内関数を呼び出す(引数にjson_text)を渡す
         btn_stop.addEventListener("click", function () {
-	        let message_obj = {
-	            command: "stop",
-	        };
-	        let json_text = JSON.stringify(message_obj);
+            let message_obj = {
+                command: "stop",
+            };
+            let json_text = JSON.stringify(message_obj);
             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
         });
         // ボタンを取得
         const btn_reset = document.getElementById("btn_reset");
         btn_reset.addEventListener("click", function () {
-	        let message_obj = {
-	            command: "reset",
-	        };
-	        let json_text = JSON.stringify(message_obj);
+            let message_obj = {
+                command: "reset",
+            };
+            let json_text = JSON.stringify(message_obj);
             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
         });
 
@@ -184,11 +185,11 @@
                         let completeNumber = getCommandNumber(text);
                         if (completeNumber == lastQuestionNumber) {
                             document.getElementById('model_answer_complete').innerHTML = "<hr><button onclick='copyAnswer()'>コピー</button>";
-					        let message_obj = {
-					            command: "answer_complete",
+                            let message_obj = {
+                                command: "answer_complete",
                                 key: completeNumber
-					        };
-					        let json_text = JSON.stringify(message_obj);
+                            };
+                            let json_text = JSON.stringify(message_obj);
                             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
                         } else {
                             document.getElementById('model_answer_complete').innerHTML = "";
@@ -201,36 +202,44 @@
         }
 
         function pasteAnswer() {
-	        let message_obj = {
-	            command: "paste",
-	        };
-	        let json_text = JSON.stringify(message_obj);
+            let message_obj = {
+                command: "paste",
+            };
+            let json_text = JSON.stringify(message_obj);
             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
         }
 
         function copyAnswer() {
             let formattedText = formatMarkdownTable(prevAnswerText + "\n"); // 最後に改行を足した状態で分析。テーブルの解析も安定する。
             formattedText = formattedText.replace(/\n+$/, '\n');
-		    navigator.clipboard.writeText(formattedText).then(
-                function() {
+            navigator.clipboard.writeText(formattedText).then(
+                function () {
                     ;
-                }, function(err) {
-		            window.alert('テキストのコピーに失敗しました: ', err);
+                }, function (err) {
+                    window.alert('テキストのコピーに失敗しました: ', err);
                 }
-             );
-	        let message_obj = {
-	            command: "editor_focus",
-	        };
-	        let json_text = JSON.stringify(message_obj);
+            );
+            let message_obj = {
+                command: "editor_focus",
+            };
+            let json_text = JSON.stringify(message_obj);
             window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
         }
 
         // ページ読み込み完了に初回チェック
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", () => {
             setTimeout(checkQuestionFile, 250); // 最初の１回だけ早めにちょっと問い合わせ
             setInterval(checkQuestionFile, 500); // 0.5秒ごとに監視
             setInterval(checkAnswerFile, 500); // 0.5秒ごとに監視
             setInterval(checkCompleteFile, 500); // 0.5秒ごとに監視
+        });
+
+        // 何も選択せずにコピー行為だけをした場合は、回答をコピーする
+        document.addEventListener('copy', (event) => {
+            const selection = window.getSelection();
+            if (selection.toString().length === 0) {
+                copyAnswer();
+            }
         });
     </script>
 </body>

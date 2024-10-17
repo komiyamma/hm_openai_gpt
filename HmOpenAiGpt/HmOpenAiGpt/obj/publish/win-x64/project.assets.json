@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Betalgo.OpenAI/8.7.1": {
+      "Betalgo.OpenAI/8.7.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -295,7 +295,7 @@
       }
     },
     "net8.0/win-x64": {
-      "Betalgo.OpenAI/8.7.1": {
+      "Betalgo.OpenAI/8.7.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
@@ -589,16 +589,16 @@
     }
   },
   "libraries": {
-    "Betalgo.OpenAI/8.7.1": {
-      "sha512": "xG/TZS+JOGQlHUGO3lnNp16fXGVwnnyqnTskMqBg9fqyZXlEL4EuXqlbcH4JRkeaveUR5CVlWOnv5tEJQjHlNw==",
+    "Betalgo.OpenAI/8.7.2": {
+      "sha512": "koB6IcCEKRZy+czpTp+W6m2Nu80m5gKF9/0aoCmaCl+hrOGCaHB4ZAi5m2TZ08hyGM4bzfOmx8YGH3d4m+3VHg==",
       "type": "package",
-      "path": "betalgo.openai/8.7.1",
+      "path": "betalgo.openai/8.7.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Betalgo-Ranul-OpenAI-icon.png",
         "Readme.md",
-        "betalgo.openai.8.7.1.nupkg.sha512",
+        "betalgo.openai.8.7.2.nupkg.sha512",
         "betalgo.openai.nuspec",
         "lib/net6.0/OpenAI.dll",
         "lib/net6.0/OpenAI.xml",
@@ -1107,7 +1107,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Betalgo.OpenAI >= 8.7.1"
+      "Betalgo.OpenAI >= 8.7.2"
     ]
   },
   "packageFolders": {
@@ -1163,7 +1163,7 @@
         "dependencies": {
           "Betalgo.OpenAI": {
             "target": "Package",
-            "version": "[8.7.1, )"
+            "version": "[8.7.2, )"
           }
         },
         "imports": [
@@ -1180,15 +1180,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[8.0.8, 8.0.8]"
+            "version": "[8.0.10, 8.0.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[8.0.8, 8.0.8]"
+            "version": "[8.0.10, 8.0.10]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[8.0.8, 8.0.8]"
+            "version": "[8.0.10, 8.0.10]"
           }
         ],
         "frameworkReferences": {
@@ -1196,7 +1196,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

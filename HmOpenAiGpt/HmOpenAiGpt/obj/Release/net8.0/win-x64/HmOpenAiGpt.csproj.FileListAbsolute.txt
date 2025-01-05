@@ -3,19 +3,6 @@ G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\H
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\HmOpenAiGpt.runtimeconfig.json
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\HmOpenAiGpt.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\OpenAI.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Configuration.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Configuration.Abstractions.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Configuration.Binder.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.DependencyInjection.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Diagnostics.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Diagnostics.Abstractions.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Http.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Logging.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Options.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Options.ConfigurationExtensions.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.Extensions.Primitives.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.CSharp.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.VisualBasic.Core.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\Microsoft.VisualBasic.dll
@@ -207,4 +194,6 @@ G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\H
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\refint\HmOpenAiGpt.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\HmOpenAiGpt.genruntimeconfig.cache
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\obj\Release\net8.0\win-x64\ref\HmOpenAiGpt.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.1024.46610.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\System.ClientModel.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\System.Memory.Data.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.1124.51707.dll

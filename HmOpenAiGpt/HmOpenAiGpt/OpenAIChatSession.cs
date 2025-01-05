@@ -1,18 +1,13 @@
 ﻿
-using OpenAI;
-using OpenAI.Managers;
-using OpenAI.ObjectModels;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI.ObjectModels.ResponseModels;
-using System.IO;
+using OpenAI.Chat;
+using System.ClientModel;
 using System.Text;
 using System.Text.RegularExpressions;
-using static System.Net.Mime.MediaTypeNames;
 
 
 internal partial class ChatSession
 {
-    static string model = Models.Gpt_3_5_Turbo;
+    static string model = "gpt-4o-mini";
 
     static int iMaxTokens = 4000;
 
@@ -41,13 +36,13 @@ internal partial class ChatSession
 
 
     // 最初のシステムメッセージ。
-    const string ChatGPTStartSystemMessage = "何かお手伝い出来ることはありますか？"; // You are a helpful assistant. 日本語いれておくことで日本ユーザーをデフォルトとして考える
+    const string ChatGPTStartSystemMessage = "こんにちわ。"; // You are a helpful assistant. 日本語いれておくことで日本ユーザーをデフォルトとして考える
 
     public static void InitMessages()
     {
         List<ChatMessage> list = new List<ChatMessage>
         {
-            ChatMessage.FromSystem(ChatGPTStartSystemMessage)
+            new SystemChatMessage(ChatGPTStartSystemMessage)
         };
         lock (lockContents)
         {
@@ -159,17 +154,13 @@ internal partial class ChatSession
     }
 
     // OpenAIサービスのインスタンス。一応保持
-    static OpenAIService openAiService = null;
+    static ChatClient openAiService = null;
 
-    static OpenAIService ConnectOpenAIService(string key)
+    static ChatClient ConnectOpenAIService(string key)
     {
         try
         {
-            var openAiService = new OpenAIService(new OpenAiOptions()
-            {
-                ApiKey = key
-            });
-
+            var openAiService = new ChatClient(model, key);
             return openAiService;
         }
         catch (Exception)
@@ -181,7 +172,7 @@ internal partial class ChatSession
     }
 
     // チャットのエンジンやオプション。過去のチャット内容なども渡す。
-    static IAsyncEnumerable<ChatCompletionCreateResponse> ReBuildPastChatContents(CancellationToken ct)
+    static AsyncCollectionResult<StreamingChatCompletionUpdate> ReBuildPastChatContents(CancellationToken ct)
     {
         var key = GetOpenAIKey();
         if (key == null)
@@ -199,24 +190,21 @@ internal partial class ChatSession
             throw new OpenAIServiceNotFoundException(ErrorMessageNoOpenAIService);
         }
 
-        // オプション。1000～2000トークンぐらいでセーフティかけておくのがいいだろう。
         // 元々ChatGPTの方でも4000トークンぐらいでセーフティがかかってる模様
-        ChatCompletionCreateRequest options = null;
+        ChatCompletionOptions options = null;
+
+        options = new ChatCompletionOptions
+        {
+            MaxOutputTokenCount = iMaxTokens
+        };
 
         lock (lockContents)
         {
-            options = new ChatCompletionCreateRequest
-            {
-                Messages = messageList,
-                Model = model,
-                MaxTokens = iMaxTokens
-            };
+            // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。
+            var completionResult = openAiService.CompleteChatStreamingAsync(messageList, options, ct);
+            // エラー内容をファイルに出力
+            return completionResult;
         }
-
-        // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。
-        var completionResult = openAiService.ChatCompletion.CreateCompletionAsStream(options, null, false, ct);
-        // エラー内容をファイルに出力
-        return completionResult;
     }
 
 
@@ -224,7 +212,7 @@ internal partial class ChatSession
     {
         lock (lockContents)
         {
-            messageList.Add(ChatMessage.FromUser(question));
+            messageList.Add(new UserChatMessage(question));
         }
     }
 
@@ -233,7 +221,7 @@ internal partial class ChatSession
         lock (lockContents)
         {
             // 今回の返答ををChatGPTの返答として記録しておく
-            messageList.Add(ChatMessage.FromAssistant(answer_sum));
+            messageList.Add(new AssistantChatMessage(answer_sum));
         }
     }
 
@@ -270,9 +258,9 @@ internal partial class ChatSession
             var ct = _cst.Token;
 
             string answer_sum = "";
-            var completionResult = ReBuildPastChatContents(ct);
 
             AddQuestion(prompt);
+            var completionResult = ReBuildPastChatContents(ct);
 
             int flushedLength = 0;
 
@@ -304,10 +292,10 @@ internal partial class ChatSession
                 ct.ThrowIfCancellationRequested();
 
                 // 会話成功なら
-                if (completion.Successful)
+                if (completion.ContentUpdate.Count > 0)
                 {
                     // ちろっと文字列追加表示
-                    string str = completion.Choices.FirstOrDefault()?.Message.Content;
+                    string str = completion.ContentUpdate[0].Text;
                     if (str != null)
                     {
                         answer_sum += str ?? "";
@@ -322,17 +310,15 @@ internal partial class ChatSession
                 }
                 else
                 {
-                    answer_sum += completion.Error.Code + ": " + completion.Error.Message + NewLine;
+                    /*
+                    answer_sum += completion.FinishReason.ToString();
 
                     // 失敗なら何かエラーと原因を表示
-                    if (completion.Error == null)
+                    if (completion.FinishReason != ChatFinishReason.Stop)
                     {
-                        throw new Exception(ErrorMsgUnknown);
+                        throw new Exception(completion.FinishReason.ToString());
                     }
-                    else
-                    {
-                        throw new Exception(completion.Error.Code + ": " + completion.Error.Message);
-                    }
+                    */
 
                 }
             }

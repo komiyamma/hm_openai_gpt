@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using OpenAI;
-using OpenAI.Managers;
-using OpenAI.ObjectModels;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI.ObjectModels.ResponseModels;
+using OpenAI.Chat;
 
 
 class OpenAIKeyNotFoundException : KeyNotFoundException
@@ -21,7 +17,7 @@ class OpenAIServiceNotFoundException : Exception
 internal partial class HmOpenAiGpt
 {
     static ChatSession chatSession;
-    static string model = Models.Gpt_3_5_Turbo;
+    static string model = "gpt-4o-mini";
 
     static int iMaxTokens = 4000;
 

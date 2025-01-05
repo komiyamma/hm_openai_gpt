@@ -308,21 +308,15 @@ internal partial class ChatSession
                         }
                     }
                 }
-                else
+                /*
+                else if (completion.FinishReason == ChatFinishReason.Stop)
                 {
-                    /*
                     answer_sum += completion.FinishReason.ToString();
-
-                    // 失敗なら何かエラーと原因を表示
-                    if (completion.FinishReason != ChatFinishReason.Stop)
-                    {
-                        throw new Exception(completion.FinishReason.ToString());
-                    }
-                    */
-
+                    throw new Exception(completion.FinishReason.ToString());
                 }
+                */
             }
-            // Console.WriteLine(answer_sum);
+
             AddAnswer(answer_sum);
             // 最後に念のために、全体のテキストとして1回上書き保存しておく。
             // 細かく保存していた際に、ファイルIOで欠損がある可能性がわずかにあるため。

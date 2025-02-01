@@ -1,6 +1,6 @@
 - HmOpenAiGpt
 
-  Copyright (c) 2024 Akitsugu Komiyama
+  Copyright (c) 2024-2025 Akitsugu Komiyama
 
 The MIT License (MIT)
 

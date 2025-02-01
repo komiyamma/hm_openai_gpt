@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Akitsugu Komiyama")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2024-2025 @ Akitsugu Komiyama")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.2.0.3")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.2.0.3+9ad076e3c10d8c594f207d472b96f5b252123045")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.2.0.4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.2.0.4+0de02a2f1859276ce3db1879773fd520097a585c")]
 [assembly: System.Reflection.AssemblyProductAttribute("HmOpenAiGpt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HmOpenAiGpt")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.2.0.3")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.2.0.4")]
 
 // MSBuild WriteCodeFragment クラスによって生成されました。
 

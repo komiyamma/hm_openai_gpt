@@ -54,7 +54,7 @@ internal partial class ChatSession
 
 
 
-    // AIからの返答がどうも進んでいない、といったことを判定する。５秒進んでいないようだと、キャンセルを発動する。
+    // AIからの返答がどうも進んでいない、といったことを判定する。10秒進んでいないようだと、キャンセルを発動する。
     bool conversationUpdateCancel = false;
 
     async Task conversationUpdateCheck()
@@ -69,7 +69,7 @@ internal partial class ChatSession
                 // Console.WriteLine("今回の会話タスクが終了したため、conversationUpdateCheckを終了");
                 break;
             }
-            await Task.Delay(100); // 5秒ごとにチェック
+            await Task.Delay(100); // 10秒ごとにチェック
 
             if (lastConversationUpdateCount == conversationUpdateCount)
             {
@@ -81,7 +81,7 @@ internal partial class ChatSession
                 iTickCount = 0;
             }
 
-            if (iTickCount > 50)
+            if (iTickCount > 100)
             {
                 iTickCount = 0;
                 // Console.WriteLine("AIからの応答の進捗がみられないため、キャンセル発行");

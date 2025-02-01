@@ -42,7 +42,7 @@ internal partial class ChatSession
     {
         List<ChatMessage> list = new List<ChatMessage>
         {
-            new SystemChatMessage(ChatGPTStartSystemMessage)
+            new AssistantChatMessage(ChatGPTStartSystemMessage)
         };
         lock (lockContents)
         {

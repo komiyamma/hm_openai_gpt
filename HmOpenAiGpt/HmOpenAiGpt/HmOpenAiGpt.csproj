@@ -5,11 +5,11 @@
 		<TargetFrameworks>net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<AssemblyVersion>1.2.0.1</AssemblyVersion>
-		<FileVersion>1.2.0.1</FileVersion>
-		<Version>1.2.0.1</Version>
+		<AssemblyVersion>1.2.0.3</AssemblyVersion>
+		<FileVersion>1.2.0.3</FileVersion>
+		<Version>1.2.0.3</Version>
 		<Authors>Akitsugu Komiyama</Authors>
-		<Copyright>2024 @ $(Authors)</Copyright>
+		<Copyright>2024-2025 @ $(Authors)</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

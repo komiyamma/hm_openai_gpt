@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.2.0.4
+ * HmOpenAiGpt v 1.2.0.5
  *
  * Copyright (c) 2024-2025 Akitsugu Komiyama
  * under the MIT License
@@ -393,6 +393,12 @@ function onHtmlEventHandler(command_obj) {
                 pushPostExecMacroMemory("js { syncOnCompleteAnswerText(); }");
             }
             break;
+        case "open_browser":
+            let href=command_obj.href;
+            if (href) {
+                openBrowser(href);
+            }
+            break;
     }
 }
 
@@ -442,6 +448,12 @@ function copyAIAnswer() {
         return;
     }
     setclipboard(answer_text);
+}
+
+var openBrowserUrl; // 初期化しないこと
+function openBrowser(href) {
+    openBrowserUrl = href;
+    pushPostExecMacroMemory("js { try {openbyshell(openBrowserUrl); openBrowserUrl=null;} catch(e) {} }");
 }
 
 function getSelectedMenuCommand() {

@@ -243,37 +243,40 @@
         });
 
         document.addEventListener('click', (event) => {
-            try {
-                // クリックされた要素が <a> タグかどうかを確認
-                const link = event.target.closest('a[href]');
+	        try {
+			    // クリックされた要素が <a> タグかどうかを確認
+			    const link = event.target.closest('a[href]');
 
-                if (link) {
-                    // 必要に応じてデフォルトの動作をキャンセル
-                    // event.preventDefault();
-                    const href = link.getAttribute('href');
-                    const target = link.getAttribute('target');
-                    // リンクがhttpから始まっている
-                    if (href && href.startsWith('http')) {
-                        event.preventDefault();
-                        openExternalBrowser(href, target);
-                    }
+			    if (link) {
+	  		        // 必要に応じてデフォルトの動作をキャンセル
+			        // event.preventDefault();
+		            const href = link.getAttribute('href');
+		            const target = link.getAttribute('target');
+		            // リンクがhttpから始まっている
+		            if (href && href.startsWith('http')) {
+		                event.preventDefault();
+		                openExternalBrowser(href, target);
+		            }
                 }
-            } catch (e) {
-            }
-        });
+	        } catch (e) {
+	        }
+        }
+
+	    function setCustomLink(link, event) {
+	    }
 
 	    function openExternalBrowser(href, target) {
-            try {
+	        try {
                 let message_obj = {
                     command: "open_browser",
                     href: href
                 };
                 let json_text = JSON.stringify(message_obj);
                 window.chrome.webview.postMessage({ funcid: idHtmlEventHandler, message: json_text });
-            } catch (e) {
-                window.alert(e);
-            }
-        }
+	        } catch (e) {
+	            window.alert(e);
+	        }
+	    }
 
     </script>
 </body>

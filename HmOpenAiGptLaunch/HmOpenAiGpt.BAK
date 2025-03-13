@@ -19,6 +19,8 @@
 
         #model_answer {
             width: 96%;
+            word-break: auto-phrase;
+            text-wrap: balance;
         }
 
         #btn_stop {

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mKGuprM+y/U=",
+  "dgSpecHash": "BuKY1fJ5rg8=",
   "success": true,
-  "projectFilePath": "G:\\repogitory\\hm_google_gemini\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
+  "projectFilePath": "G:\\repogitory\\hm_openai_gpt\\HmSimpleHttpServer\\HmSimpleHttpServer\\HmSimpleHttpServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\master\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.5\\microsoft.dotnet.ilcompiler.8.0.5.nupkg.sha512",
-    "C:\\Users\\master\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.6\\microsoft.net.illink.tasks.8.0.6.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.13\\microsoft.net.illink.tasks.8.0.13.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.5\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.5.nupkg.sha512"
   ],
   "logs": []

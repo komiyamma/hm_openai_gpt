@@ -1,12 +1,12 @@
 ﻿/*
- * HmOpenAiGpt v 1.2.0.6
+ * HmOpenAiGpt v 1.2.0.7
  *
  * Copyright (c) 2024-2025 Akitsugu Komiyama
  * under the MIT License
  */
 
 
-hidemaruversion "9.25.99";
+hidemaruversion "9.35.99";
 
 jsmode @"WebView2\HmOpenAiGpt";
 execjs currentmacrodirectory + "\\HmOpenAiGpt.mdformat.js";
@@ -119,24 +119,26 @@ function openHttpServer() {
     }
 }
 
+var retryPushPostExecMacroMemory;
+
+if (typeof(retryPushPostExecMacroMemory) != "undefined") {
+    hidemaru.clearTimeout(retryPushPostExecMacroMemory);
+}
 // hidemaru.postExecMacroMemoryの実行を確かなものとする関数
 function pushPostExecMacroMemory(command) {
-    let isScheduled = 0;
-    // まずは0ディレイで実行を試みる。setTimeoutに乗せる。
-    hidemaru.setTimeout(()=>{
-        if (!isScheduled) {
-            isScheduled = hidemaru.postExecMacroMemory(command) ?? 1;
-        }
-    }, 0);
 
-    // この下の処理が必要な理由は秀丸エディタv9.22～v9.34のバグのため。setTimeoutが同じフレーム(1秒60フレーム)内に
-    // ２回実行されると、一方が実行されないバグのため。このため、上の処理が本当に成功したのか？ の確認が必要になる。
-    let peRetry = hidemaru.setInterval(()=>{
+    let isScheduled = 0;
+
+    function attemptExecution() {
         if (!isScheduled) {
-            isScheduled = hidemaru.postExecMacroMemory(command) ?? 1;
+            isScheduled = hidemaru.postExecMacroMemory(command);
         }
-        if (isScheduled) { hidemaru.clearInterval(peRetry); }
-    }, 100);
+        if (!isScheduled) {
+            retryPushPostExecMacroMemory = hidemaru.setTimeout(attemptExecution, 200);
+        }
+    }
+
+    attemptExecution();
 }
 
 // AIウィンドウを１つだけに絞る処理

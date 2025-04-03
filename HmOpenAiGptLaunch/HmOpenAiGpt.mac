@@ -37,7 +37,7 @@ const maxTokens = 4000;            // この数値は概ね 使用対象のmodel
 
 const renderPaneCustomParam = {
     place: "rightside",            // leftside | rightside | upside | downside
-    size: 450,                     // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
+    size: 400,                     // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
 const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）

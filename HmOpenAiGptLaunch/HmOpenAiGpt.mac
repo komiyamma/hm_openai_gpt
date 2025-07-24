@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.2.0.7
+ * HmOpenAiGpt v 1.2.0.8
  *
  * Copyright (c) 2024-2025 Akitsugu Komiyama
  * under the MIT License
@@ -7,6 +7,8 @@
 
 
 hidemaruversion "9.35.99";
+
+setcompatiblemode 0x08000000;
 
 jsmode @"WebView2\HmOpenAiGpt";
 execjs currentmacrodirectory + "\\HmOpenAiGpt.mdformat.js";
@@ -29,15 +31,17 @@ if (!openAiKey) {
     throw "OPENAIのキーが空です";
 }
 
-const modelName = "gpt-4o-mini"; // "gpt-4o"などの設定可能。しかしながら値段が10倍に跳ね上がるので注意。
+const modelName = "gpt-4.1-mini";  // さらに安くするなら、"gpt-4o-miniなども。
+                                   // "gpt-4o"などの設定可能だが、値段が10倍に跳ね上がるので注意。
                                    // "gpt-4-turbo" は、「値段が高いだけで低性能で利用価値なし」なので注意
+                                   // 返答開始までに10秒以上時間のかかる推論モデルだと、(不具合で返答が無いものとして)HmOpenAiGptでは処理を断念して扱えないので注意。
 
 const maxTokens = 4000;            // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。
                                    // 「gpt-4o-mini なら 8000」「gpt-4o なら 4000」が目安
 
 const renderPaneCustomParam = {
     place: "rightside",            // leftside | rightside | upside | downside
-    size: 450,                     // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
+    size: 600,                     // 左や右の配置の時は、横幅のこと。上や下の配置の時は縦幅のこと。
 };
 
 const isOneAtTimeAIRenderPane = 1; // AI関連のレンダリング枠は(他の種類のAIも含め)１つだけにする。(複数起動しそうになると、前のものが閉じる）

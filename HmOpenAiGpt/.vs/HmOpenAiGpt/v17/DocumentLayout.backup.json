@@ -57,7 +57,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
@@ -104,8 +104,8 @@
               "Title": "HmOpenAiGpt.csproj",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
-              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
-              "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
+              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj*",
+              "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj*",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-06-03T05:38:39.119Z",
@@ -196,6 +196,10 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:43:14.634Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             }
           ]
         }

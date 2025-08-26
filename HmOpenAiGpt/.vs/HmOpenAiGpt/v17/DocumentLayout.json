@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\hmopenaigpt.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\hmopenaigpt.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\hmopenaigpt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\hmopenaigpt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\openaichatsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\openaichatsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\questionfilewatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\questionfilewatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\openaicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\openaicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\questionfilewatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\questionfilewatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\hmopenaigpt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|solutionrelative:hmopenaigpt\\hmopenaigpt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A9EE4EE-8DD3-4A2B-8C70-8460523F5F96}|HmOpenAiGpt\\HmOpenAiGpt.csproj|g:\\repogitory\\hm_openai_gpt\\hmopenaigpt\\hmopenaigpt\\iotextcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,11 +53,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
@@ -74,13 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "QuestionFileWatcher.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\QuestionFileWatcher.cs",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\QuestionFileWatcher.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\QuestionFileWatcher.cs",
               "RelativeToolTip": "HmOpenAiGpt\\QuestionFileWatcher.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAwIAAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAnwI8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T14:18:22.475Z",
               "EditorCaption": ""
@@ -100,12 +104,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "HmOpenAiGpt.csproj",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
-              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj*",
-              "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj*",
+              "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
+              "RelativeToolTip": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-06-03T05:38:39.119Z",
@@ -122,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HmOpenAiGpt",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\HmOpenAiGpt.csproj",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\HmOpenAiGpt.csproj",
@@ -147,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Main.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\Main.cs",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\Main.cs",
@@ -173,33 +177,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "OpenAIChatSession.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\OpenAIChatSession.cs",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\OpenAIChatSession.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\OpenAIChatSession.cs",
               "RelativeToolTip": "HmOpenAiGpt\\OpenAIChatSession.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAIwDsAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAB0BAAAAAAAAAAD4v8sAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:43:34.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "OpenAIController.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\OpenAIController.cs",
               "RelativeDocumentMoniker": "HmOpenAiGpt\\OpenAIController.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_gpt\\HmOpenAiGpt\\HmOpenAiGpt\\OpenAIController.cs",
               "RelativeToolTip": "HmOpenAiGpt\\OpenAIController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAnwEcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-03T02:43:14.634Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             }
           ]
         }

@@ -1,6 +1,7 @@
 # HmOpenAiGpt
 
 ![HmOpenAiGpt latest release](https://img.shields.io/github/v/release/komiyamma/hm_openai_gpt)
+![gpt 5 chat latest](https://img.shields.io/badge/gpt-5_chat_latest-6479ff.svg)
 ![gpt 4.1 mini](https://img.shields.io/badge/gpt-4.1_mini-6479ff.svg)
 ![gpt 4o mini](https://img.shields.io/badge/gpt-4o_mini-6479ff.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)

@@ -180,7 +180,7 @@ G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\c
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\hostfxr.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\hostpolicy.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\mscordaccore.dll
-G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\mscordaccore_amd64_amd64_8.0.1825.31117.dll
+G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\mscordaccore_amd64_amd64_8.0.1925.36514.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\mscordbi.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\mscorrc.dll
 G:\repogitory\hm_openai_gpt\HmOpenAiGpt\HmOpenAiGpt\bin\Release\net8.0\publish\msquic.dll

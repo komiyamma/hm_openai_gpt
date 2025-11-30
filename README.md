@@ -8,6 +8,6 @@
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 ![Hidemaru 9.35](https://img.shields.io/badge/Hidemaru-v9.35-6479ff.svg)
 
-「秀丸エディタ」で「gpt-4系」を扱うためのコンポーネント
+「秀丸エディタ」で「gpt-5系」「gpt-4系」を扱うためのコンポーネント
 
 https://秀丸マクロ.net/?page=nobu_tool_hm_openaigpt

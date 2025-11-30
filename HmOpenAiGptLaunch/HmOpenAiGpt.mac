@@ -1,5 +1,5 @@
 ﻿/*
- * HmOpenAiGpt v 1.2.0.9
+ * HmOpenAiGpt v 1.2.1.0
  *
  * Copyright (c) 2024-2025 Akitsugu Komiyama
  * under the MIT License
@@ -31,9 +31,8 @@ if (!openAiKey) {
     throw "OPENAIのキーが空です";
 }
 
-const modelName = "gpt-4.1-mini";  // さらに安くするなら、"gpt-4o-mini"や"gpt-5-nano"なども。
+const modelName = "gpt-4.1-mini";  // "gpt-5-mini"を使うには、「Verify Organization（組織認証）必須 」になります注意。ググってください。この項目は普通は「個人でも認証」するものです。
                                    // "gpt-5-chat-latest"などの設定可能だが、値段が"gpt-5"と同じであり、10倍に跳ね上がるので注意。
-                                   // "gpt-5-mini"を使うには、「Verify Organization（組織認証）必須 」になります注意。ググってください。
                                    // 返答開始までに10秒以上時間のかかる推論モデルだと、(不具合で返答が無いものとして)HmOpenAiGptでは処理を断念して扱えないので注意。
 
 const maxTokens = 4000;            // この数値は概ね 使用対象のmodelNameの最大トークンの半分程度を使用するのが望ましい。

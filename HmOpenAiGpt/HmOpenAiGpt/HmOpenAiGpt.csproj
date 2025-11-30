@@ -5,9 +5,9 @@
 		<TargetFrameworks>net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<AssemblyVersion>1.2.0.4</AssemblyVersion>
-		<FileVersion>1.2.0.4</FileVersion>
-		<Version>1.2.0.4</Version>
+		<AssemblyVersion>1.2.0.5</AssemblyVersion>
+		<FileVersion>1.2.0.5</FileVersion>
+		<Version>1.2.0.5</Version>
 		<Authors>Akitsugu Komiyama</Authors>
 		<Copyright>2024-2025 @ $(Authors)</Copyright>
 	</PropertyGroup>
@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="OpenAI" Version="2.4.0" />
+		<PackageReference Include="OpenAI" Version="2.7.0" />
 	</ItemGroup>
 
 </Project>
